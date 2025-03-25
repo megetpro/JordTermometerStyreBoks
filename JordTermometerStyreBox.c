@@ -24,10 +24,17 @@
 #include <xc.h>
 
 void IOInit() {
+    ADCON1 = 0x06; // Set all pins in portA to be digital
     PORTA = 0;
     PORTB = 0;
     TRISB = 0;
-    TRISA = 0;
+    TRISA = 0b00001000;
+}
+
+void TimerInit() {
+    OPTION_REG = 0b11000011;
+    
+    return;
 }
 
 void wait(unsigned int time) {
@@ -77,10 +84,53 @@ void writeString(char* string, char length) {
     for (unsigned char i = 0; i < length; i++) {
         writeChar(string[i]);
     }
+    return;
+}
+
+void readMessage() {
+    
+    wait(5);
+    PORTAbits.RA4 = 1;
+    
+    wait(16);
+    PORTAbits.RA4 = 0;
+    
+    wait(15);
+    PORTAbits.RA4 = 1;
+    
+    wait(15);
+    PORTAbits.RA4 = 0;
+    
+    wait(15);
+    PORTAbits.RA4 = 1;
+    
+    wait(15);
+    PORTAbits.RA4 = 0;
+    
+    wait(16);
+    PORTAbits.RA4 = 1;
+    
+    wait(15);
+    PORTAbits.RA4 = 0;
+    
+    wait(15);
+    PORTAbits.RA4 = 1;
+    
+    wait(15);
+    PORTAbits.RA4 = 0;
+    
+    wait(15);
+    PORTAbits.RA4 = 1;
+    
+    wait(15);
+    PORTAbits.RA4 = 0;
+    
+    wait(16);
 }
 
 void main(void) {
     IOInit();
+    TimerInit();
     
     wait(100);
     
@@ -95,7 +145,6 @@ void main(void) {
     writeChar(0b11011111);
     writeString("C    9%", 7);
 
-
     wait(200);
 
     CommandLCD(0b11000000);     
@@ -103,10 +152,13 @@ void main(void) {
     writeString("2:  19.9", 8);
     writeChar(0b11011111);
     writeString("C  100%", 7);
-
+    
+    wait(200);
     
     while (1) {
-        
+        if (PORTAbits.RA3) {
+            readMessage();
+        }
     }
     
     return;
