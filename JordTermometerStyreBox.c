@@ -79,11 +79,51 @@ void writeString(char* string, char length) {
     }
 }
 
+char* doubbelDabbel(int rawData) {
+    int raw = rawData;
+    
+    for (int i = 0; i < 12; i ++) {
+        raw = raw << 1;
+        
+        if (raw & 0xF000 >= 0x5000){
+            raw += 0x3000;
+        }
+        
+        if (raw & 0xF0000 >= 0x50000){
+            raw += 0x30000;
+        }
+        
+        if (raw & 0xF00000 >= 0x500000){
+            raw += 0x300000;
+        }
+    
+    }
+    
+    raw = raw >> 12;
+    
+    char* digits[3];
+    
+    digits[0] = raw & 0x0F;
+    raw >> 4;
+    
+    digits[1] = raw & 0x0F;
+    raw >> 4;
+    
+    digits[2] = raw & 0x0F;
+    raw >> 4;
+    
+    return digits;
+}
+
+
+
 void main(void) {
+    //PIC setup
     IOInit();
     
     wait(100);
     
+    // LCD setup
     CommandLCD(0b00111000);
     CommandLCD(0b00001110);    
     CommandLCD(0b00000001);
