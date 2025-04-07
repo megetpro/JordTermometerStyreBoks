@@ -85,15 +85,15 @@ char* doubbelDabbel(int rawData) {
     for (int i = 0; i < 12; i ++) {
         raw = raw << 1;
         
-        if (raw & 0xF000 >= 0x5000){
+        if ((raw & 0xF000) >= 0x5000){
             raw += 0x3000;
         }
         
-        if (raw & 0xF0000 >= 0x50000){
+        if ((raw & 0xF0000) >= 0x50000){
             raw += 0x30000;
         }
         
-        if (raw & 0xF00000 >= 0x500000){
+        if ((raw & 0xF00000) >= 0x500000){
             raw += 0x300000;
         }
     
@@ -101,21 +101,56 @@ char* doubbelDabbel(int rawData) {
     
     raw = raw >> 12;
     
-    char* digits[3];
+    static char digits[3];
     
-    digits[0] = raw & 0x0F;
-    raw >> 4;
+    digits[0] = raw & 0x0F + '0';
+    raw = raw >> 4;
     
-    digits[1] = raw & 0x0F;
-    raw >> 4;
+    digits[1] = raw & 0x0F + '0';
+    raw = raw >> 4;
     
-    digits[2] = raw & 0x0F;
-    raw >> 4;
+    digits[2] = raw & 0x0F + '0';
+    raw = raw >> 4;
     
     return digits;
 }
 
-
+char* mV2Celcius(unsigned int bcdValue){
+    
+    //Convert BCD
+    int thousand = (bcdValue >> 12) & 0xF;
+    int hundreds = (bcdValue >> 8) & 0xF;
+    int tens = (bcdValue >> 4) & 0xF;
+    int ones = bcdValue & 0xF;
+    
+    //Total mV value
+    int milivolts = thousand * 1000 + hundreds * 100 + tens * 10 + ones;
+    
+    //Convert to temerature in C from kelvin
+    int totalC = milivolts - 2731;
+    
+    static char tempStr[6]; // Format: " XX.X" + '\0'
+    
+    //Handle negative temps
+    if (totalC < 0) {
+        totalC = -totalC;
+        tempStr[0] = '-';
+    }
+    else {
+        tempStr[0] = ' ';
+    }
+    
+    int intPart = totalC / 10;
+    int decPart = totalC % 10;
+    
+    tempStr[1] = (intPart / 10) + '0';
+    tempStr[2] = (intPart % 10) + '0';
+    tempStr[3] = '.';
+    tempStr[4] = decPart + '0';
+    tempStr[5] = '\0';
+    
+    return tempStr;
+}
 
 void main(void) {
     //PIC setup
@@ -131,12 +166,22 @@ void main(void) {
     
     wait(200);
     
-    writeString("1: -13.9", 8);
-    writeChar(0b11011111);
-    writeString("C    9%", 7);
+    writeString("1: ", 3);
+    
+    char* tempStr = mV2Celcius(0x2931);
+    
+    writeString(tempStr, 5);
+    
+    writeChar(0b11011111); //Degree symbol
+    
+    writeString("C", 1);
+    
+    //writeString("1: -13.9", 8);
+    //writeChar(0b11011111);
+    //writeString("C    9%", 7);
 
 
-    wait(200);
+    //wait(200);
 
     CommandLCD(0b11000000);     
     
