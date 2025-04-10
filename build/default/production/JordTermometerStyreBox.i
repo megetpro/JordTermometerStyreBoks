@@ -1377,11 +1377,19 @@ extern __bank0 __bit __timeout;
 # 24 "JordTermometerStyreBox.c" 2
 
 
+
 void IOInit() {
+    ADCON1 = 0x06;
     PORTA = 0;
     PORTB = 0;
     TRISB = 0;
-    TRISA = 0;
+    TRISA = 0b00001000;
+}
+
+void TimerInit() {
+    OPTION_REG = 0b11000011;
+
+    return;
 }
 
 void wait(unsigned int time) {
@@ -1431,10 +1439,138 @@ void writeString(char* string, char length) {
     for (unsigned char i = 0; i < length; i++) {
         writeChar(string[i]);
     }
+    return;
+}
+
+void readMessage() {
+
+    short int Termometer_id = 0;
+    short int temp_data = 0;
+    short int Batt_status = 0;
+    char Expected_check_bit = 0;
+
+    wait(5);
+    Expected_check_bit ^= PORTAbits.RA3;
+    Termometer_id = (Termometer_id << 1) | PORTAbits.RA3;
+    PORTAbits.RA4 = 1;
+
+    wait(10);
+    Expected_check_bit ^= PORTAbits.RA3;
+    Termometer_id = (Termometer_id << 1) | PORTAbits.RA3;
+    PORTAbits.RA4 = 0;
+
+    wait(13);
+    Expected_check_bit ^= PORTAbits.RA3;
+    Termometer_id = (Termometer_id << 1) | PORTAbits.RA3;
+    PORTAbits.RA4 = 1;
+
+    wait(13);
+    Expected_check_bit ^= PORTAbits.RA3;
+    temp_data = (temp_data << 1) | PORTAbits.RA3;
+    PORTAbits.RA4 = 0;
+
+    wait(12);
+    Expected_check_bit ^= PORTAbits.RA3;
+    temp_data = (temp_data << 1) | PORTAbits.RA3;
+    PORTAbits.RA4 = 1;
+
+    wait(13);
+    Expected_check_bit ^= PORTAbits.RA3;
+    temp_data = (temp_data << 1) | PORTAbits.RA3;
+    PORTAbits.RA4 = 0;
+
+    wait(13);
+    Expected_check_bit ^= PORTAbits.RA3;
+    temp_data = (temp_data << 1) | PORTAbits.RA3;
+    PORTAbits.RA4 = 1;
+
+    wait(12);
+    Expected_check_bit ^= PORTAbits.RA3;
+    temp_data = (temp_data << 1) | PORTAbits.RA3;
+    PORTAbits.RA4 = 0;
+
+    wait(13);
+    Expected_check_bit ^= PORTAbits.RA3;
+    temp_data = (temp_data << 1) | PORTAbits.RA3;
+    PORTAbits.RA4 = 1;
+
+    wait(13);
+    Expected_check_bit ^= PORTAbits.RA3;
+    temp_data = (temp_data << 1) | PORTAbits.RA3;
+    PORTAbits.RA4 = 0;
+
+    wait(12);
+    Expected_check_bit ^= PORTAbits.RA3;
+    temp_data = (temp_data << 1) | PORTAbits.RA3;
+    PORTAbits.RA4 = 1;
+
+    wait(13);
+    Expected_check_bit ^= PORTAbits.RA3;
+    temp_data = (temp_data << 1) | PORTAbits.RA3;
+    PORTAbits.RA4 = 0;
+
+    wait(13);
+    Expected_check_bit ^= PORTAbits.RA3;
+    temp_data = (temp_data << 1) | PORTAbits.RA3;
+    PORTAbits.RA4 = 1;
+
+    wait(12);
+    Expected_check_bit ^= PORTAbits.RA3;
+    Batt_status = (Batt_status << 1) | PORTAbits.RA3;
+    PORTAbits.RA4 = 0;
+
+    wait(13);
+    Expected_check_bit ^= PORTAbits.RA3;
+    Batt_status = (Batt_status << 1) | PORTAbits.RA3;
+    PORTAbits.RA4 = 1;
+
+    wait(13);
+    Expected_check_bit ^= PORTAbits.RA3;
+    PORTAbits.RA4 = 0;
+
+    wait(26);
+
+    CommandLCD(0b10000000);
+    writeChar(Termometer_id + '0');
+
+    CommandLCD(0b10001100);
+    if (Batt_status >= 3) {
+        writeString("Okay", 4);
+    } else if (Batt_status < 1) {
+        writeString(" Lav", 4);
+    } else {
+        writeString("Fejl", 4);
+    }
+
+}
+
+char checkSignal() {
+    for (int i = 0; i < 15; i++) {
+        if (!PORTAbits.RA3) {
+            return 0;
+        }
+    }
+    while (PORTAbits.RA3) {}
+    for (int i = 0; i < 7; i++) {
+        if (PORTAbits.RA3) {
+            return 0;
+        }
+    }
+    while (!PORTAbits.RA3) {}
+    for (int i = 0; i < 7; i++) {
+        if (!PORTAbits.RA3) {
+            return 0;
+        }
+    }
+    while (PORTAbits.RA3) {}
+    wait(13);
+
+    return 1;
 }
 
 void main(void) {
     IOInit();
+    TimerInit();
 
     wait(100);
 
@@ -1449,7 +1585,6 @@ void main(void) {
     writeChar(0b11011111);
     writeString("C    9%", 7);
 
-
     wait(200);
 
     CommandLCD(0b11000000);
@@ -1458,9 +1593,14 @@ void main(void) {
     writeChar(0b11011111);
     writeString("C  100%", 7);
 
+    wait(200);
 
     while (1) {
-
+        if (PORTAbits.RA3) {
+            if (checkSignal()) {
+                readMessage();
+            }
+        }
     }
 
     return;

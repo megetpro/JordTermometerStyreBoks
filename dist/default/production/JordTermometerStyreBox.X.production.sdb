@@ -11,21 +11,27 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"26 C:\Users\chris\MPLABXProjects\JordTermometerStyreBox.X\JordTermometerStyreBox.c
+"27 C:\Users\chris\MPLABXProjects\JordTermometerStyreBox.X\JordTermometerStyreBox.c
 [v _IOInit IOInit `(v  1 e 1 0 ]
-"33
-[v _wait wait `(v  1 e 1 0 ]
+"35
+[v _TimerInit TimerInit `(v  1 e 1 0 ]
 "41
+[v _wait wait `(v  1 e 1 0 ]
+"49
 [v _CommandLCD CommandLCD `(v  1 e 1 0 ]
-"62
+"70
 [v _writeChar writeChar `(v  1 e 1 0 ]
-"76
+"84
 [v _writeString writeString `(v  1 e 1 0 ]
-"82
+"91
+[v _readMessage readMessage `(v  1 e 1 0 ]
+"193
+[v _checkSignal checkSignal `(uc  1 e 1 0 ]
+"217
 [v _main main `(v  1 e 1 0 ]
 "166 C:/Users/chris/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f819.h
 [v _PORTA PORTA `VEuc  1 e 1 @5 ]
-[s S26 . 1 `uc 1 RA0 1 0 :1:0 
+[s S28 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
 `uc 1 RA2 1 0 :1:2 
 `uc 1 RA3 1 0 :1:3 
@@ -35,58 +41,91 @@
 `uc 1 RA7 1 0 :1:7 
 ]
 "183
-[u S35 . 1 `S26 1 . 1 0 ]
-[v _PORTAbits PORTAbits `VES35  1 e 1 @5 ]
+[u S37 . 1 `S28 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES37  1 e 1 @5 ]
 "228
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
+"864
+[v _OPTION_REG OPTION_REG `VEuc  1 e 1 @129 ]
 "934
 [v _TRISA TRISA `VEuc  1 e 1 @133 ]
 "996
 [v _TRISB TRISB `VEuc  1 e 1 @134 ]
-"82 C:\Users\chris\MPLABXProjects\JordTermometerStyreBox.X\JordTermometerStyreBox.c
+"1455
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @159 ]
+"217 C:\Users\chris\MPLABXProjects\JordTermometerStyreBox.X\JordTermometerStyreBox.c
 [v _main main `(v  1 e 1 0 ]
 {
-"113
+"253
 } 0
-"76
+"91
+[v _readMessage readMessage `(v  1 e 1 0 ]
+{
+"94
+[v readMessage@temp_data temp_data `s  1 a 2 12 ]
+"93
+[v readMessage@Termometer_id Termometer_id `s  1 a 2 10 ]
+"95
+[v readMessage@Batt_status Batt_status `s  1 a 2 8 ]
+"96
+[v readMessage@Expected_check_bit Expected_check_bit `uc  1 a 1 7 ]
+"191
+} 0
+"84
 [v _writeString writeString `(v  1 e 1 0 ]
 {
 [v writeString@string string `*.24uc  1 a 1 wreg ]
-"77
-[v writeString@i i `uc  1 a 1 7 ]
-"76
+"85
+[v writeString@i i `uc  1 a 1 6 ]
+"84
 [v writeString@string string `*.24uc  1 a 1 wreg ]
 [v writeString@length length `uc  1 p 1 5 ]
-[v writeString@string string `*.24uc  1 a 1 6 ]
-"80
+[v writeString@string string `*.24uc  1 a 1 7 ]
+"89
 } 0
-"62
+"70
 [v _writeChar writeChar `(v  1 e 1 0 ]
 {
 [v writeChar@character character `uc  1 a 1 wreg ]
 [v writeChar@character character `uc  1 a 1 wreg ]
 [v writeChar@character character `uc  1 a 1 4 ]
-"74
+"82
 } 0
-"26
-[v _IOInit IOInit `(v  1 e 1 0 ]
-{
-"31
-} 0
-"41
+"49
 [v _CommandLCD CommandLCD `(v  1 e 1 0 ]
 {
 [v CommandLCD@command command `uc  1 a 1 wreg ]
 [v CommandLCD@command command `uc  1 a 1 wreg ]
 [v CommandLCD@command command `uc  1 a 1 4 ]
-"60
+"68
 } 0
-"33
+"193
+[v _checkSignal checkSignal `(uc  1 e 1 0 ]
+{
+"206
+[v checkSignal@i_85 i `i  1 a 2 8 ]
+"200
+[v checkSignal@i_84 i `i  1 a 2 6 ]
+"194
+[v checkSignal@i i `i  1 a 2 4 ]
+"215
+} 0
+"41
 [v _wait wait `(v  1 e 1 0 ]
 {
-"34
+"42
 [v wait@t t `ui  1 a 2 2 ]
-"33
+"41
 [v wait@time time `ui  1 p 2 0 ]
+"47
+} 0
+"35
+[v _TimerInit TimerInit `(v  1 e 1 0 ]
+{
 "39
+} 0
+"27
+[v _IOInit IOInit `(v  1 e 1 0 ]
+{
+"33
 } 0

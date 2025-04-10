@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.45 build 20230818022343 
-                                                                                               Fri Mar 21 15:29:08 2025
+                                                                                               Thu Apr 10 09:59:07 2025
 
 Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1 
      1                           	processor	16F819
@@ -10,864 +10,2211 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
      4                           	psect	strings,global,class=STRING,delta=2,noexec
      5                           	psect	cinit,global,class=CODE,merge=1,delta=2
      6                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1,noexec
-     7                           	psect	maintext,global,class=CODE,split=1,delta=2
-     8                           	psect	text1,local,class=CODE,merge=1,delta=2
-     9                           	psect	text2,local,class=CODE,merge=1,delta=2
-    10                           	psect	text3,local,class=CODE,merge=1,delta=2
-    11                           	psect	text4,local,class=CODE,merge=1,delta=2
-    12                           	psect	text5,local,class=CODE,merge=1,delta=2
-    13                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
-    14                           	dabs	1,0x7E,2
-    15     0000                     
-    16                           ; Generated 12/10/2023 GMT
-    17                           ; 
-    18                           ; Copyright © 2023, Microchip Technology Inc. and its subsidiaries ("Microchip")
-    19                           ; All rights reserved.
-    20                           ; 
-    21                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+     7                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1,noexec
+     8                           	psect	maintext,global,class=CODE,split=1,delta=2
+     9                           	psect	text1,local,class=CODE,merge=1,delta=2
+    10                           	psect	text2,local,class=CODE,merge=1,delta=2
+    11                           	psect	text3,local,class=CODE,merge=1,delta=2
+    12                           	psect	text4,local,class=CODE,merge=1,delta=2
+    13                           	psect	text5,local,class=CODE,merge=1,delta=2
+    14                           	psect	text6,local,class=CODE,merge=1,delta=2
+    15                           	psect	text7,local,class=CODE,merge=1,delta=2
+    16                           	psect	text8,local,class=CODE,merge=1,delta=2
+    17                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
+    18                           	dabs	1,0x7E,2
+    19     0000                     
+    20                           ; Generated 12/10/2023 GMT
+    21                           ; 
+    22                           ; Copyright © 2023, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    23                           ; All rights reserved.
+    24                           ; 
+    25                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
       +                          ip").
-    22                           ; 
-    23                           ; Redistribution and use in source and binary forms, with or without modification, are
-    24                           ; permitted provided that the following conditions are met:
-    25                           ; 
-    26                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+    26                           ; 
+    27                           ; Redistribution and use in source and binary forms, with or without modification, are
+    28                           ; permitted provided that the following conditions are met:
+    29                           ; 
+    30                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
       +                          t of
-    27                           ;        conditions and the following disclaimer.
-    28                           ; 
-    29                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+    31                           ;        conditions and the following disclaimer.
+    32                           ; 
+    33                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
       +                          list
-    30                           ;        of conditions and the following disclaimer in the documentation and/or other
-    31                           ;        materials provided with the distribution. Publication is not required when
-    32                           ;        this file is used in an embedded application.
-    33                           ; 
-    34                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+    34                           ;        of conditions and the following disclaimer in the documentation and/or other
+    35                           ;        materials provided with the distribution. Publication is not required when
+    36                           ;        this file is used in an embedded application.
+    37                           ; 
+    38                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
       +                          is
-    35                           ;        software without specific prior written permission.
-    36                           ; 
-    37                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
-    38                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+    39                           ;        software without specific prior written permission.
+    40                           ; 
+    41                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    42                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
       +                          OR
-    39                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+    43                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
       +                          T,
-    40                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
-    41                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
-    42                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+    44                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    45                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    46                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
       +                          RICT
-    43                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+    47                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
       +                          SE OF
-    44                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    45                           ; 
-    46                           ; 
-    47                           ; Code-generator required, PIC16F819 Definitions
-    48                           ; 
-    49                           ; SFR Addresses
-    50     0000                     	;# 
-    51     0001                     	;# 
-    52     0002                     	;# 
-    53     0003                     	;# 
-    54     0004                     	;# 
-    55     0005                     	;# 
-    56     0006                     	;# 
-    57     000A                     	;# 
-    58     000B                     	;# 
-    59     000C                     	;# 
-    60     000D                     	;# 
-    61     000E                     	;# 
-    62     000E                     	;# 
-    63     000F                     	;# 
-    64     0010                     	;# 
-    65     0011                     	;# 
-    66     0012                     	;# 
-    67     0013                     	;# 
-    68     0014                     	;# 
-    69     0015                     	;# 
-    70     0015                     	;# 
-    71     0016                     	;# 
-    72     0017                     	;# 
-    73     001E                     	;# 
-    74     001F                     	;# 
-    75     0081                     	;# 
-    76     0085                     	;# 
-    77     0086                     	;# 
-    78     008C                     	;# 
-    79     008D                     	;# 
-    80     008E                     	;# 
-    81     008F                     	;# 
-    82     0090                     	;# 
-    83     0092                     	;# 
-    84     0093                     	;# 
-    85     0094                     	;# 
-    86     009E                     	;# 
-    87     009F                     	;# 
-    88     010C                     	;# 
-    89     010D                     	;# 
-    90     010E                     	;# 
-    91     010F                     	;# 
-    92     018C                     	;# 
-    93     018D                     	;# 
-    94     0000                     	;# 
-    95     0001                     	;# 
-    96     0002                     	;# 
-    97     0003                     	;# 
-    98     0004                     	;# 
-    99     0005                     	;# 
-   100     0006                     	;# 
-   101     000A                     	;# 
-   102     000B                     	;# 
-   103     000C                     	;# 
-   104     000D                     	;# 
-   105     000E                     	;# 
-   106     000E                     	;# 
-   107     000F                     	;# 
-   108     0010                     	;# 
-   109     0011                     	;# 
-   110     0012                     	;# 
-   111     0013                     	;# 
-   112     0014                     	;# 
-   113     0015                     	;# 
-   114     0015                     	;# 
-   115     0016                     	;# 
-   116     0017                     	;# 
-   117     001E                     	;# 
-   118     001F                     	;# 
-   119     0081                     	;# 
-   120     0085                     	;# 
-   121     0086                     	;# 
-   122     008C                     	;# 
-   123     008D                     	;# 
-   124     008E                     	;# 
-   125     008F                     	;# 
-   126     0090                     	;# 
-   127     0092                     	;# 
-   128     0093                     	;# 
-   129     0094                     	;# 
-   130     009E                     	;# 
-   131     009F                     	;# 
-   132     010C                     	;# 
-   133     010D                     	;# 
-   134     010E                     	;# 
-   135     010F                     	;# 
-   136     018C                     	;# 
-   137     018D                     	;# 
-   138     0005                     _PORTAbits	set	5
-   139     0006                     _PORTB	set	6
-   140     0005                     _PORTA	set	5
-   141     0085                     _TRISA	set	133
-   142     0086                     _TRISB	set	134
-   143                           
-   144                           	psect	strings
-   145     0001                     __pstrings:
-   146     0001                     stringtab:
-   147     0001                     __stringtab:
-   148     0001                     stringcode:	
-   149                           ;	String table - string pointers are 1 byte each
-   150                           
-   151     0001                     stringdir:
-   152     0001  3000               	movlw	high stringdir
-   153     0002  008A               	movwf	10
-   154     0003  0804               	movf	4,w
-   155     0004  0A84               	incf	4,f
-   156     0005  0782               	addwf	2,f
-   157     0006                     __stringbase:
-   158     0006  3400               	retlw	0
-   159     0007                     __end_of__stringtab:
-   160     0007                     STR_1:
-   161     0007  3431               	retlw	49	;'1'
-   162     0008  343A               	retlw	58	;':'
-   163     0009  3420               	retlw	32	;' '
-   164     000A  342D               	retlw	45	;'-'
-   165     000B  3431               	retlw	49	;'1'
-   166     000C  3433               	retlw	51	;'3'
-   167     000D  342E               	retlw	46	;'.'
-   168     000E  3439               	retlw	57	;'9'
-   169     000F  3400               	retlw	0
-   170     0010                     STR_3:
-   171     0010  3432               	retlw	50	;'2'
-   172     0011  343A               	retlw	58	;':'
-   173     0012  3420               	retlw	32	;' '
-   174     0013  3420               	retlw	32	;' '
-   175     0014  3431               	retlw	49	;'1'
-   176     0015  3439               	retlw	57	;'9'
-   177     0016  342E               	retlw	46	;'.'
-   178     0017  3439               	retlw	57	;'9'
-   179     0018  3400               	retlw	0
-   180     0019                     STR_4:
-   181     0019  3443               	retlw	67	;'C'
-   182     001A  3420               	retlw	32	;' '
-   183     001B  3420               	retlw	32	;' '
-   184     001C  3431               	retlw	49	;'1'
-   185     001D  3430               	retlw	48	;'0'
-   186     001E  3430               	retlw	48	;'0'
-   187     001F  3425               	retlw	37	;'%'
-   188     0020  3400               	retlw	0
-   189     0021                     STR_2:
-   190     0021  3443               	retlw	67	;'C'
-   191     0022  3420               	retlw	32	;' '
-   192     0023  3420               	retlw	32	;' '
-   193     0024  3420               	retlw	32	;' '
-   194     0025  3420               	retlw	32	;' '
-   195     0026  3439               	retlw	57	;'9'
-   196     0027  3425               	retlw	37	;'%'
-   197     0028  3400               	retlw	0
-   198                           
-   199                           	psect	cinit
-   200     07FE                     start_initialization:	
-   201                           ; #config settings
-   202                           
-   203     07FE                     __initialization:
-   204     07FE                     end_of_initialization:	
-   205                           ;End of C runtime variable initialization code
-   206                           
-   207     07FE                     __end_of__initialization:
-   208     07FE  0183               	clrf	3
-   209     07FF  2FCE               	ljmp	_main	;jump to C main() function
-   210                           
-   211                           	psect	cstackCOMMON
-   212     0070                     __pcstackCOMMON:
-   213     0070                     ?_IOInit:
-   214     0070                     ??_IOInit:	
-   215                           ; 1 bytes @ 0x0
-   216                           
-   217     0070                     ?_wait:	
-   218                           ; 1 bytes @ 0x0
-   219                           
-   220     0070                     ?_CommandLCD:	
-   221                           ; 1 bytes @ 0x0
+    48                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    49                           ; 
+    50                           ; 
+    51                           ; Code-generator required, PIC16F819 Definitions
+    52                           ; 
+    53                           ; SFR Addresses
+    54     0000                     	;# 
+    55     0001                     	;# 
+    56     0002                     	;# 
+    57     0003                     	;# 
+    58     0004                     	;# 
+    59     0005                     	;# 
+    60     0006                     	;# 
+    61     000A                     	;# 
+    62     000B                     	;# 
+    63     000C                     	;# 
+    64     000D                     	;# 
+    65     000E                     	;# 
+    66     000E                     	;# 
+    67     000F                     	;# 
+    68     0010                     	;# 
+    69     0011                     	;# 
+    70     0012                     	;# 
+    71     0013                     	;# 
+    72     0014                     	;# 
+    73     0015                     	;# 
+    74     0015                     	;# 
+    75     0016                     	;# 
+    76     0017                     	;# 
+    77     001E                     	;# 
+    78     001F                     	;# 
+    79     0081                     	;# 
+    80     0085                     	;# 
+    81     0086                     	;# 
+    82     008C                     	;# 
+    83     008D                     	;# 
+    84     008E                     	;# 
+    85     008F                     	;# 
+    86     0090                     	;# 
+    87     0092                     	;# 
+    88     0093                     	;# 
+    89     0094                     	;# 
+    90     009E                     	;# 
+    91     009F                     	;# 
+    92     010C                     	;# 
+    93     010D                     	;# 
+    94     010E                     	;# 
+    95     010F                     	;# 
+    96     018C                     	;# 
+    97     018D                     	;# 
+    98     0000                     	;# 
+    99     0001                     	;# 
+   100     0002                     	;# 
+   101     0003                     	;# 
+   102     0004                     	;# 
+   103     0005                     	;# 
+   104     0006                     	;# 
+   105     000A                     	;# 
+   106     000B                     	;# 
+   107     000C                     	;# 
+   108     000D                     	;# 
+   109     000E                     	;# 
+   110     000E                     	;# 
+   111     000F                     	;# 
+   112     0010                     	;# 
+   113     0011                     	;# 
+   114     0012                     	;# 
+   115     0013                     	;# 
+   116     0014                     	;# 
+   117     0015                     	;# 
+   118     0015                     	;# 
+   119     0016                     	;# 
+   120     0017                     	;# 
+   121     001E                     	;# 
+   122     001F                     	;# 
+   123     0081                     	;# 
+   124     0085                     	;# 
+   125     0086                     	;# 
+   126     008C                     	;# 
+   127     008D                     	;# 
+   128     008E                     	;# 
+   129     008F                     	;# 
+   130     0090                     	;# 
+   131     0092                     	;# 
+   132     0093                     	;# 
+   133     0094                     	;# 
+   134     009E                     	;# 
+   135     009F                     	;# 
+   136     010C                     	;# 
+   137     010D                     	;# 
+   138     010E                     	;# 
+   139     010F                     	;# 
+   140     018C                     	;# 
+   141     018D                     	;# 
+   142     0005                     _PORTAbits	set	5
+   143     0006                     _PORTB	set	6
+   144     0005                     _PORTA	set	5
+   145     0081                     _OPTION_REG	set	129
+   146     0085                     _TRISA	set	133
+   147     0086                     _TRISB	set	134
+   148     009F                     _ADCON1	set	159
+   149                           
+   150                           	psect	strings
+   151     0001                     __pstrings:
+   152     0001                     stringtab:
+   153     0001                     __stringtab:
+   154     0001                     stringcode:	
+   155                           ;	String table - string pointers are 1 byte each
+   156                           
+   157     0001                     stringdir:
+   158     0001  3000               	movlw	high stringdir
+   159     0002  008A               	movwf	10
+   160     0003  0804               	movf	4,w
+   161     0004  0A84               	incf	4,f
+   162     0005  0782               	addwf	2,f
+   163     0006                     __stringbase:
+   164     0006  3400               	retlw	0
+   165     0007                     __end_of__stringtab:
+   166     0007                     STR_4:
+   167     0007  3431               	retlw	49	;'1'
+   168     0008  343A               	retlw	58	;':'
+   169     0009  3420               	retlw	32	;' '
+   170     000A  342D               	retlw	45	;'-'
+   171     000B  3431               	retlw	49	;'1'
+   172     000C  3433               	retlw	51	;'3'
+   173     000D  342E               	retlw	46	;'.'
+   174     000E  3439               	retlw	57	;'9'
+   175     000F  3400               	retlw	0
+   176     0010                     STR_6:
+   177     0010  3432               	retlw	50	;'2'
+   178     0011  343A               	retlw	58	;':'
+   179     0012  3420               	retlw	32	;' '
+   180     0013  3420               	retlw	32	;' '
+   181     0014  3431               	retlw	49	;'1'
+   182     0015  3439               	retlw	57	;'9'
+   183     0016  342E               	retlw	46	;'.'
+   184     0017  3439               	retlw	57	;'9'
+   185     0018  3400               	retlw	0
+   186     0019                     STR_7:
+   187     0019  3443               	retlw	67	;'C'
+   188     001A  3420               	retlw	32	;' '
+   189     001B  3420               	retlw	32	;' '
+   190     001C  3431               	retlw	49	;'1'
+   191     001D  3430               	retlw	48	;'0'
+   192     001E  3430               	retlw	48	;'0'
+   193     001F  3425               	retlw	37	;'%'
+   194     0020  3400               	retlw	0
+   195     0021                     STR_5:
+   196     0021  3443               	retlw	67	;'C'
+   197     0022  3420               	retlw	32	;' '
+   198     0023  3420               	retlw	32	;' '
+   199     0024  3420               	retlw	32	;' '
+   200     0025  3420               	retlw	32	;' '
+   201     0026  3439               	retlw	57	;'9'
+   202     0027  3425               	retlw	37	;'%'
+   203     0028  3400               	retlw	0
+   204     0029                     STR_3:
+   205     0029  3446               	retlw	70	;'F'
+   206     002A  3465               	retlw	101	;'e'
+   207     002B  346A               	retlw	106	;'j'
+   208     002C  346C               	retlw	108	;'l'
+   209     002D  3400               	retlw	0
+   210     002E                     STR_2:
+   211     002E  3420               	retlw	32	;' '
+   212     002F  344C               	retlw	76	;'L'
+   213     0030  3461               	retlw	97	;'a'
+   214     0031  3476               	retlw	118	;'v'
+   215     0032  3400               	retlw	0
+   216     0033                     STR_1:
+   217     0033  344F               	retlw	79	;'O'
+   218     0034  346B               	retlw	107	;'k'
+   219     0035  3461               	retlw	97	;'a'
+   220     0036  3479               	retlw	121	;'y'
+   221     0037  3400               	retlw	0
    222                           
-   223     0070                     ?_writeChar:	
-   224                           ; 1 bytes @ 0x0
-   225                           
-   226     0070                     ?_main:	
-   227                           ; 1 bytes @ 0x0
-   228                           
-   229     0070                     wait@time:	
-   230                           ; 1 bytes @ 0x0
-   231                           
-   232                           
-   233                           ; 2 bytes @ 0x0
-   234     0070                     	ds	2
-   235     0072                     ??_wait:
-   236     0072                     wait@t:	
-   237                           ; 1 bytes @ 0x2
-   238                           
-   239                           
-   240                           ; 2 bytes @ 0x2
-   241     0072                     	ds	2
-   242     0074                     ??_CommandLCD:
-   243     0074                     ??_writeChar:	
-   244                           ; 1 bytes @ 0x4
-   245                           
-   246     0074                     CommandLCD@command:	
-   247                           ; 1 bytes @ 0x4
-   248                           
-   249     0074                     writeChar@character:	
-   250                           ; 1 bytes @ 0x4
-   251                           
+   223                           	psect	cinit
+   224     07FE                     start_initialization:	
+   225                           ; #config settings
+   226                           
+   227     07FE                     __initialization:
+   228     07FE                     end_of_initialization:	
+   229                           ;End of C runtime variable initialization code
+   230                           
+   231     07FE                     __end_of__initialization:
+   232     07FE  0183               	clrf	3
+   233     07FF  2CA1               	ljmp	_main	;jump to C main() function
+   234                           
+   235                           	psect	cstackCOMMON
+   236     0070                     __pcstackCOMMON:
+   237     0070                     ?_IOInit:
+   238     0070                     ??_IOInit:	
+   239                           ; 1 bytes @ 0x0
+   240                           
+   241     0070                     ?_TimerInit:	
+   242                           ; 1 bytes @ 0x0
+   243                           
+   244     0070                     ??_TimerInit:	
+   245                           ; 1 bytes @ 0x0
+   246                           
+   247     0070                     ?_wait:	
+   248                           ; 1 bytes @ 0x0
+   249                           
+   250     0070                     ?_CommandLCD:	
+   251                           ; 1 bytes @ 0x0
    252                           
-   253                           ; 1 bytes @ 0x4
-   254     0074                     	ds	1
-   255     0075                     ?_writeString:
-   256     0075                     writeString@length:	
-   257                           ; 1 bytes @ 0x5
+   253     0070                     ?_writeChar:	
+   254                           ; 1 bytes @ 0x0
+   255                           
+   256     0070                     ?_readMessage:	
+   257                           ; 1 bytes @ 0x0
    258                           
-   259                           
-   260                           ; 1 bytes @ 0x5
-   261     0075                     	ds	1
-   262     0076                     ??_writeString:
-   263     0076                     writeString@string:	
-   264                           ; 1 bytes @ 0x6
-   265                           
-   266                           
-   267                           ; 1 bytes @ 0x6
-   268     0076                     	ds	1
-   269     0077                     writeString@i:
-   270                           
-   271                           ; 1 bytes @ 0x7
-   272     0077                     	ds	1
-   273     0078                     ??_main:
+   259     0070                     ?_checkSignal:	
+   260                           ; 1 bytes @ 0x0
+   261                           
+   262     0070                     ?_main:	
+   263                           ; 1 bytes @ 0x0
+   264                           
+   265     0070                     wait@time:	
+   266                           ; 1 bytes @ 0x0
+   267                           
+   268                           
+   269                           ; 2 bytes @ 0x0
+   270     0070                     	ds	2
+   271     0072                     ??_wait:
+   272     0072                     wait@t:	
+   273                           ; 1 bytes @ 0x2
    274                           
-   275                           	psect	maintext
-   276     07CE                     __pmaintext:	
-   277                           ; 1 bytes @ 0x8
-   278 ;;
-   279 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
-   280 ;;
-   281 ;; *************** function _main *****************
-   282 ;; Defined at:
-   283 ;;		line 82 in file "JordTermometerStyreBox.c"
-   284 ;; Parameters:    Size  Location     Type
-   285 ;;		None
-   286 ;; Auto vars:     Size  Location     Type
-   287 ;;		None
-   288 ;; Return value:  Size  Location     Type
-   289 ;;                  1    wreg      void 
-   290 ;; Registers used:
-   291 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
-   292 ;; Tracked objects:
-   293 ;;		On entry : B00/0
-   294 ;;		On exit  : 0/0
-   295 ;;		Unchanged: 0/0
-   296 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
-   297 ;;      Params:         0       0       0       0
-   298 ;;      Locals:         0       0       0       0
-   299 ;;      Temps:          0       0       0       0
-   300 ;;      Totals:         0       0       0       0
-   301 ;;Total ram usage:        0 bytes
-   302 ;; Hardware stack levels required when called: 3
-   303 ;; This function calls:
-   304 ;;		_CommandLCD
-   305 ;;		_IOInit
-   306 ;;		_wait
-   307 ;;		_writeChar
-   308 ;;		_writeString
-   309 ;; This function is called by:
-   310 ;;		Startup code after reset
-   311 ;; This function uses a non-reentrant model
-   312 ;;
-   313                           
-   314     07CE                     _main:	
-   315                           ;psect for function _main
-   316                           
-   317     07CE                     l704:	
-   318                           ;incstack = 0
-   319                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
-   320                           
-   321                           
-   322                           ;JordTermometerStyreBox.c: 83:     IOInit();
-   323     07CE  2760               	fcall	_IOInit
-   324     07CF                     l706:
-   325                           
-   326                           ;JordTermometerStyreBox.c: 85:     wait(100);
-   327     07CF  3064               	movlw	100
-   328     07D0  00F0               	movwf	wait@time
-   329     07D1  3000               	movlw	0
-   330     07D2  00F1               	movwf	wait@time+1
-   331     07D3  2769               	fcall	_wait
-   332     07D4                     l708:
+   275                           
+   276                           ; 2 bytes @ 0x2
+   277     0072                     	ds	2
+   278     0074                     ??_CommandLCD:
+   279     0074                     ??_writeChar:	
+   280                           ; 1 bytes @ 0x4
+   281                           
+   282     0074                     ??_checkSignal:	
+   283                           ; 1 bytes @ 0x4
+   284                           
+   285     0074                     CommandLCD@command:	
+   286                           ; 1 bytes @ 0x4
+   287                           
+   288     0074                     writeChar@character:	
+   289                           ; 1 bytes @ 0x4
+   290                           
+   291     0074                     checkSignal@i:	
+   292                           ; 1 bytes @ 0x4
+   293                           
+   294                           
+   295                           ; 2 bytes @ 0x4
+   296     0074                     	ds	1
+   297     0075                     ?_writeString:
+   298     0075                     writeString@length:	
+   299                           ; 1 bytes @ 0x5
+   300                           
+   301                           
+   302                           ; 1 bytes @ 0x5
+   303     0075                     	ds	1
+   304     0076                     ??_writeString:
+   305     0076                     writeString@i:	
+   306                           ; 1 bytes @ 0x6
+   307                           
+   308     0076                     checkSignal@i_84:	
+   309                           ; 1 bytes @ 0x6
+   310                           
+   311                           
+   312                           ; 2 bytes @ 0x6
+   313     0076                     	ds	1
+   314     0077                     writeString@string:
+   315                           
+   316                           ; 1 bytes @ 0x7
+   317     0077                     	ds	1
+   318     0078                     checkSignal@i_85:
+   319                           
+   320                           ; 2 bytes @ 0x8
+   321     0078                     	ds	2
+   322     007A                     ??_main:
+   323                           
+   324                           	psect	cstackBANK0
+   325     0020                     __pcstackBANK0:	
+   326                           ; 1 bytes @ 0xA
+   327                           
+   328     0020                     ??_readMessage:
+   329                           
+   330                           ; 1 bytes @ 0x0
+   331     0020                     	ds	7
+   332     0027                     readMessage@Expected_check_bit:
    333                           
-   334                           ;JordTermometerStyreBox.c: 87:     CommandLCD(0b00111000);
-   335     07D4  3038               	movlw	56
-   336     07D5  27A8               	fcall	_CommandLCD
-   337     07D6                     l710:
-   338                           
-   339                           ;JordTermometerStyreBox.c: 88:     CommandLCD(0b00001110);
-   340     07D6  300E               	movlw	14
-   341     07D7  27A8               	fcall	_CommandLCD
-   342     07D8                     l712:
-   343                           
-   344                           ;JordTermometerStyreBox.c: 89:     CommandLCD(0b00000001);
-   345     07D8  3001               	movlw	1
-   346     07D9  27A8               	fcall	_CommandLCD
-   347     07DA                     l714:
+   334                           ; 1 bytes @ 0x7
+   335     0027                     	ds	1
+   336     0028                     readMessage@Batt_status:
+   337                           
+   338                           ; 2 bytes @ 0x8
+   339     0028                     	ds	2
+   340     002A                     readMessage@Termometer_id:
+   341                           
+   342                           ; 2 bytes @ 0xA
+   343     002A                     	ds	2
+   344     002C                     readMessage@temp_data:
+   345                           
+   346                           ; 2 bytes @ 0xC
+   347     002C                     	ds	2
    348                           
-   349                           ;JordTermometerStyreBox.c: 90:     CommandLCD(0b00000110);
-   350     07DA  3006               	movlw	6
-   351     07DB  27A8               	fcall	_CommandLCD
-   352     07DC                     l716:
-   353                           
-   354                           ;JordTermometerStyreBox.c: 92:     wait(200);
-   355     07DC  30C8               	movlw	200
-   356     07DD  00F0               	movwf	wait@time
-   357     07DE  3000               	movlw	0
-   358     07DF  00F1               	movwf	wait@time+1
-   359     07E0  2769               	fcall	_wait
-   360     07E1                     l718:
-   361                           
-   362                           ;JordTermometerStyreBox.c: 94:     writeString("1: -13.9", 8);
-   363     07E1  3008               	movlw	8
-   364     07E2  00F5               	movwf	writeString@length
-   365     07E3  3001               	movlw	(low ((STR_1-__stringbase)| (0+32768)))& (0+255)
-   366     07E4  277B               	fcall	_writeString
-   367     07E5                     l720:
-   368                           
-   369                           ;JordTermometerStyreBox.c: 95:     writeChar(0b11011111);
-   370     07E5  30DF               	movlw	223
-   371     07E6  278E               	fcall	_writeChar
-   372     07E7                     l722:
-   373                           
-   374                           ;JordTermometerStyreBox.c: 96:     writeString("C    9%", 7);
-   375     07E7  3007               	movlw	7
-   376     07E8  00F5               	movwf	writeString@length
-   377     07E9  301B               	movlw	(low ((STR_2-__stringbase)| (0+32768)))& (0+255)
-   378     07EA  277B               	fcall	_writeString
-   379     07EB                     l724:
-   380                           
-   381                           ;JordTermometerStyreBox.c: 99:     wait(200);
-   382     07EB  30C8               	movlw	200
-   383     07EC  00F0               	movwf	wait@time
-   384     07ED  3000               	movlw	0
-   385     07EE  00F1               	movwf	wait@time+1
-   386     07EF  2769               	fcall	_wait
-   387     07F0                     l726:
-   388                           
-   389                           ;JordTermometerStyreBox.c: 101:     CommandLCD(0b11000000);
-   390     07F0  30C0               	movlw	192
-   391     07F1  27A8               	fcall	_CommandLCD
-   392     07F2                     l728:
-   393                           
-   394                           ;JordTermometerStyreBox.c: 103:     writeString("2:  19.9", 8);
-   395     07F2  3008               	movlw	8
-   396     07F3  00F5               	movwf	writeString@length
-   397     07F4  300A               	movlw	(low ((STR_3-__stringbase)| (0+32768)))& (0+255)
-   398     07F5  277B               	fcall	_writeString
-   399     07F6                     l730:
+   349                           	psect	maintext
+   350     04A1                     __pmaintext:	
+   351 ;;
+   352 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   353 ;;
+   354 ;; *************** function _main *****************
+   355 ;; Defined at:
+   356 ;;		line 217 in file "JordTermometerStyreBox.c"
+   357 ;; Parameters:    Size  Location     Type
+   358 ;;		None
+   359 ;; Auto vars:     Size  Location     Type
+   360 ;;		None
+   361 ;; Return value:  Size  Location     Type
+   362 ;;                  1    wreg      void 
+   363 ;; Registers used:
+   364 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
+   365 ;; Tracked objects:
+   366 ;;		On entry : B00/0
+   367 ;;		On exit  : 0/0
+   368 ;;		Unchanged: 0/0
+   369 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   370 ;;      Params:         0       0       0       0
+   371 ;;      Locals:         0       0       0       0
+   372 ;;      Temps:          0       0       0       0
+   373 ;;      Totals:         0       0       0       0
+   374 ;;Total ram usage:        0 bytes
+   375 ;; Hardware stack levels required when called: 4
+   376 ;; This function calls:
+   377 ;;		_CommandLCD
+   378 ;;		_IOInit
+   379 ;;		_TimerInit
+   380 ;;		_checkSignal
+   381 ;;		_readMessage
+   382 ;;		_wait
+   383 ;;		_writeChar
+   384 ;;		_writeString
+   385 ;; This function is called by:
+   386 ;;		Startup code after reset
+   387 ;; This function uses a non-reentrant model
+   388 ;;
+   389                           
+   390     04A1                     _main:	
+   391                           ;psect for function _main
+   392                           
+   393     04A1                     l1131:	
+   394                           ;incstack = 0
+   395                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
+   396                           
+   397                           
+   398                           ;JordTermometerStyreBox.c: 218:     IOInit();
+   399     04A1  242E               	fcall	_IOInit
    400                           
-   401                           ;JordTermometerStyreBox.c: 104:     writeChar(0b11011111);
-   402     07F6  30DF               	movlw	223
-   403     07F7  278E               	fcall	_writeChar
-   404     07F8                     l732:
-   405                           
-   406                           ;JordTermometerStyreBox.c: 105:     writeString("C  100%", 7);
-   407     07F8  3007               	movlw	7
-   408     07F9  00F5               	movwf	writeString@length
-   409     07FA  3013               	movlw	(low ((STR_4-__stringbase)| (0+32768)))& (0+255)
-   410     07FB  277B               	fcall	_writeString
-   411     07FC                     l37:	
-   412                           ;JordTermometerStyreBox.c: 108:     while (1) {
-   413                           
-   414     07FC                     l38:	
-   415                           ;JordTermometerStyreBox.c: 110:     }
-   416                           
-   417     07FC  2FFC               	goto	l37
-   418     07FD  2800               	ljmp	start
-   419     07FE                     __end_of_main:
-   420                           
-   421                           	psect	text1
-   422     077B                     __ptext1:	
-   423 ;; *************** function _writeString *****************
-   424 ;; Defined at:
-   425 ;;		line 76 in file "JordTermometerStyreBox.c"
-   426 ;; Parameters:    Size  Location     Type
-   427 ;;  string          1    wreg     PTR unsigned char 
-   428 ;;		 -> STR_4(8), STR_3(9), STR_2(8), STR_1(9), 
-   429 ;;  length          1    5[COMMON] unsigned char 
-   430 ;; Auto vars:     Size  Location     Type
-   431 ;;  string          1    6[COMMON] PTR unsigned char 
-   432 ;;		 -> STR_4(8), STR_3(9), STR_2(8), STR_1(9), 
-   433 ;;  i               1    7[COMMON] unsigned char 
-   434 ;; Return value:  Size  Location     Type
-   435 ;;                  1    wreg      void 
-   436 ;; Registers used:
-   437 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
-   438 ;; Tracked objects:
-   439 ;;		On entry : 0/0
-   440 ;;		On exit  : 0/0
-   441 ;;		Unchanged: 0/0
-   442 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
-   443 ;;      Params:         1       0       0       0
-   444 ;;      Locals:         2       0       0       0
-   445 ;;      Temps:          0       0       0       0
-   446 ;;      Totals:         3       0       0       0
-   447 ;;Total ram usage:        3 bytes
-   448 ;; Hardware stack levels used: 1
-   449 ;; Hardware stack levels required when called: 2
-   450 ;; This function calls:
-   451 ;;		_writeChar
-   452 ;; This function is called by:
-   453 ;;		_main
-   454 ;; This function uses a non-reentrant model
-   455 ;;
-   456                           
-   457     077B                     _writeString:	
-   458                           ;psect for function _writeString
-   459                           
+   401                           ;JordTermometerStyreBox.c: 219:     TimerInit();
+   402     04A2  2429               	fcall	_TimerInit
+   403                           
+   404                           ;JordTermometerStyreBox.c: 221:     wait(100);
+   405     04A3  3064               	movlw	100
+   406     04A4  00F0               	movwf	wait@time
+   407     04A5  3000               	movlw	0
+   408     04A6  00F1               	movwf	wait@time+1
+   409     04A7  243C               	fcall	_wait
+   410                           
+   411                           ;JordTermometerStyreBox.c: 223:     CommandLCD(0b00111000);
+   412     04A8  3038               	movlw	56
+   413     04A9  247B               	fcall	_CommandLCD
+   414                           
+   415                           ;JordTermometerStyreBox.c: 224:     CommandLCD(0b00001110);
+   416     04AA  300E               	movlw	14
+   417     04AB  247B               	fcall	_CommandLCD
+   418                           
+   419                           ;JordTermometerStyreBox.c: 225:     CommandLCD(0b00000001);
+   420     04AC  3001               	movlw	1
+   421     04AD  247B               	fcall	_CommandLCD
+   422                           
+   423                           ;JordTermometerStyreBox.c: 226:     CommandLCD(0b00000110);
+   424     04AE  3006               	movlw	6
+   425     04AF  247B               	fcall	_CommandLCD
+   426                           
+   427                           ;JordTermometerStyreBox.c: 228:     wait(200);
+   428     04B0  30C8               	movlw	200
+   429     04B1  00F0               	movwf	wait@time
+   430     04B2  3000               	movlw	0
+   431     04B3  00F1               	movwf	wait@time+1
+   432     04B4  243C               	fcall	_wait
+   433     04B5                     l1133:
+   434                           
+   435                           ;JordTermometerStyreBox.c: 230:     writeString("1: -13.9", 8);
+   436     04B5  3008               	movlw	8
+   437     04B6  00F5               	movwf	writeString@length
+   438     04B7  3001               	movlw	(low ((STR_4-__stringbase)| (0+32768)))& (0+255)
+   439     04B8  244E               	fcall	_writeString
+   440     04B9                     l1135:
+   441                           
+   442                           ;JordTermometerStyreBox.c: 231:     writeChar(0b11011111);
+   443     04B9  30DF               	movlw	223
+   444     04BA  2461               	fcall	_writeChar
+   445                           
+   446                           ;JordTermometerStyreBox.c: 232:     writeString("C    9%", 7);
+   447     04BB  3007               	movlw	7
+   448     04BC  00F5               	movwf	writeString@length
+   449     04BD  301B               	movlw	(low ((STR_5-__stringbase)| (0+32768)))& (0+255)
+   450     04BE  244E               	fcall	_writeString
+   451     04BF                     l1137:
+   452                           
+   453                           ;JordTermometerStyreBox.c: 234:     wait(200);
+   454     04BF  30C8               	movlw	200
+   455     04C0  00F0               	movwf	wait@time
+   456     04C1  3000               	movlw	0
+   457     04C2  00F1               	movwf	wait@time+1
+   458     04C3  243C               	fcall	_wait
+   459     04C4                     l1139:
    460                           
-   461                           ;incstack = 0
-   462                           ; Regs used in _writeString: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
-   463                           ;writeString@string stored from wreg
-   464     077B  00F6               	movwf	writeString@string
-   465     077C                     l696:
-   466                           
-   467                           ;JordTermometerStyreBox.c: 77:     for (unsigned char i = 0; i < length; i++) {
-   468     077C  01F7               	clrf	writeString@i
-   469     077D  2F87               	goto	l702
-   470     077E                     l698:
+   461                           ;JordTermometerStyreBox.c: 236:     CommandLCD(0b11000000);
+   462     04C4  30C0               	movlw	192
+   463     04C5  247B               	fcall	_CommandLCD
+   464                           
+   465                           ;JordTermometerStyreBox.c: 238:     writeString("2:  19.9", 8);
+   466     04C6  3008               	movlw	8
+   467     04C7  00F5               	movwf	writeString@length
+   468     04C8  300A               	movlw	(low ((STR_6-__stringbase)| (0+32768)))& (0+255)
+   469     04C9  244E               	fcall	_writeString
+   470     04CA                     l1141:
    471                           
-   472                           ;JordTermometerStyreBox.c: 78:         writeChar(string[i]);
-   473     077E  0877               	movf	writeString@i,w
-   474     077F  0776               	addwf	writeString@string,w
-   475     0780  0084               	movwf	4
-   476     0781  2001               	fcall	stringdir
-   477     0782  278E               	fcall	_writeChar
-   478     0783                     l700:
-   479                           
-   480                           ;JordTermometerStyreBox.c: 79:     }
-   481     0783  3001               	movlw	1
-   482     0784  00FF               	movwf	btemp+1
-   483     0785  087F               	movf	btemp+1,w
-   484     0786  07F7               	addwf	writeString@i,f
-   485     0787                     l702:
-   486     0787  0875               	movf	writeString@length,w
-   487     0788  0277               	subwf	writeString@i,w
-   488     0789  1C03               	skipc
-   489     078A  2F8C               	goto	u61
-   490     078B  2F8D               	goto	u60
-   491     078C                     u61:
-   492     078C  2F7E               	goto	l698
-   493     078D                     u60:
-   494     078D                     l32:
-   495     078D  0008               	return
-   496     078E                     __end_of_writeString:
-   497                           
-   498                           	psect	text2
-   499     078E                     __ptext2:	
-   500 ;; *************** function _writeChar *****************
-   501 ;; Defined at:
-   502 ;;		line 62 in file "JordTermometerStyreBox.c"
-   503 ;; Parameters:    Size  Location     Type
-   504 ;;  character       1    wreg     unsigned char 
-   505 ;; Auto vars:     Size  Location     Type
-   506 ;;  character       1    4[COMMON] unsigned char 
-   507 ;; Return value:  Size  Location     Type
-   508 ;;                  1    wreg      void 
-   509 ;; Registers used:
-   510 ;;		wreg, status,2, status,0, pclath, cstack
-   511 ;; Tracked objects:
-   512 ;;		On entry : 0/0
-   513 ;;		On exit  : 0/0
-   514 ;;		Unchanged: 0/0
-   515 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
-   516 ;;      Params:         0       0       0       0
-   517 ;;      Locals:         1       0       0       0
-   518 ;;      Temps:          0       0       0       0
-   519 ;;      Totals:         1       0       0       0
-   520 ;;Total ram usage:        1 bytes
-   521 ;; Hardware stack levels used: 1
-   522 ;; Hardware stack levels required when called: 1
-   523 ;; This function calls:
-   524 ;;		_wait
-   525 ;; This function is called by:
-   526 ;;		_writeString
-   527 ;;		_main
-   528 ;; This function uses a non-reentrant model
-   529 ;;
-   530                           
-   531     078E                     _writeChar:	
-   532                           ;psect for function _writeChar
-   533                           
-   534                           
-   535                           ;incstack = 0
-   536                           ; Regs used in _writeChar: [wreg+status,2+status,0+pclath+cstack]
-   537                           ;writeChar@character stored from wreg
-   538     078E  00F4               	movwf	writeChar@character
-   539     078F                     l666:
-   540                           
-   541                           ;JordTermometerStyreBox.c: 63:     PORTA = 0b00000001;
-   542     078F  3001               	movlw	1
-   543     0790  1283               	bcf	3,5	;RP0=0, select bank0
-   544     0791  1303               	bcf	3,6	;RP1=0, select bank0
-   545     0792  0085               	movwf	5	;volatile
-   546                           
-   547                           ;JordTermometerStyreBox.c: 64:     PORTB = character;
-   548     0793  0874               	movf	writeChar@character,w
-   549     0794  0086               	movwf	6	;volatile
-   550     0795                     l668:
-   551                           
-   552                           ;JordTermometerStyreBox.c: 66:     wait(50);
-   553     0795  3032               	movlw	50
-   554     0796  00F0               	movwf	wait@time
-   555     0797  3000               	movlw	0
-   556     0798  00F1               	movwf	wait@time+1
-   557     0799  2769               	fcall	_wait
-   558     079A                     l670:
+   472                           ;JordTermometerStyreBox.c: 239:     writeChar(0b11011111);
+   473     04CA  30DF               	movlw	223
+   474     04CB  2461               	fcall	_writeChar
+   475     04CC                     l1143:
+   476                           
+   477                           ;JordTermometerStyreBox.c: 240:     writeString("C  100%", 7);
+   478     04CC  3007               	movlw	7
+   479     04CD  00F5               	movwf	writeString@length
+   480     04CE  3013               	movlw	(low ((STR_7-__stringbase)| (0+32768)))& (0+255)
+   481     04CF  244E               	fcall	_writeString
+   482                           
+   483                           ;JordTermometerStyreBox.c: 242:     wait(200);
+   484     04D0  30C8               	movlw	200
+   485     04D1  00F0               	movwf	wait@time
+   486     04D2  3000               	movlw	0
+   487     04D3  00F1               	movwf	wait@time+1
+   488     04D4  243C               	fcall	_wait
+   489     04D5                     l1145:
+   490                           
+   491                           ;JordTermometerStyreBox.c: 245:         if (PORTAbits.RA3) {
+   492     04D5  1283               	bcf	3,5	;RP0=0, select bank0
+   493     04D6  1303               	bcf	3,6	;RP1=0, select bank0
+   494     04D7  1D85               	btfss	5,3	;volatile
+   495     04D8  2CDA               	goto	u311
+   496     04D9  2CDB               	goto	u310
+   497     04DA                     u311:
+   498     04DA  2CD5               	goto	l1145
+   499     04DB                     u310:
+   500     04DB                     l1147:
+   501                           
+   502                           ;JordTermometerStyreBox.c: 246:             if (checkSignal()) {
+   503     04DB  24E4               	fcall	_checkSignal
+   504     04DC  3A00               	xorlw	0
+   505     04DD  1903               	skipnz
+   506     04DE  2CE0               	goto	u321
+   507     04DF  2CE1               	goto	u320
+   508     04E0                     u321:
+   509     04E0  2CD5               	goto	l1145
+   510     04E1                     u320:
+   511     04E1                     l1149:
+   512                           
+   513                           ;JordTermometerStyreBox.c: 247:                 readMessage();
+   514     04E1  2552               	fcall	_readMessage
+   515     04E2  2CD5               	goto	l1145
+   516     04E3  2800               	ljmp	start
+   517     04E4                     __end_of_main:
+   518                           
+   519                           	psect	text1
+   520     0552                     __ptext1:	
+   521 ;; *************** function _readMessage *****************
+   522 ;; Defined at:
+   523 ;;		line 91 in file "JordTermometerStyreBox.c"
+   524 ;; Parameters:    Size  Location     Type
+   525 ;;		None
+   526 ;; Auto vars:     Size  Location     Type
+   527 ;;  temp_data       2   12[BANK0 ] short 
+   528 ;;  Termometer_i    2   10[BANK0 ] short 
+   529 ;;  Batt_status     2    8[BANK0 ] short 
+   530 ;;  Expected_che    1    7[BANK0 ] unsigned char 
+   531 ;; Return value:  Size  Location     Type
+   532 ;;                  1    wreg      void 
+   533 ;; Registers used:
+   534 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
+   535 ;; Tracked objects:
+   536 ;;		On entry : 0/0
+   537 ;;		On exit  : 0/0
+   538 ;;		Unchanged: 0/0
+   539 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   540 ;;      Params:         0       0       0       0
+   541 ;;      Locals:         0       7       0       0
+   542 ;;      Temps:          0       7       0       0
+   543 ;;      Totals:         0      14       0       0
+   544 ;;Total ram usage:       14 bytes
+   545 ;; Hardware stack levels used: 1
+   546 ;; Hardware stack levels required when called: 3
+   547 ;; This function calls:
+   548 ;;		_CommandLCD
+   549 ;;		_wait
+   550 ;;		_writeChar
+   551 ;;		_writeString
+   552 ;; This function is called by:
+   553 ;;		_main
+   554 ;; This function uses a non-reentrant model
+   555 ;;
+   556                           
+   557     0552                     _readMessage:	
+   558                           ;psect for function _readMessage
    559                           
-   560                           ;JordTermometerStyreBox.c: 68:     PORTA = 0b00000101;
-   561     079A  3005               	movlw	5
-   562     079B  1283               	bcf	3,5	;RP0=0, select bank0
-   563     079C  1303               	bcf	3,6	;RP1=0, select bank0
-   564     079D  0085               	movwf	5	;volatile
-   565                           
-   566                           ;JordTermometerStyreBox.c: 70:     wait(50);
-   567     079E  3032               	movlw	50
-   568     079F  00F0               	movwf	wait@time
-   569     07A0  3000               	movlw	0
-   570     07A1  00F1               	movwf	wait@time+1
-   571     07A2  2769               	fcall	_wait
-   572     07A3                     l672:
-   573                           
-   574                           ;JordTermometerStyreBox.c: 72:     PORTA = 0b00000001;
-   575     07A3  3001               	movlw	1
-   576     07A4  1283               	bcf	3,5	;RP0=0, select bank0
-   577     07A5  1303               	bcf	3,6	;RP1=0, select bank0
-   578     07A6  0085               	movwf	5	;volatile
-   579     07A7                     l26:
-   580     07A7  0008               	return
-   581     07A8                     __end_of_writeChar:
+   560     0552                     l937:	
+   561                           ;incstack = 0
+   562                           ; Regs used in _readMessage: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
+   563                           
+   564                           
+   565                           ;JordTermometerStyreBox.c: 93:     short int Termometer_id = 0;
+   566     0552  1283               	bcf	3,5	;RP0=0, select bank0
+   567     0553  1303               	bcf	3,6	;RP1=0, select bank0
+   568     0554  01AA               	clrf	readMessage@Termometer_id
+   569     0555  01AB               	clrf	readMessage@Termometer_id+1
+   570                           
+   571                           ;JordTermometerStyreBox.c: 94:     short int temp_data = 0;
+   572     0556  01AC               	clrf	readMessage@temp_data
+   573     0557  01AD               	clrf	readMessage@temp_data+1
+   574                           
+   575                           ;JordTermometerStyreBox.c: 95:     short int Batt_status = 0;
+   576     0558  01A8               	clrf	readMessage@Batt_status
+   577     0559  01A9               	clrf	readMessage@Batt_status+1
+   578                           
+   579                           ;JordTermometerStyreBox.c: 96:     char Expected_check_bit = 0;
+   580     055A  01A7               	clrf	readMessage@Expected_check_bit
+   581     055B                     l939:
    582                           
-   583                           	psect	text3
-   584     0760                     __ptext3:	
-   585 ;; *************** function _IOInit *****************
-   586 ;; Defined at:
-   587 ;;		line 26 in file "JordTermometerStyreBox.c"
-   588 ;; Parameters:    Size  Location     Type
-   589 ;;		None
-   590 ;; Auto vars:     Size  Location     Type
-   591 ;;		None
-   592 ;; Return value:  Size  Location     Type
-   593 ;;                  1    wreg      void 
-   594 ;; Registers used:
-   595 ;;		status,2
-   596 ;; Tracked objects:
-   597 ;;		On entry : 0/0
-   598 ;;		On exit  : 0/0
-   599 ;;		Unchanged: 0/0
-   600 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
-   601 ;;      Params:         0       0       0       0
-   602 ;;      Locals:         0       0       0       0
-   603 ;;      Temps:          0       0       0       0
-   604 ;;      Totals:         0       0       0       0
-   605 ;;Total ram usage:        0 bytes
-   606 ;; Hardware stack levels used: 1
-   607 ;; This function calls:
-   608 ;;		Nothing
-   609 ;; This function is called by:
-   610 ;;		_main
-   611 ;; This function uses a non-reentrant model
-   612 ;;
-   613                           
-   614     0760                     _IOInit:	
-   615                           ;psect for function _IOInit
-   616                           
-   617     0760                     l600:	
-   618                           ;incstack = 0
-   619                           ; Regs used in _IOInit: [status,2]
-   620                           
-   621                           
-   622                           ;JordTermometerStyreBox.c: 27:     PORTA = 0;
-   623     0760  1283               	bcf	3,5	;RP0=0, select bank0
-   624     0761  1303               	bcf	3,6	;RP1=0, select bank0
-   625     0762  0185               	clrf	5	;volatile
-   626                           
-   627                           ;JordTermometerStyreBox.c: 28:     PORTB = 0;
-   628     0763  0186               	clrf	6	;volatile
-   629                           
-   630                           ;JordTermometerStyreBox.c: 29:     TRISB = 0;
-   631     0764  1683               	bsf	3,5	;RP0=1, select bank1
-   632     0765  1303               	bcf	3,6	;RP1=0, select bank1
-   633     0766  0186               	clrf	6	;volatile
+   583                           ;JordTermometerStyreBox.c: 98:     wait(5);
+   584     055B  3005               	movlw	5
+   585     055C  00F0               	movwf	wait@time
+   586     055D  3000               	movlw	0
+   587     055E  00F1               	movwf	wait@time+1
+   588     055F  243C               	fcall	_wait
+   589     0560                     l941:
+   590                           
+   591                           ;JordTermometerStyreBox.c: 99:     Expected_check_bit ^= PORTAbits.RA3;
+   592     0560  1283               	bcf	3,5	;RP0=0, select bank0
+   593     0561  1303               	bcf	3,6	;RP1=0, select bank0
+   594     0562  0C05               	rrf	5,w	;volatile
+   595     0563  00A0               	movwf	??_readMessage
+   596     0564  0CA0               	rrf	??_readMessage,f
+   597     0565  0C20               	rrf	??_readMessage,w
+   598     0566  3901               	andlw	1
+   599     0567  00FF               	movwf	btemp+1
+   600     0568  087F               	movf	btemp+1,w
+   601     0569  06A7               	xorwf	readMessage@Expected_check_bit,f
+   602     056A                     l943:
+   603                           
+   604                           ;JordTermometerStyreBox.c: 100:     Termometer_id = (Termometer_id << 1) | PORTAbits.RA3
+      +                          ;
+   605     056A  0C05               	rrf	5,w	;volatile
+   606     056B  00A0               	movwf	??_readMessage
+   607     056C  0CA0               	rrf	??_readMessage,f
+   608     056D  0C20               	rrf	??_readMessage,w
+   609     056E  3901               	andlw	1
+   610     056F  00A1               	movwf	??_readMessage+1
+   611     0570  01A2               	clrf	??_readMessage+2
+   612     0571  082B               	movf	readMessage@Termometer_id+1,w
+   613     0572  00A4               	movwf	??_readMessage+4
+   614     0573  082A               	movf	readMessage@Termometer_id,w
+   615     0574  00A3               	movwf	??_readMessage+3
+   616     0575  1003               	clrc
+   617     0576  0DA3               	rlf	??_readMessage+3,f
+   618     0577  0DA4               	rlf	??_readMessage+4,f
+   619     0578  0821               	movf	??_readMessage+1,w
+   620     0579  0423               	iorwf	??_readMessage+3,w
+   621     057A  00A5               	movwf	??_readMessage+5
+   622     057B  0822               	movf	??_readMessage+2,w
+   623     057C  0424               	iorwf	??_readMessage+4,w
+   624     057D  00A6               	movwf	??_readMessage+6
+   625     057E  0825               	movf	??_readMessage+5,w
+   626     057F  00AA               	movwf	readMessage@Termometer_id
+   627     0580  0826               	movf	??_readMessage+6,w
+   628     0581  00AB               	movwf	readMessage@Termometer_id+1
+   629     0582                     l945:
+   630                           
+   631                           ;JordTermometerStyreBox.c: 101:     PORTAbits.RA4 = 1;
+   632     0582  1605               	bsf	5,4	;volatile
+   633     0583                     l947:
    634                           
-   635                           ;JordTermometerStyreBox.c: 30:     TRISA = 0;
-   636     0767  0185               	clrf	5	;volatile
-   637     0768                     l13:
-   638     0768  0008               	return
-   639     0769                     __end_of_IOInit:
-   640                           
-   641                           	psect	text4
-   642     07A8                     __ptext4:	
-   643 ;; *************** function _CommandLCD *****************
-   644 ;; Defined at:
-   645 ;;		line 41 in file "JordTermometerStyreBox.c"
-   646 ;; Parameters:    Size  Location     Type
-   647 ;;  command         1    wreg     unsigned char 
-   648 ;; Auto vars:     Size  Location     Type
-   649 ;;  command         1    4[COMMON] unsigned char 
-   650 ;; Return value:  Size  Location     Type
-   651 ;;                  1    wreg      void 
-   652 ;; Registers used:
-   653 ;;		wreg, status,2, status,0, pclath, cstack
-   654 ;; Tracked objects:
-   655 ;;		On entry : 0/0
-   656 ;;		On exit  : 0/0
-   657 ;;		Unchanged: 0/0
-   658 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
-   659 ;;      Params:         0       0       0       0
-   660 ;;      Locals:         1       0       0       0
-   661 ;;      Temps:          0       0       0       0
-   662 ;;      Totals:         1       0       0       0
-   663 ;;Total ram usage:        1 bytes
-   664 ;; Hardware stack levels used: 1
-   665 ;; Hardware stack levels required when called: 1
-   666 ;; This function calls:
-   667 ;;		_wait
-   668 ;; This function is called by:
-   669 ;;		_main
-   670 ;; This function uses a non-reentrant model
-   671 ;;
-   672                           
-   673     07A8                     _CommandLCD:	
-   674                           ;psect for function _CommandLCD
-   675                           
-   676                           
-   677                           ;incstack = 0
-   678                           ; Regs used in _CommandLCD: [wreg+status,2+status,0+pclath+cstack]
-   679                           ;CommandLCD@command stored from wreg
-   680     07A8  00F4               	movwf	CommandLCD@command
-   681     07A9                     l676:
+   635                           ;JordTermometerStyreBox.c: 103:     wait(10);
+   636     0583  300A               	movlw	10
+   637     0584  00F0               	movwf	wait@time
+   638     0585  3000               	movlw	0
+   639     0586  00F1               	movwf	wait@time+1
+   640     0587  243C               	fcall	_wait
+   641     0588                     l949:
+   642                           
+   643                           ;JordTermometerStyreBox.c: 104:     Expected_check_bit ^= PORTAbits.RA3;
+   644     0588  1283               	bcf	3,5	;RP0=0, select bank0
+   645     0589  1303               	bcf	3,6	;RP1=0, select bank0
+   646     058A  0C05               	rrf	5,w	;volatile
+   647     058B  00A0               	movwf	??_readMessage
+   648     058C  0CA0               	rrf	??_readMessage,f
+   649     058D  0C20               	rrf	??_readMessage,w
+   650     058E  3901               	andlw	1
+   651     058F  00FF               	movwf	btemp+1
+   652     0590  087F               	movf	btemp+1,w
+   653     0591  06A7               	xorwf	readMessage@Expected_check_bit,f
+   654     0592                     l951:
+   655                           
+   656                           ;JordTermometerStyreBox.c: 105:     Termometer_id = (Termometer_id << 1) | PORTAbits.RA3
+      +                          ;
+   657     0592  0C05               	rrf	5,w	;volatile
+   658     0593  00A0               	movwf	??_readMessage
+   659     0594  0CA0               	rrf	??_readMessage,f
+   660     0595  0C20               	rrf	??_readMessage,w
+   661     0596  3901               	andlw	1
+   662     0597  00A1               	movwf	??_readMessage+1
+   663     0598  01A2               	clrf	??_readMessage+2
+   664     0599  082B               	movf	readMessage@Termometer_id+1,w
+   665     059A  00A4               	movwf	??_readMessage+4
+   666     059B  082A               	movf	readMessage@Termometer_id,w
+   667     059C  00A3               	movwf	??_readMessage+3
+   668     059D  1003               	clrc
+   669     059E  0DA3               	rlf	??_readMessage+3,f
+   670     059F  0DA4               	rlf	??_readMessage+4,f
+   671     05A0  0821               	movf	??_readMessage+1,w
+   672     05A1  0423               	iorwf	??_readMessage+3,w
+   673     05A2  00A5               	movwf	??_readMessage+5
+   674     05A3  0822               	movf	??_readMessage+2,w
+   675     05A4  0424               	iorwf	??_readMessage+4,w
+   676     05A5  00A6               	movwf	??_readMessage+6
+   677     05A6  0825               	movf	??_readMessage+5,w
+   678     05A7  00AA               	movwf	readMessage@Termometer_id
+   679     05A8  0826               	movf	??_readMessage+6,w
+   680     05A9  00AB               	movwf	readMessage@Termometer_id+1
+   681     05AA                     l953:
    682                           
-   683                           ;JordTermometerStyreBox.c: 42:     PORTB = command & 0xFF;
-   684     07A9  0874               	movf	CommandLCD@command,w
-   685     07AA  1283               	bcf	3,5	;RP0=0, select bank0
-   686     07AB  1303               	bcf	3,6	;RP1=0, select bank0
-   687     07AC  0086               	movwf	6	;volatile
-   688     07AD                     l678:
-   689                           
-   690                           ;JordTermometerStyreBox.c: 44:     if (PORTA != 0x00) {
-   691     07AD  0805               	movf	5,w	;volatile
-   692     07AE  1903               	btfsc	3,2
-   693     07AF  2FB1               	goto	u51
-   694     07B0  2FB2               	goto	u50
-   695     07B1                     u51:
-   696     07B1  2FB8               	goto	l684
-   697     07B2                     u50:
-   698     07B2                     l680:
-   699                           
-   700                           ;JordTermometerStyreBox.c: 45:         PORTA = 0x00;
-   701     07B2  0185               	clrf	5	;volatile
-   702     07B3                     l682:
-   703                           
-   704                           ;JordTermometerStyreBox.c: 46:         wait(50);
-   705     07B3  3032               	movlw	50
-   706     07B4  00F0               	movwf	wait@time
-   707     07B5  3000               	movlw	0
-   708     07B6  00F1               	movwf	wait@time+1
-   709     07B7  2769               	fcall	_wait
-   710     07B8                     l684:
-   711                           
-   712                           ;JordTermometerStyreBox.c: 49:     wait(10);
-   713     07B8  300A               	movlw	10
-   714     07B9  00F0               	movwf	wait@time
-   715     07BA  3000               	movlw	0
-   716     07BB  00F1               	movwf	wait@time+1
-   717     07BC  2769               	fcall	_wait
-   718     07BD                     l686:
-   719                           
-   720                           ;JordTermometerStyreBox.c: 51:     PORTAbits.RA2 = 1;
-   721     07BD  1283               	bcf	3,5	;RP0=0, select bank0
-   722     07BE  1303               	bcf	3,6	;RP1=0, select bank0
-   723     07BF  1505               	bsf	5,2	;volatile
-   724     07C0                     l688:
-   725                           
-   726                           ;JordTermometerStyreBox.c: 53:     wait(50);
-   727     07C0  3032               	movlw	50
-   728     07C1  00F0               	movwf	wait@time
-   729     07C2  3000               	movlw	0
-   730     07C3  00F1               	movwf	wait@time+1
-   731     07C4  2769               	fcall	_wait
-   732     07C5                     l690:
-   733                           
-   734                           ;JordTermometerStyreBox.c: 55:     PORTAbits.RA2 = 0;
-   735     07C5  1283               	bcf	3,5	;RP0=0, select bank0
-   736     07C6  1303               	bcf	3,6	;RP1=0, select bank0
-   737     07C7  1105               	bcf	5,2	;volatile
-   738     07C8                     l692:
-   739                           
-   740                           ;JordTermometerStyreBox.c: 57:     wait(100);
-   741     07C8  3064               	movlw	100
-   742     07C9  00F0               	movwf	wait@time
-   743     07CA  3000               	movlw	0
-   744     07CB  00F1               	movwf	wait@time+1
-   745     07CC  2769               	fcall	_wait
-   746     07CD                     l23:
-   747     07CD  0008               	return
-   748     07CE                     __end_of_CommandLCD:
-   749                           
-   750                           	psect	text5
-   751     0769                     __ptext5:	
-   752 ;; *************** function _wait *****************
-   753 ;; Defined at:
-   754 ;;		line 33 in file "JordTermometerStyreBox.c"
-   755 ;; Parameters:    Size  Location     Type
-   756 ;;  time            2    0[COMMON] unsigned int 
-   757 ;; Auto vars:     Size  Location     Type
-   758 ;;  t               2    2[COMMON] unsigned int 
-   759 ;; Return value:  Size  Location     Type
-   760 ;;                  1    wreg      void 
-   761 ;; Registers used:
-   762 ;;		wreg, status,2, status,0
-   763 ;; Tracked objects:
-   764 ;;		On entry : 0/0
-   765 ;;		On exit  : 0/0
-   766 ;;		Unchanged: 0/0
-   767 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
-   768 ;;      Params:         2       0       0       0
-   769 ;;      Locals:         2       0       0       0
-   770 ;;      Temps:          0       0       0       0
-   771 ;;      Totals:         4       0       0       0
-   772 ;;Total ram usage:        4 bytes
-   773 ;; Hardware stack levels used: 1
-   774 ;; This function calls:
-   775 ;;		Nothing
-   776 ;; This function is called by:
-   777 ;;		_CommandLCD
-   778 ;;		_writeChar
-   779 ;;		_main
-   780 ;; This function uses a non-reentrant model
-   781 ;;
-   782                           
-   783     0769                     _wait:	
-   784                           ;psect for function _wait
-   785                           
-   786     0769                     l660:	
-   787                           ;incstack = 0
-   788                           ; Regs used in _wait: [wreg+status,2+status,0]
-   789                           
+   683                           ;JordTermometerStyreBox.c: 106:     PORTAbits.RA4 = 0;
+   684     05AA  1205               	bcf	5,4	;volatile
+   685     05AB                     l955:
+   686                           
+   687                           ;JordTermometerStyreBox.c: 108:     wait(13);
+   688     05AB  300D               	movlw	13
+   689     05AC  00F0               	movwf	wait@time
+   690     05AD  3000               	movlw	0
+   691     05AE  00F1               	movwf	wait@time+1
+   692     05AF  243C               	fcall	_wait
+   693     05B0                     l957:
+   694                           
+   695                           ;JordTermometerStyreBox.c: 109:     Expected_check_bit ^= PORTAbits.RA3;
+   696     05B0  1283               	bcf	3,5	;RP0=0, select bank0
+   697     05B1  1303               	bcf	3,6	;RP1=0, select bank0
+   698     05B2  0C05               	rrf	5,w	;volatile
+   699     05B3  00A0               	movwf	??_readMessage
+   700     05B4  0CA0               	rrf	??_readMessage,f
+   701     05B5  0C20               	rrf	??_readMessage,w
+   702     05B6  3901               	andlw	1
+   703     05B7  00FF               	movwf	btemp+1
+   704     05B8  087F               	movf	btemp+1,w
+   705     05B9  06A7               	xorwf	readMessage@Expected_check_bit,f
+   706     05BA                     l959:
+   707                           
+   708                           ;JordTermometerStyreBox.c: 110:     Termometer_id = (Termometer_id << 1) | PORTAbits.RA3
+      +                          ;
+   709     05BA  0C05               	rrf	5,w	;volatile
+   710     05BB  00A0               	movwf	??_readMessage
+   711     05BC  0CA0               	rrf	??_readMessage,f
+   712     05BD  0C20               	rrf	??_readMessage,w
+   713     05BE  3901               	andlw	1
+   714     05BF  00A1               	movwf	??_readMessage+1
+   715     05C0  01A2               	clrf	??_readMessage+2
+   716     05C1  082B               	movf	readMessage@Termometer_id+1,w
+   717     05C2  00A4               	movwf	??_readMessage+4
+   718     05C3  082A               	movf	readMessage@Termometer_id,w
+   719     05C4  00A3               	movwf	??_readMessage+3
+   720     05C5  1003               	clrc
+   721     05C6  0DA3               	rlf	??_readMessage+3,f
+   722     05C7  0DA4               	rlf	??_readMessage+4,f
+   723     05C8  0821               	movf	??_readMessage+1,w
+   724     05C9  0423               	iorwf	??_readMessage+3,w
+   725     05CA  00A5               	movwf	??_readMessage+5
+   726     05CB  0822               	movf	??_readMessage+2,w
+   727     05CC  0424               	iorwf	??_readMessage+4,w
+   728     05CD  00A6               	movwf	??_readMessage+6
+   729     05CE  0825               	movf	??_readMessage+5,w
+   730     05CF  00AA               	movwf	readMessage@Termometer_id
+   731     05D0  0826               	movf	??_readMessage+6,w
+   732     05D1  00AB               	movwf	readMessage@Termometer_id+1
+   733     05D2                     l961:
+   734                           
+   735                           ;JordTermometerStyreBox.c: 111:     PORTAbits.RA4 = 1;
+   736     05D2  1605               	bsf	5,4	;volatile
+   737     05D3                     l963:
+   738                           
+   739                           ;JordTermometerStyreBox.c: 113:     wait(13);
+   740     05D3  300D               	movlw	13
+   741     05D4  00F0               	movwf	wait@time
+   742     05D5  3000               	movlw	0
+   743     05D6  00F1               	movwf	wait@time+1
+   744     05D7  243C               	fcall	_wait
+   745     05D8                     l965:
+   746                           
+   747                           ;JordTermometerStyreBox.c: 114:     Expected_check_bit ^= PORTAbits.RA3;
+   748     05D8  1283               	bcf	3,5	;RP0=0, select bank0
+   749     05D9  1303               	bcf	3,6	;RP1=0, select bank0
+   750     05DA  0C05               	rrf	5,w	;volatile
+   751     05DB  00A0               	movwf	??_readMessage
+   752     05DC  0CA0               	rrf	??_readMessage,f
+   753     05DD  0C20               	rrf	??_readMessage,w
+   754     05DE  3901               	andlw	1
+   755     05DF  00FF               	movwf	btemp+1
+   756     05E0  087F               	movf	btemp+1,w
+   757     05E1  06A7               	xorwf	readMessage@Expected_check_bit,f
+   758     05E2                     l967:
+   759                           
+   760                           ;JordTermometerStyreBox.c: 115:     temp_data = (temp_data << 1) | PORTAbits.RA3;
+   761     05E2  0C05               	rrf	5,w	;volatile
+   762     05E3  00A0               	movwf	??_readMessage
+   763     05E4  0CA0               	rrf	??_readMessage,f
+   764     05E5  0C20               	rrf	??_readMessage,w
+   765     05E6  3901               	andlw	1
+   766     05E7  00A1               	movwf	??_readMessage+1
+   767     05E8  01A2               	clrf	??_readMessage+2
+   768     05E9  082D               	movf	readMessage@temp_data+1,w
+   769     05EA  00A4               	movwf	??_readMessage+4
+   770     05EB  082C               	movf	readMessage@temp_data,w
+   771     05EC  00A3               	movwf	??_readMessage+3
+   772     05ED  1003               	clrc
+   773     05EE  0DA3               	rlf	??_readMessage+3,f
+   774     05EF  0DA4               	rlf	??_readMessage+4,f
+   775     05F0  0821               	movf	??_readMessage+1,w
+   776     05F1  0423               	iorwf	??_readMessage+3,w
+   777     05F2  00A5               	movwf	??_readMessage+5
+   778     05F3  0822               	movf	??_readMessage+2,w
+   779     05F4  0424               	iorwf	??_readMessage+4,w
+   780     05F5  00A6               	movwf	??_readMessage+6
+   781     05F6  0825               	movf	??_readMessage+5,w
+   782     05F7  00AC               	movwf	readMessage@temp_data
+   783     05F8  0826               	movf	??_readMessage+6,w
+   784     05F9  00AD               	movwf	readMessage@temp_data+1
+   785     05FA                     l969:
+   786                           
+   787                           ;JordTermometerStyreBox.c: 116:     PORTAbits.RA4 = 0;
+   788     05FA  1205               	bcf	5,4	;volatile
+   789     05FB                     l971:
    790                           
-   791                           ;JordTermometerStyreBox.c: 34:     unsigned int t = time;
-   792     0769  0871               	movf	wait@time+1,w
-   793     076A  00F3               	movwf	wait@t+1
-   794     076B  0870               	movf	wait@time,w
-   795     076C  00F2               	movwf	wait@t
-   796                           
-   797                           ;JordTermometerStyreBox.c: 35:     while (t > 0) {
-   798     076D  2F74               	goto	l664
-   799     076E                     l662:
-   800                           
-   801                           ;JordTermometerStyreBox.c: 36:         t--;
-   802     076E  3001               	movlw	1
-   803     076F  02F2               	subwf	wait@t,f
-   804     0770  3000               	movlw	0
-   805     0771  1C03               	skipc
-   806     0772  03F3               	decf	wait@t+1,f
-   807     0773  02F3               	subwf	wait@t+1,f
-   808     0774                     l664:
-   809                           
-   810                           ;JordTermometerStyreBox.c: 35:     while (t > 0) {
-   811     0774  0872               	movf	wait@t,w
-   812     0775  0473               	iorwf	wait@t+1,w
-   813     0776  1D03               	btfss	3,2
-   814     0777  2F79               	goto	u41
-   815     0778  2F7A               	goto	u40
-   816     0779                     u41:
-   817     0779  2F6E               	goto	l662
-   818     077A                     u40:
-   819     077A                     l19:
-   820     077A  0008               	return
-   821     077B                     __end_of_wait:
-   822     007E                     btemp	set	126	;btemp
-   823     007E                     wtemp0	set	126
-   824                           
-   825                           	psect	config
-   826                           
-   827                           ;Config register CONFIG @ 0x2007
-   828                           ;	Oscillator Selection bits
-   829                           ;	FOSC = INTOSCIO, INTRC oscillator; port I/O function on both RA6/OSC2/CLKO pin and RA7
+   791                           ;JordTermometerStyreBox.c: 118:     wait(12);
+   792     05FB  300C               	movlw	12
+   793     05FC  00F0               	movwf	wait@time
+   794     05FD  3000               	movlw	0
+   795     05FE  00F1               	movwf	wait@time+1
+   796     05FF  243C               	fcall	_wait
+   797     0600                     l973:
+   798                           
+   799                           ;JordTermometerStyreBox.c: 119:     Expected_check_bit ^= PORTAbits.RA3;
+   800     0600  1283               	bcf	3,5	;RP0=0, select bank0
+   801     0601  1303               	bcf	3,6	;RP1=0, select bank0
+   802     0602  0C05               	rrf	5,w	;volatile
+   803     0603  00A0               	movwf	??_readMessage
+   804     0604  0CA0               	rrf	??_readMessage,f
+   805     0605  0C20               	rrf	??_readMessage,w
+   806     0606  3901               	andlw	1
+   807     0607  00FF               	movwf	btemp+1
+   808     0608  087F               	movf	btemp+1,w
+   809     0609  06A7               	xorwf	readMessage@Expected_check_bit,f
+   810     060A                     l975:
+   811                           
+   812                           ;JordTermometerStyreBox.c: 120:     temp_data = (temp_data << 1) | PORTAbits.RA3;
+   813     060A  0C05               	rrf	5,w	;volatile
+   814     060B  00A0               	movwf	??_readMessage
+   815     060C  0CA0               	rrf	??_readMessage,f
+   816     060D  0C20               	rrf	??_readMessage,w
+   817     060E  3901               	andlw	1
+   818     060F  00A1               	movwf	??_readMessage+1
+   819     0610  01A2               	clrf	??_readMessage+2
+   820     0611  082D               	movf	readMessage@temp_data+1,w
+   821     0612  00A4               	movwf	??_readMessage+4
+   822     0613  082C               	movf	readMessage@temp_data,w
+   823     0614  00A3               	movwf	??_readMessage+3
+   824     0615  1003               	clrc
+   825     0616  0DA3               	rlf	??_readMessage+3,f
+   826     0617  0DA4               	rlf	??_readMessage+4,f
+   827     0618  0821               	movf	??_readMessage+1,w
+   828     0619  0423               	iorwf	??_readMessage+3,w
+   829     061A  00A5               	movwf	??_readMessage+5
+   830     061B  0822               	movf	??_readMessage+2,w
+   831     061C  0424               	iorwf	??_readMessage+4,w
+   832     061D  00A6               	movwf	??_readMessage+6
+   833     061E  0825               	movf	??_readMessage+5,w
+   834     061F  00AC               	movwf	readMessage@temp_data
+   835     0620  0826               	movf	??_readMessage+6,w
+   836     0621  00AD               	movwf	readMessage@temp_data+1
+   837     0622                     l977:
+   838                           
+   839                           ;JordTermometerStyreBox.c: 121:     PORTAbits.RA4 = 1;
+   840     0622  1605               	bsf	5,4	;volatile
+   841     0623                     l979:
+   842                           
+   843                           ;JordTermometerStyreBox.c: 123:     wait(13);
+   844     0623  300D               	movlw	13
+   845     0624  00F0               	movwf	wait@time
+   846     0625  3000               	movlw	0
+   847     0626  00F1               	movwf	wait@time+1
+   848     0627  243C               	fcall	_wait
+   849     0628                     l981:
+   850                           
+   851                           ;JordTermometerStyreBox.c: 124:     Expected_check_bit ^= PORTAbits.RA3;
+   852     0628  1283               	bcf	3,5	;RP0=0, select bank0
+   853     0629  1303               	bcf	3,6	;RP1=0, select bank0
+   854     062A  0C05               	rrf	5,w	;volatile
+   855     062B  00A0               	movwf	??_readMessage
+   856     062C  0CA0               	rrf	??_readMessage,f
+   857     062D  0C20               	rrf	??_readMessage,w
+   858     062E  3901               	andlw	1
+   859     062F  00FF               	movwf	btemp+1
+   860     0630  087F               	movf	btemp+1,w
+   861     0631  06A7               	xorwf	readMessage@Expected_check_bit,f
+   862     0632                     l983:
+   863                           
+   864                           ;JordTermometerStyreBox.c: 125:     temp_data = (temp_data << 1) | PORTAbits.RA3;
+   865     0632  0C05               	rrf	5,w	;volatile
+   866     0633  00A0               	movwf	??_readMessage
+   867     0634  0CA0               	rrf	??_readMessage,f
+   868     0635  0C20               	rrf	??_readMessage,w
+   869     0636  3901               	andlw	1
+   870     0637  00A1               	movwf	??_readMessage+1
+   871     0638  01A2               	clrf	??_readMessage+2
+   872     0639  082D               	movf	readMessage@temp_data+1,w
+   873     063A  00A4               	movwf	??_readMessage+4
+   874     063B  082C               	movf	readMessage@temp_data,w
+   875     063C  00A3               	movwf	??_readMessage+3
+   876     063D  1003               	clrc
+   877     063E  0DA3               	rlf	??_readMessage+3,f
+   878     063F  0DA4               	rlf	??_readMessage+4,f
+   879     0640  0821               	movf	??_readMessage+1,w
+   880     0641  0423               	iorwf	??_readMessage+3,w
+   881     0642  00A5               	movwf	??_readMessage+5
+   882     0643  0822               	movf	??_readMessage+2,w
+   883     0644  0424               	iorwf	??_readMessage+4,w
+   884     0645  00A6               	movwf	??_readMessage+6
+   885     0646  0825               	movf	??_readMessage+5,w
+   886     0647  00AC               	movwf	readMessage@temp_data
+   887     0648  0826               	movf	??_readMessage+6,w
+   888     0649  00AD               	movwf	readMessage@temp_data+1
+   889     064A                     l985:
+   890                           
+   891                           ;JordTermometerStyreBox.c: 126:     PORTAbits.RA4 = 0;
+   892     064A  1205               	bcf	5,4	;volatile
+   893     064B                     l987:
+   894                           
+   895                           ;JordTermometerStyreBox.c: 128:     wait(13);
+   896     064B  300D               	movlw	13
+   897     064C  00F0               	movwf	wait@time
+   898     064D  3000               	movlw	0
+   899     064E  00F1               	movwf	wait@time+1
+   900     064F  243C               	fcall	_wait
+   901     0650                     l989:
+   902                           
+   903                           ;JordTermometerStyreBox.c: 129:     Expected_check_bit ^= PORTAbits.RA3;
+   904     0650  1283               	bcf	3,5	;RP0=0, select bank0
+   905     0651  1303               	bcf	3,6	;RP1=0, select bank0
+   906     0652  0C05               	rrf	5,w	;volatile
+   907     0653  00A0               	movwf	??_readMessage
+   908     0654  0CA0               	rrf	??_readMessage,f
+   909     0655  0C20               	rrf	??_readMessage,w
+   910     0656  3901               	andlw	1
+   911     0657  00FF               	movwf	btemp+1
+   912     0658  087F               	movf	btemp+1,w
+   913     0659  06A7               	xorwf	readMessage@Expected_check_bit,f
+   914     065A                     l991:
+   915                           
+   916                           ;JordTermometerStyreBox.c: 130:     temp_data = (temp_data << 1) | PORTAbits.RA3;
+   917     065A  0C05               	rrf	5,w	;volatile
+   918     065B  00A0               	movwf	??_readMessage
+   919     065C  0CA0               	rrf	??_readMessage,f
+   920     065D  0C20               	rrf	??_readMessage,w
+   921     065E  3901               	andlw	1
+   922     065F  00A1               	movwf	??_readMessage+1
+   923     0660  01A2               	clrf	??_readMessage+2
+   924     0661  082D               	movf	readMessage@temp_data+1,w
+   925     0662  00A4               	movwf	??_readMessage+4
+   926     0663  082C               	movf	readMessage@temp_data,w
+   927     0664  00A3               	movwf	??_readMessage+3
+   928     0665  1003               	clrc
+   929     0666  0DA3               	rlf	??_readMessage+3,f
+   930     0667  0DA4               	rlf	??_readMessage+4,f
+   931     0668  0821               	movf	??_readMessage+1,w
+   932     0669  0423               	iorwf	??_readMessage+3,w
+   933     066A  00A5               	movwf	??_readMessage+5
+   934     066B  0822               	movf	??_readMessage+2,w
+   935     066C  0424               	iorwf	??_readMessage+4,w
+   936     066D  00A6               	movwf	??_readMessage+6
+   937     066E  0825               	movf	??_readMessage+5,w
+   938     066F  00AC               	movwf	readMessage@temp_data
+   939     0670  0826               	movf	??_readMessage+6,w
+   940     0671  00AD               	movwf	readMessage@temp_data+1
+   941     0672                     l993:
+   942                           
+   943                           ;JordTermometerStyreBox.c: 131:     PORTAbits.RA4 = 1;
+   944     0672  1605               	bsf	5,4	;volatile
+   945     0673                     l995:
+   946                           
+   947                           ;JordTermometerStyreBox.c: 133:     wait(12);
+   948     0673  300C               	movlw	12
+   949     0674  00F0               	movwf	wait@time
+   950     0675  3000               	movlw	0
+   951     0676  00F1               	movwf	wait@time+1
+   952     0677  243C               	fcall	_wait
+   953     0678                     l997:
+   954                           
+   955                           ;JordTermometerStyreBox.c: 134:     Expected_check_bit ^= PORTAbits.RA3;
+   956     0678  1283               	bcf	3,5	;RP0=0, select bank0
+   957     0679  1303               	bcf	3,6	;RP1=0, select bank0
+   958     067A  0C05               	rrf	5,w	;volatile
+   959     067B  00A0               	movwf	??_readMessage
+   960     067C  0CA0               	rrf	??_readMessage,f
+   961     067D  0C20               	rrf	??_readMessage,w
+   962     067E  3901               	andlw	1
+   963     067F  00FF               	movwf	btemp+1
+   964     0680  087F               	movf	btemp+1,w
+   965     0681  06A7               	xorwf	readMessage@Expected_check_bit,f
+   966     0682                     l999:
+   967                           
+   968                           ;JordTermometerStyreBox.c: 135:     temp_data = (temp_data << 1) | PORTAbits.RA3;
+   969     0682  0C05               	rrf	5,w	;volatile
+   970     0683  00A0               	movwf	??_readMessage
+   971     0684  0CA0               	rrf	??_readMessage,f
+   972     0685  0C20               	rrf	??_readMessage,w
+   973     0686  3901               	andlw	1
+   974     0687  00A1               	movwf	??_readMessage+1
+   975     0688  01A2               	clrf	??_readMessage+2
+   976     0689  082D               	movf	readMessage@temp_data+1,w
+   977     068A  00A4               	movwf	??_readMessage+4
+   978     068B  082C               	movf	readMessage@temp_data,w
+   979     068C  00A3               	movwf	??_readMessage+3
+   980     068D  1003               	clrc
+   981     068E  0DA3               	rlf	??_readMessage+3,f
+   982     068F  0DA4               	rlf	??_readMessage+4,f
+   983     0690  0821               	movf	??_readMessage+1,w
+   984     0691  0423               	iorwf	??_readMessage+3,w
+   985     0692  00A5               	movwf	??_readMessage+5
+   986     0693  0822               	movf	??_readMessage+2,w
+   987     0694  0424               	iorwf	??_readMessage+4,w
+   988     0695  00A6               	movwf	??_readMessage+6
+   989     0696  0825               	movf	??_readMessage+5,w
+   990     0697  00AC               	movwf	readMessage@temp_data
+   991     0698  0826               	movf	??_readMessage+6,w
+   992     0699  00AD               	movwf	readMessage@temp_data+1
+   993     069A                     l1001:
+   994                           
+   995                           ;JordTermometerStyreBox.c: 136:     PORTAbits.RA4 = 0;
+   996     069A  1205               	bcf	5,4	;volatile
+   997     069B                     l1003:
+   998                           
+   999                           ;JordTermometerStyreBox.c: 138:     wait(13);
+  1000     069B  300D               	movlw	13
+  1001     069C  00F0               	movwf	wait@time
+  1002     069D  3000               	movlw	0
+  1003     069E  00F1               	movwf	wait@time+1
+  1004     069F  243C               	fcall	_wait
+  1005     06A0                     l1005:
+  1006                           
+  1007                           ;JordTermometerStyreBox.c: 139:     Expected_check_bit ^= PORTAbits.RA3;
+  1008     06A0  1283               	bcf	3,5	;RP0=0, select bank0
+  1009     06A1  1303               	bcf	3,6	;RP1=0, select bank0
+  1010     06A2  0C05               	rrf	5,w	;volatile
+  1011     06A3  00A0               	movwf	??_readMessage
+  1012     06A4  0CA0               	rrf	??_readMessage,f
+  1013     06A5  0C20               	rrf	??_readMessage,w
+  1014     06A6  3901               	andlw	1
+  1015     06A7  00FF               	movwf	btemp+1
+  1016     06A8  087F               	movf	btemp+1,w
+  1017     06A9  06A7               	xorwf	readMessage@Expected_check_bit,f
+  1018     06AA                     l1007:
+  1019                           
+  1020                           ;JordTermometerStyreBox.c: 140:     temp_data = (temp_data << 1) | PORTAbits.RA3;
+  1021     06AA  0C05               	rrf	5,w	;volatile
+  1022     06AB  00A0               	movwf	??_readMessage
+  1023     06AC  0CA0               	rrf	??_readMessage,f
+  1024     06AD  0C20               	rrf	??_readMessage,w
+  1025     06AE  3901               	andlw	1
+  1026     06AF  00A1               	movwf	??_readMessage+1
+  1027     06B0  01A2               	clrf	??_readMessage+2
+  1028     06B1  082D               	movf	readMessage@temp_data+1,w
+  1029     06B2  00A4               	movwf	??_readMessage+4
+  1030     06B3  082C               	movf	readMessage@temp_data,w
+  1031     06B4  00A3               	movwf	??_readMessage+3
+  1032     06B5  1003               	clrc
+  1033     06B6  0DA3               	rlf	??_readMessage+3,f
+  1034     06B7  0DA4               	rlf	??_readMessage+4,f
+  1035     06B8  0821               	movf	??_readMessage+1,w
+  1036     06B9  0423               	iorwf	??_readMessage+3,w
+  1037     06BA  00A5               	movwf	??_readMessage+5
+  1038     06BB  0822               	movf	??_readMessage+2,w
+  1039     06BC  0424               	iorwf	??_readMessage+4,w
+  1040     06BD  00A6               	movwf	??_readMessage+6
+  1041     06BE  0825               	movf	??_readMessage+5,w
+  1042     06BF  00AC               	movwf	readMessage@temp_data
+  1043     06C0  0826               	movf	??_readMessage+6,w
+  1044     06C1  00AD               	movwf	readMessage@temp_data+1
+  1045     06C2                     l1009:
+  1046                           
+  1047                           ;JordTermometerStyreBox.c: 141:     PORTAbits.RA4 = 1;
+  1048     06C2  1605               	bsf	5,4	;volatile
+  1049     06C3                     l1011:
+  1050                           
+  1051                           ;JordTermometerStyreBox.c: 143:     wait(13);
+  1052     06C3  300D               	movlw	13
+  1053     06C4  00F0               	movwf	wait@time
+  1054     06C5  3000               	movlw	0
+  1055     06C6  00F1               	movwf	wait@time+1
+  1056     06C7  243C               	fcall	_wait
+  1057     06C8                     l1013:
+  1058                           
+  1059                           ;JordTermometerStyreBox.c: 144:     Expected_check_bit ^= PORTAbits.RA3;
+  1060     06C8  1283               	bcf	3,5	;RP0=0, select bank0
+  1061     06C9  1303               	bcf	3,6	;RP1=0, select bank0
+  1062     06CA  0C05               	rrf	5,w	;volatile
+  1063     06CB  00A0               	movwf	??_readMessage
+  1064     06CC  0CA0               	rrf	??_readMessage,f
+  1065     06CD  0C20               	rrf	??_readMessage,w
+  1066     06CE  3901               	andlw	1
+  1067     06CF  00FF               	movwf	btemp+1
+  1068     06D0  087F               	movf	btemp+1,w
+  1069     06D1  06A7               	xorwf	readMessage@Expected_check_bit,f
+  1070     06D2                     l1015:
+  1071                           
+  1072                           ;JordTermometerStyreBox.c: 145:     temp_data = (temp_data << 1) | PORTAbits.RA3;
+  1073     06D2  0C05               	rrf	5,w	;volatile
+  1074     06D3  00A0               	movwf	??_readMessage
+  1075     06D4  0CA0               	rrf	??_readMessage,f
+  1076     06D5  0C20               	rrf	??_readMessage,w
+  1077     06D6  3901               	andlw	1
+  1078     06D7  00A1               	movwf	??_readMessage+1
+  1079     06D8  01A2               	clrf	??_readMessage+2
+  1080     06D9  082D               	movf	readMessage@temp_data+1,w
+  1081     06DA  00A4               	movwf	??_readMessage+4
+  1082     06DB  082C               	movf	readMessage@temp_data,w
+  1083     06DC  00A3               	movwf	??_readMessage+3
+  1084     06DD  1003               	clrc
+  1085     06DE  0DA3               	rlf	??_readMessage+3,f
+  1086     06DF  0DA4               	rlf	??_readMessage+4,f
+  1087     06E0  0821               	movf	??_readMessage+1,w
+  1088     06E1  0423               	iorwf	??_readMessage+3,w
+  1089     06E2  00A5               	movwf	??_readMessage+5
+  1090     06E3  0822               	movf	??_readMessage+2,w
+  1091     06E4  0424               	iorwf	??_readMessage+4,w
+  1092     06E5  00A6               	movwf	??_readMessage+6
+  1093     06E6  0825               	movf	??_readMessage+5,w
+  1094     06E7  00AC               	movwf	readMessage@temp_data
+  1095     06E8  0826               	movf	??_readMessage+6,w
+  1096     06E9  00AD               	movwf	readMessage@temp_data+1
+  1097     06EA                     l1017:
+  1098                           
+  1099                           ;JordTermometerStyreBox.c: 146:     PORTAbits.RA4 = 0;
+  1100     06EA  1205               	bcf	5,4	;volatile
+  1101     06EB                     l1019:
+  1102                           
+  1103                           ;JordTermometerStyreBox.c: 148:     wait(12);
+  1104     06EB  300C               	movlw	12
+  1105     06EC  00F0               	movwf	wait@time
+  1106     06ED  3000               	movlw	0
+  1107     06EE  00F1               	movwf	wait@time+1
+  1108     06EF  243C               	fcall	_wait
+  1109     06F0                     l1021:
+  1110                           
+  1111                           ;JordTermometerStyreBox.c: 149:     Expected_check_bit ^= PORTAbits.RA3;
+  1112     06F0  1283               	bcf	3,5	;RP0=0, select bank0
+  1113     06F1  1303               	bcf	3,6	;RP1=0, select bank0
+  1114     06F2  0C05               	rrf	5,w	;volatile
+  1115     06F3  00A0               	movwf	??_readMessage
+  1116     06F4  0CA0               	rrf	??_readMessage,f
+  1117     06F5  0C20               	rrf	??_readMessage,w
+  1118     06F6  3901               	andlw	1
+  1119     06F7  00FF               	movwf	btemp+1
+  1120     06F8  087F               	movf	btemp+1,w
+  1121     06F9  06A7               	xorwf	readMessage@Expected_check_bit,f
+  1122     06FA                     l1023:
+  1123                           
+  1124                           ;JordTermometerStyreBox.c: 150:     temp_data = (temp_data << 1) | PORTAbits.RA3;
+  1125     06FA  0C05               	rrf	5,w	;volatile
+  1126     06FB  00A0               	movwf	??_readMessage
+  1127     06FC  0CA0               	rrf	??_readMessage,f
+  1128     06FD  0C20               	rrf	??_readMessage,w
+  1129     06FE  3901               	andlw	1
+  1130     06FF  00A1               	movwf	??_readMessage+1
+  1131     0700  01A2               	clrf	??_readMessage+2
+  1132     0701  082D               	movf	readMessage@temp_data+1,w
+  1133     0702  00A4               	movwf	??_readMessage+4
+  1134     0703  082C               	movf	readMessage@temp_data,w
+  1135     0704  00A3               	movwf	??_readMessage+3
+  1136     0705  1003               	clrc
+  1137     0706  0DA3               	rlf	??_readMessage+3,f
+  1138     0707  0DA4               	rlf	??_readMessage+4,f
+  1139     0708  0821               	movf	??_readMessage+1,w
+  1140     0709  0423               	iorwf	??_readMessage+3,w
+  1141     070A  00A5               	movwf	??_readMessage+5
+  1142     070B  0822               	movf	??_readMessage+2,w
+  1143     070C  0424               	iorwf	??_readMessage+4,w
+  1144     070D  00A6               	movwf	??_readMessage+6
+  1145     070E  0825               	movf	??_readMessage+5,w
+  1146     070F  00AC               	movwf	readMessage@temp_data
+  1147     0710  0826               	movf	??_readMessage+6,w
+  1148     0711  00AD               	movwf	readMessage@temp_data+1
+  1149     0712                     l1025:
+  1150                           
+  1151                           ;JordTermometerStyreBox.c: 151:     PORTAbits.RA4 = 1;
+  1152     0712  1605               	bsf	5,4	;volatile
+  1153     0713                     l1027:
+  1154                           
+  1155                           ;JordTermometerStyreBox.c: 153:     wait(13);
+  1156     0713  300D               	movlw	13
+  1157     0714  00F0               	movwf	wait@time
+  1158     0715  3000               	movlw	0
+  1159     0716  00F1               	movwf	wait@time+1
+  1160     0717  243C               	fcall	_wait
+  1161     0718                     l1029:
+  1162                           
+  1163                           ;JordTermometerStyreBox.c: 154:     Expected_check_bit ^= PORTAbits.RA3;
+  1164     0718  1283               	bcf	3,5	;RP0=0, select bank0
+  1165     0719  1303               	bcf	3,6	;RP1=0, select bank0
+  1166     071A  0C05               	rrf	5,w	;volatile
+  1167     071B  00A0               	movwf	??_readMessage
+  1168     071C  0CA0               	rrf	??_readMessage,f
+  1169     071D  0C20               	rrf	??_readMessage,w
+  1170     071E  3901               	andlw	1
+  1171     071F  00FF               	movwf	btemp+1
+  1172     0720  087F               	movf	btemp+1,w
+  1173     0721  06A7               	xorwf	readMessage@Expected_check_bit,f
+  1174     0722                     l1031:
+  1175                           
+  1176                           ;JordTermometerStyreBox.c: 155:     temp_data = (temp_data << 1) | PORTAbits.RA3;
+  1177     0722  0C05               	rrf	5,w	;volatile
+  1178     0723  00A0               	movwf	??_readMessage
+  1179     0724  0CA0               	rrf	??_readMessage,f
+  1180     0725  0C20               	rrf	??_readMessage,w
+  1181     0726  3901               	andlw	1
+  1182     0727  00A1               	movwf	??_readMessage+1
+  1183     0728  01A2               	clrf	??_readMessage+2
+  1184     0729  082D               	movf	readMessage@temp_data+1,w
+  1185     072A  00A4               	movwf	??_readMessage+4
+  1186     072B  082C               	movf	readMessage@temp_data,w
+  1187     072C  00A3               	movwf	??_readMessage+3
+  1188     072D  1003               	clrc
+  1189     072E  0DA3               	rlf	??_readMessage+3,f
+  1190     072F  0DA4               	rlf	??_readMessage+4,f
+  1191     0730  0821               	movf	??_readMessage+1,w
+  1192     0731  0423               	iorwf	??_readMessage+3,w
+  1193     0732  00A5               	movwf	??_readMessage+5
+  1194     0733  0822               	movf	??_readMessage+2,w
+  1195     0734  0424               	iorwf	??_readMessage+4,w
+  1196     0735  00A6               	movwf	??_readMessage+6
+  1197     0736  0825               	movf	??_readMessage+5,w
+  1198     0737  00AC               	movwf	readMessage@temp_data
+  1199     0738  0826               	movf	??_readMessage+6,w
+  1200     0739  00AD               	movwf	readMessage@temp_data+1
+  1201     073A                     l1033:
+  1202                           
+  1203                           ;JordTermometerStyreBox.c: 156:     PORTAbits.RA4 = 0;
+  1204     073A  1205               	bcf	5,4	;volatile
+  1205     073B                     l1035:
+  1206                           
+  1207                           ;JordTermometerStyreBox.c: 158:     wait(13);
+  1208     073B  300D               	movlw	13
+  1209     073C  00F0               	movwf	wait@time
+  1210     073D  3000               	movlw	0
+  1211     073E  00F1               	movwf	wait@time+1
+  1212     073F  243C               	fcall	_wait
+  1213     0740                     l1037:
+  1214                           
+  1215                           ;JordTermometerStyreBox.c: 159:     Expected_check_bit ^= PORTAbits.RA3;
+  1216     0740  1283               	bcf	3,5	;RP0=0, select bank0
+  1217     0741  1303               	bcf	3,6	;RP1=0, select bank0
+  1218     0742  0C05               	rrf	5,w	;volatile
+  1219     0743  00A0               	movwf	??_readMessage
+  1220     0744  0CA0               	rrf	??_readMessage,f
+  1221     0745  0C20               	rrf	??_readMessage,w
+  1222     0746  3901               	andlw	1
+  1223     0747  00FF               	movwf	btemp+1
+  1224     0748  087F               	movf	btemp+1,w
+  1225     0749  06A7               	xorwf	readMessage@Expected_check_bit,f
+  1226     074A                     l1039:
+  1227                           
+  1228                           ;JordTermometerStyreBox.c: 160:     temp_data = (temp_data << 1) | PORTAbits.RA3;
+  1229     074A  0C05               	rrf	5,w	;volatile
+  1230     074B  00A0               	movwf	??_readMessage
+  1231     074C  0CA0               	rrf	??_readMessage,f
+  1232     074D  0C20               	rrf	??_readMessage,w
+  1233     074E  3901               	andlw	1
+  1234     074F  00A1               	movwf	??_readMessage+1
+  1235     0750  01A2               	clrf	??_readMessage+2
+  1236     0751  082D               	movf	readMessage@temp_data+1,w
+  1237     0752  00A4               	movwf	??_readMessage+4
+  1238     0753  082C               	movf	readMessage@temp_data,w
+  1239     0754  00A3               	movwf	??_readMessage+3
+  1240     0755  1003               	clrc
+  1241     0756  0DA3               	rlf	??_readMessage+3,f
+  1242     0757  0DA4               	rlf	??_readMessage+4,f
+  1243     0758  0821               	movf	??_readMessage+1,w
+  1244     0759  0423               	iorwf	??_readMessage+3,w
+  1245     075A  00A5               	movwf	??_readMessage+5
+  1246     075B  0822               	movf	??_readMessage+2,w
+  1247     075C  0424               	iorwf	??_readMessage+4,w
+  1248     075D  00A6               	movwf	??_readMessage+6
+  1249     075E  0825               	movf	??_readMessage+5,w
+  1250     075F  00AC               	movwf	readMessage@temp_data
+  1251     0760  0826               	movf	??_readMessage+6,w
+  1252     0761  00AD               	movwf	readMessage@temp_data+1
+  1253     0762                     l1041:
+  1254                           
+  1255                           ;JordTermometerStyreBox.c: 161:     PORTAbits.RA4 = 1;
+  1256     0762  1605               	bsf	5,4	;volatile
+  1257     0763                     l1043:
+  1258                           
+  1259                           ;JordTermometerStyreBox.c: 163:     wait(12);
+  1260     0763  300C               	movlw	12
+  1261     0764  00F0               	movwf	wait@time
+  1262     0765  3000               	movlw	0
+  1263     0766  00F1               	movwf	wait@time+1
+  1264     0767  243C               	fcall	_wait
+  1265     0768                     l1045:
+  1266                           
+  1267                           ;JordTermometerStyreBox.c: 164:     Expected_check_bit ^= PORTAbits.RA3;
+  1268     0768  1283               	bcf	3,5	;RP0=0, select bank0
+  1269     0769  1303               	bcf	3,6	;RP1=0, select bank0
+  1270     076A  0C05               	rrf	5,w	;volatile
+  1271     076B  00A0               	movwf	??_readMessage
+  1272     076C  0CA0               	rrf	??_readMessage,f
+  1273     076D  0C20               	rrf	??_readMessage,w
+  1274     076E  3901               	andlw	1
+  1275     076F  00FF               	movwf	btemp+1
+  1276     0770  087F               	movf	btemp+1,w
+  1277     0771  06A7               	xorwf	readMessage@Expected_check_bit,f
+  1278     0772                     l1047:
+  1279                           
+  1280                           ;JordTermometerStyreBox.c: 165:     Batt_status = (Batt_status << 1) | PORTAbits.RA3;
+  1281     0772  0C05               	rrf	5,w	;volatile
+  1282     0773  00A0               	movwf	??_readMessage
+  1283     0774  0CA0               	rrf	??_readMessage,f
+  1284     0775  0C20               	rrf	??_readMessage,w
+  1285     0776  3901               	andlw	1
+  1286     0777  00A1               	movwf	??_readMessage+1
+  1287     0778  01A2               	clrf	??_readMessage+2
+  1288     0779  0829               	movf	readMessage@Batt_status+1,w
+  1289     077A  00A4               	movwf	??_readMessage+4
+  1290     077B  0828               	movf	readMessage@Batt_status,w
+  1291     077C  00A3               	movwf	??_readMessage+3
+  1292     077D  1003               	clrc
+  1293     077E  0DA3               	rlf	??_readMessage+3,f
+  1294     077F  0DA4               	rlf	??_readMessage+4,f
+  1295     0780  0821               	movf	??_readMessage+1,w
+  1296     0781  0423               	iorwf	??_readMessage+3,w
+  1297     0782  00A5               	movwf	??_readMessage+5
+  1298     0783  0822               	movf	??_readMessage+2,w
+  1299     0784  0424               	iorwf	??_readMessage+4,w
+  1300     0785  00A6               	movwf	??_readMessage+6
+  1301     0786  0825               	movf	??_readMessage+5,w
+  1302     0787  00A8               	movwf	readMessage@Batt_status
+  1303     0788  0826               	movf	??_readMessage+6,w
+  1304     0789  00A9               	movwf	readMessage@Batt_status+1
+  1305     078A                     l1049:
+  1306                           
+  1307                           ;JordTermometerStyreBox.c: 166:     PORTAbits.RA4 = 0;
+  1308     078A  1205               	bcf	5,4	;volatile
+  1309     078B                     l1051:
+  1310                           
+  1311                           ;JordTermometerStyreBox.c: 168:     wait(13);
+  1312     078B  300D               	movlw	13
+  1313     078C  00F0               	movwf	wait@time
+  1314     078D  3000               	movlw	0
+  1315     078E  00F1               	movwf	wait@time+1
+  1316     078F  243C               	fcall	_wait
+  1317     0790                     l1053:
+  1318                           
+  1319                           ;JordTermometerStyreBox.c: 169:     Expected_check_bit ^= PORTAbits.RA3;
+  1320     0790  1283               	bcf	3,5	;RP0=0, select bank0
+  1321     0791  1303               	bcf	3,6	;RP1=0, select bank0
+  1322     0792  0C05               	rrf	5,w	;volatile
+  1323     0793  00A0               	movwf	??_readMessage
+  1324     0794  0CA0               	rrf	??_readMessage,f
+  1325     0795  0C20               	rrf	??_readMessage,w
+  1326     0796  3901               	andlw	1
+  1327     0797  00FF               	movwf	btemp+1
+  1328     0798  087F               	movf	btemp+1,w
+  1329     0799  06A7               	xorwf	readMessage@Expected_check_bit,f
+  1330     079A                     l1055:
+  1331                           
+  1332                           ;JordTermometerStyreBox.c: 170:     Batt_status = (Batt_status << 1) | PORTAbits.RA3;
+  1333     079A  0C05               	rrf	5,w	;volatile
+  1334     079B  00A0               	movwf	??_readMessage
+  1335     079C  0CA0               	rrf	??_readMessage,f
+  1336     079D  0C20               	rrf	??_readMessage,w
+  1337     079E  3901               	andlw	1
+  1338     079F  00A1               	movwf	??_readMessage+1
+  1339     07A0  01A2               	clrf	??_readMessage+2
+  1340     07A1  0829               	movf	readMessage@Batt_status+1,w
+  1341     07A2  00A4               	movwf	??_readMessage+4
+  1342     07A3  0828               	movf	readMessage@Batt_status,w
+  1343     07A4  00A3               	movwf	??_readMessage+3
+  1344     07A5  1003               	clrc
+  1345     07A6  0DA3               	rlf	??_readMessage+3,f
+  1346     07A7  0DA4               	rlf	??_readMessage+4,f
+  1347     07A8  0821               	movf	??_readMessage+1,w
+  1348     07A9  0423               	iorwf	??_readMessage+3,w
+  1349     07AA  00A5               	movwf	??_readMessage+5
+  1350     07AB  0822               	movf	??_readMessage+2,w
+  1351     07AC  0424               	iorwf	??_readMessage+4,w
+  1352     07AD  00A6               	movwf	??_readMessage+6
+  1353     07AE  0825               	movf	??_readMessage+5,w
+  1354     07AF  00A8               	movwf	readMessage@Batt_status
+  1355     07B0  0826               	movf	??_readMessage+6,w
+  1356     07B1  00A9               	movwf	readMessage@Batt_status+1
+  1357     07B2                     l1057:
+  1358                           
+  1359                           ;JordTermometerStyreBox.c: 171:     PORTAbits.RA4 = 1;
+  1360     07B2  1605               	bsf	5,4	;volatile
+  1361     07B3                     l1059:
+  1362                           
+  1363                           ;JordTermometerStyreBox.c: 173:     wait(13);
+  1364     07B3  300D               	movlw	13
+  1365     07B4  00F0               	movwf	wait@time
+  1366     07B5  3000               	movlw	0
+  1367     07B6  00F1               	movwf	wait@time+1
+  1368     07B7  243C               	fcall	_wait
+  1369     07B8                     l1061:
+  1370                           
+  1371                           ;JordTermometerStyreBox.c: 174:     Expected_check_bit ^= PORTAbits.RA3;
+  1372     07B8  1283               	bcf	3,5	;RP0=0, select bank0
+  1373     07B9  1303               	bcf	3,6	;RP1=0, select bank0
+  1374     07BA  0C05               	rrf	5,w	;volatile
+  1375     07BB  00A0               	movwf	??_readMessage
+  1376     07BC  0CA0               	rrf	??_readMessage,f
+  1377     07BD  0C20               	rrf	??_readMessage,w
+  1378     07BE  3901               	andlw	1
+  1379     07BF  00FF               	movwf	btemp+1
+  1380     07C0  087F               	movf	btemp+1,w
+  1381     07C1  06A7               	xorwf	readMessage@Expected_check_bit,f
+  1382     07C2                     l1063:
+  1383                           
+  1384                           ;JordTermometerStyreBox.c: 175:     PORTAbits.RA4 = 0;
+  1385     07C2  1205               	bcf	5,4	;volatile
+  1386     07C3                     l1065:
+  1387                           
+  1388                           ;JordTermometerStyreBox.c: 177:     wait(26);
+  1389     07C3  301A               	movlw	26
+  1390     07C4  00F0               	movwf	wait@time
+  1391     07C5  3000               	movlw	0
+  1392     07C6  00F1               	movwf	wait@time+1
+  1393     07C7  243C               	fcall	_wait
+  1394     07C8                     l1067:
+  1395                           
+  1396                           ;JordTermometerStyreBox.c: 179:     CommandLCD(0b10000000);
+  1397     07C8  3080               	movlw	128
+  1398     07C9  247B               	fcall	_CommandLCD
+  1399     07CA                     l1069:
+  1400                           
+  1401                           ;JordTermometerStyreBox.c: 180:     writeChar(Termometer_id + '0');
+  1402     07CA  1283               	bcf	3,5	;RP0=0, select bank0
+  1403     07CB  1303               	bcf	3,6	;RP1=0, select bank0
+  1404     07CC  082A               	movf	readMessage@Termometer_id,w
+  1405     07CD  3E30               	addlw	48
+  1406     07CE  2461               	fcall	_writeChar
+  1407     07CF                     l1071:
+  1408                           
+  1409                           ;JordTermometerStyreBox.c: 182:     CommandLCD(0b10001100);
+  1410     07CF  308C               	movlw	140
+  1411     07D0  247B               	fcall	_CommandLCD
+  1412     07D1                     l1073:
+  1413                           
+  1414                           ;JordTermometerStyreBox.c: 183:     if (Batt_status >= 3) {
+  1415     07D1  1283               	bcf	3,5	;RP0=0, select bank0
+  1416     07D2  1303               	bcf	3,6	;RP1=0, select bank0
+  1417     07D3  0829               	movf	readMessage@Batt_status+1,w
+  1418     07D4  3A80               	xorlw	128
+  1419     07D5  00FF               	movwf	btemp+1
+  1420     07D6  3080               	movlw	128
+  1421     07D7  027F               	subwf	btemp+1,w
+  1422     07D8  1D03               	skipz
+  1423     07D9  2FDC               	goto	u205
+  1424     07DA  3003               	movlw	3
+  1425     07DB  0228               	subwf	readMessage@Batt_status,w
+  1426     07DC                     u205:
+  1427     07DC  1C03               	skipc
+  1428     07DD  2FDF               	goto	u201
+  1429     07DE  2FE0               	goto	u200
+  1430     07DF                     u201:
+  1431     07DF  2FE5               	goto	l1077
+  1432     07E0                     u200:
+  1433     07E0                     l1075:
+  1434                           
+  1435                           ;JordTermometerStyreBox.c: 184:         writeString("Okay", 4);
+  1436     07E0  3004               	movlw	4
+  1437     07E1  00F5               	movwf	writeString@length
+  1438     07E2  302D               	movlw	(low ((STR_1-__stringbase)| (0+32768)))& (0+255)
+  1439     07E3  244E               	fcall	_writeString
+  1440                           
+  1441                           ;JordTermometerStyreBox.c: 185:     } else if (Batt_status < 1) {
+  1442     07E4  2FFD               	goto	l46
+  1443     07E5                     l1077:
+  1444     07E5  1283               	bcf	3,5	;RP0=0, select bank0
+  1445     07E6  1303               	bcf	3,6	;RP1=0, select bank0
+  1446     07E7  0829               	movf	readMessage@Batt_status+1,w
+  1447     07E8  3A80               	xorlw	128
+  1448     07E9  00FF               	movwf	btemp+1
+  1449     07EA  3080               	movlw	128
+  1450     07EB  027F               	subwf	btemp+1,w
+  1451     07EC  1D03               	skipz
+  1452     07ED  2FF0               	goto	u215
+  1453     07EE  3001               	movlw	1
+  1454     07EF  0228               	subwf	readMessage@Batt_status,w
+  1455     07F0                     u215:
+  1456     07F0  1803               	skipnc
+  1457     07F1  2FF3               	goto	u211
+  1458     07F2  2FF4               	goto	u210
+  1459     07F3                     u211:
+  1460     07F3  2FF9               	goto	l1081
+  1461     07F4                     u210:
+  1462     07F4                     l1079:
+  1463                           
+  1464                           ;JordTermometerStyreBox.c: 186:         writeString(" Lav", 4);
+  1465     07F4  3004               	movlw	4
+  1466     07F5  00F5               	movwf	writeString@length
+  1467     07F6  3028               	movlw	(low ((STR_2-__stringbase)| (0+32768)))& (0+255)
+  1468     07F7  244E               	fcall	_writeString
+  1469                           
+  1470                           ;JordTermometerStyreBox.c: 187:     } else {
+  1471     07F8  2FFD               	goto	l46
+  1472     07F9                     l1081:
+  1473                           
+  1474                           ;JordTermometerStyreBox.c: 188:         writeString("Fejl", 4);
+  1475     07F9  3004               	movlw	4
+  1476     07FA  00F5               	movwf	writeString@length
+  1477     07FB  3023               	movlw	(low ((STR_3-__stringbase)| (0+32768)))& (0+255)
+  1478     07FC  244E               	fcall	_writeString
+  1479     07FD                     l46:
+  1480     07FD  0008               	return
+  1481     07FE                     __end_of_readMessage:
+  1482                           
+  1483                           	psect	text2
+  1484     044E                     __ptext2:	
+  1485 ;; *************** function _writeString *****************
+  1486 ;; Defined at:
+  1487 ;;		line 84 in file "JordTermometerStyreBox.c"
+  1488 ;; Parameters:    Size  Location     Type
+  1489 ;;  string          1    wreg     PTR unsigned char 
+  1490 ;;		 -> STR_7(8), STR_6(9), STR_5(8), STR_4(9), 
+  1491 ;;		 -> STR_3(5), STR_2(5), STR_1(5), 
+  1492 ;;  length          1    5[COMMON] unsigned char 
+  1493 ;; Auto vars:     Size  Location     Type
+  1494 ;;  string          1    7[COMMON] PTR unsigned char 
+  1495 ;;		 -> STR_7(8), STR_6(9), STR_5(8), STR_4(9), 
+  1496 ;;		 -> STR_3(5), STR_2(5), STR_1(5), 
+  1497 ;;  i               1    6[COMMON] unsigned char 
+  1498 ;; Return value:  Size  Location     Type
+  1499 ;;                  1    wreg      void 
+  1500 ;; Registers used:
+  1501 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
+  1502 ;; Tracked objects:
+  1503 ;;		On entry : 0/0
+  1504 ;;		On exit  : 0/0
+  1505 ;;		Unchanged: 0/0
+  1506 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1507 ;;      Params:         1       0       0       0
+  1508 ;;      Locals:         2       0       0       0
+  1509 ;;      Temps:          0       0       0       0
+  1510 ;;      Totals:         3       0       0       0
+  1511 ;;Total ram usage:        3 bytes
+  1512 ;; Hardware stack levels used: 1
+  1513 ;; Hardware stack levels required when called: 2
+  1514 ;; This function calls:
+  1515 ;;		_writeChar
+  1516 ;; This function is called by:
+  1517 ;;		_readMessage
+  1518 ;;		_main
+  1519 ;; This function uses a non-reentrant model
+  1520 ;;
+  1521                           
+  1522     044E                     _writeString:	
+  1523                           ;psect for function _writeString
+  1524                           
+  1525                           
+  1526                           ;incstack = 0
+  1527                           ; Regs used in _writeString: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
+  1528                           ;writeString@string stored from wreg
+  1529     044E  00F7               	movwf	writeString@string
+  1530     044F                     l929:
+  1531                           
+  1532                           ;JordTermometerStyreBox.c: 85:     for (unsigned char i = 0; i < length; i++) {
+  1533     044F  01F6               	clrf	writeString@i
+  1534     0450  2C5A               	goto	l935
+  1535     0451                     l931:
+  1536                           
+  1537                           ;JordTermometerStyreBox.c: 86:         writeChar(string[i]);
+  1538     0451  0876               	movf	writeString@i,w
+  1539     0452  0777               	addwf	writeString@string,w
+  1540     0453  0084               	movwf	4
+  1541     0454  2001               	fcall	stringdir
+  1542     0455  2461               	fcall	_writeChar
+  1543     0456                     l933:
+  1544                           
+  1545                           ;JordTermometerStyreBox.c: 87:     }
+  1546     0456  3001               	movlw	1
+  1547     0457  00FF               	movwf	btemp+1
+  1548     0458  087F               	movf	btemp+1,w
+  1549     0459  07F6               	addwf	writeString@i,f
+  1550     045A                     l935:
+  1551     045A  0875               	movf	writeString@length,w
+  1552     045B  0276               	subwf	writeString@i,w
+  1553     045C  1C03               	skipc
+  1554     045D  2C5F               	goto	u191
+  1555     045E  2C60               	goto	u190
+  1556     045F                     u191:
+  1557     045F  2C51               	goto	l931
+  1558     0460                     u190:
+  1559     0460                     l39:
+  1560     0460  0008               	return
+  1561     0461                     __end_of_writeString:
+  1562                           
+  1563                           	psect	text3
+  1564     0461                     __ptext3:	
+  1565 ;; *************** function _writeChar *****************
+  1566 ;; Defined at:
+  1567 ;;		line 70 in file "JordTermometerStyreBox.c"
+  1568 ;; Parameters:    Size  Location     Type
+  1569 ;;  character       1    wreg     unsigned char 
+  1570 ;; Auto vars:     Size  Location     Type
+  1571 ;;  character       1    4[COMMON] unsigned char 
+  1572 ;; Return value:  Size  Location     Type
+  1573 ;;                  1    wreg      void 
+  1574 ;; Registers used:
+  1575 ;;		wreg, status,2, status,0, pclath, cstack
+  1576 ;; Tracked objects:
+  1577 ;;		On entry : 0/0
+  1578 ;;		On exit  : 0/0
+  1579 ;;		Unchanged: 0/0
+  1580 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1581 ;;      Params:         0       0       0       0
+  1582 ;;      Locals:         1       0       0       0
+  1583 ;;      Temps:          0       0       0       0
+  1584 ;;      Totals:         1       0       0       0
+  1585 ;;Total ram usage:        1 bytes
+  1586 ;; Hardware stack levels used: 1
+  1587 ;; Hardware stack levels required when called: 1
+  1588 ;; This function calls:
+  1589 ;;		_wait
+  1590 ;; This function is called by:
+  1591 ;;		_writeString
+  1592 ;;		_readMessage
+  1593 ;;		_main
+  1594 ;; This function uses a non-reentrant model
+  1595 ;;
+  1596                           
+  1597     0461                     _writeChar:	
+  1598                           ;psect for function _writeChar
+  1599                           
+  1600                           
+  1601                           ;incstack = 0
+  1602                           ; Regs used in _writeChar: [wreg+status,2+status,0+pclath+cstack]
+  1603                           ;writeChar@character stored from wreg
+  1604     0461  00F4               	movwf	writeChar@character
+  1605     0462                     l899:
+  1606                           
+  1607                           ;JordTermometerStyreBox.c: 71:     PORTA = 0b00000001;
+  1608     0462  3001               	movlw	1
+  1609     0463  1283               	bcf	3,5	;RP0=0, select bank0
+  1610     0464  1303               	bcf	3,6	;RP1=0, select bank0
+  1611     0465  0085               	movwf	5	;volatile
+  1612                           
+  1613                           ;JordTermometerStyreBox.c: 72:     PORTB = character;
+  1614     0466  0874               	movf	writeChar@character,w
+  1615     0467  0086               	movwf	6	;volatile
+  1616     0468                     l901:
+  1617                           
+  1618                           ;JordTermometerStyreBox.c: 74:     wait(50);
+  1619     0468  3032               	movlw	50
+  1620     0469  00F0               	movwf	wait@time
+  1621     046A  3000               	movlw	0
+  1622     046B  00F1               	movwf	wait@time+1
+  1623     046C  243C               	fcall	_wait
+  1624     046D                     l903:
+  1625                           
+  1626                           ;JordTermometerStyreBox.c: 76:     PORTA = 0b00000101;
+  1627     046D  3005               	movlw	5
+  1628     046E  1283               	bcf	3,5	;RP0=0, select bank0
+  1629     046F  1303               	bcf	3,6	;RP1=0, select bank0
+  1630     0470  0085               	movwf	5	;volatile
+  1631                           
+  1632                           ;JordTermometerStyreBox.c: 78:     wait(50);
+  1633     0471  3032               	movlw	50
+  1634     0472  00F0               	movwf	wait@time
+  1635     0473  3000               	movlw	0
+  1636     0474  00F1               	movwf	wait@time+1
+  1637     0475  243C               	fcall	_wait
+  1638     0476                     l905:
+  1639                           
+  1640                           ;JordTermometerStyreBox.c: 80:     PORTA = 0b00000001;
+  1641     0476  3001               	movlw	1
+  1642     0477  1283               	bcf	3,5	;RP0=0, select bank0
+  1643     0478  1303               	bcf	3,6	;RP1=0, select bank0
+  1644     0479  0085               	movwf	5	;volatile
+  1645     047A                     l33:
+  1646     047A  0008               	return
+  1647     047B                     __end_of_writeChar:
+  1648                           
+  1649                           	psect	text4
+  1650     047B                     __ptext4:	
+  1651 ;; *************** function _CommandLCD *****************
+  1652 ;; Defined at:
+  1653 ;;		line 49 in file "JordTermometerStyreBox.c"
+  1654 ;; Parameters:    Size  Location     Type
+  1655 ;;  command         1    wreg     unsigned char 
+  1656 ;; Auto vars:     Size  Location     Type
+  1657 ;;  command         1    4[COMMON] unsigned char 
+  1658 ;; Return value:  Size  Location     Type
+  1659 ;;                  1    wreg      void 
+  1660 ;; Registers used:
+  1661 ;;		wreg, status,2, status,0, pclath, cstack
+  1662 ;; Tracked objects:
+  1663 ;;		On entry : 0/0
+  1664 ;;		On exit  : 0/0
+  1665 ;;		Unchanged: 0/0
+  1666 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1667 ;;      Params:         0       0       0       0
+  1668 ;;      Locals:         1       0       0       0
+  1669 ;;      Temps:          0       0       0       0
+  1670 ;;      Totals:         1       0       0       0
+  1671 ;;Total ram usage:        1 bytes
+  1672 ;; Hardware stack levels used: 1
+  1673 ;; Hardware stack levels required when called: 1
+  1674 ;; This function calls:
+  1675 ;;		_wait
+  1676 ;; This function is called by:
+  1677 ;;		_readMessage
+  1678 ;;		_main
+  1679 ;; This function uses a non-reentrant model
+  1680 ;;
+  1681                           
+  1682     047B                     _CommandLCD:	
+  1683                           ;psect for function _CommandLCD
+  1684                           
+  1685                           
+  1686                           ;incstack = 0
+  1687                           ; Regs used in _CommandLCD: [wreg+status,2+status,0+pclath+cstack]
+  1688                           ;CommandLCD@command stored from wreg
+  1689     047B  00F4               	movwf	CommandLCD@command
+  1690     047C                     l909:
+  1691                           
+  1692                           ;JordTermometerStyreBox.c: 50:     PORTB = command & 0xFF;
+  1693     047C  0874               	movf	CommandLCD@command,w
+  1694     047D  1283               	bcf	3,5	;RP0=0, select bank0
+  1695     047E  1303               	bcf	3,6	;RP1=0, select bank0
+  1696     047F  0086               	movwf	6	;volatile
+  1697     0480                     l911:
+  1698                           
+  1699                           ;JordTermometerStyreBox.c: 52:     if (PORTA != 0x00) {
+  1700     0480  0805               	movf	5,w	;volatile
+  1701     0481  1903               	btfsc	3,2
+  1702     0482  2C84               	goto	u181
+  1703     0483  2C85               	goto	u180
+  1704     0484                     u181:
+  1705     0484  2C8B               	goto	l917
+  1706     0485                     u180:
+  1707     0485                     l913:
+  1708                           
+  1709                           ;JordTermometerStyreBox.c: 53:         PORTA = 0x00;
+  1710     0485  0185               	clrf	5	;volatile
+  1711     0486                     l915:
+  1712                           
+  1713                           ;JordTermometerStyreBox.c: 54:         wait(50);
+  1714     0486  3032               	movlw	50
+  1715     0487  00F0               	movwf	wait@time
+  1716     0488  3000               	movlw	0
+  1717     0489  00F1               	movwf	wait@time+1
+  1718     048A  243C               	fcall	_wait
+  1719     048B                     l917:
+  1720                           
+  1721                           ;JordTermometerStyreBox.c: 57:     wait(10);
+  1722     048B  300A               	movlw	10
+  1723     048C  00F0               	movwf	wait@time
+  1724     048D  3000               	movlw	0
+  1725     048E  00F1               	movwf	wait@time+1
+  1726     048F  243C               	fcall	_wait
+  1727     0490                     l919:
+  1728                           
+  1729                           ;JordTermometerStyreBox.c: 59:     PORTAbits.RA2 = 1;
+  1730     0490  1283               	bcf	3,5	;RP0=0, select bank0
+  1731     0491  1303               	bcf	3,6	;RP1=0, select bank0
+  1732     0492  1505               	bsf	5,2	;volatile
+  1733     0493                     l921:
+  1734                           
+  1735                           ;JordTermometerStyreBox.c: 61:     wait(50);
+  1736     0493  3032               	movlw	50
+  1737     0494  00F0               	movwf	wait@time
+  1738     0495  3000               	movlw	0
+  1739     0496  00F1               	movwf	wait@time+1
+  1740     0497  243C               	fcall	_wait
+  1741     0498                     l923:
+  1742                           
+  1743                           ;JordTermometerStyreBox.c: 63:     PORTAbits.RA2 = 0;
+  1744     0498  1283               	bcf	3,5	;RP0=0, select bank0
+  1745     0499  1303               	bcf	3,6	;RP1=0, select bank0
+  1746     049A  1105               	bcf	5,2	;volatile
+  1747     049B                     l925:
+  1748                           
+  1749                           ;JordTermometerStyreBox.c: 65:     wait(100);
+  1750     049B  3064               	movlw	100
+  1751     049C  00F0               	movwf	wait@time
+  1752     049D  3000               	movlw	0
+  1753     049E  00F1               	movwf	wait@time+1
+  1754     049F  243C               	fcall	_wait
+  1755     04A0                     l30:
+  1756     04A0  0008               	return
+  1757     04A1                     __end_of_CommandLCD:
+  1758                           
+  1759                           	psect	text5
+  1760     04E4                     __ptext5:	
+  1761 ;; *************** function _checkSignal *****************
+  1762 ;; Defined at:
+  1763 ;;		line 193 in file "JordTermometerStyreBox.c"
+  1764 ;; Parameters:    Size  Location     Type
+  1765 ;;		None
+  1766 ;; Auto vars:     Size  Location     Type
+  1767 ;;  i               2    8[COMMON] int 
+  1768 ;;  i               2    6[COMMON] int 
+  1769 ;;  i               2    4[COMMON] int 
+  1770 ;; Return value:  Size  Location     Type
+  1771 ;;                  1    wreg      unsigned char 
+  1772 ;; Registers used:
+  1773 ;;		wreg, status,2, status,0, btemp+1, pclath, cstack
+  1774 ;; Tracked objects:
+  1775 ;;		On entry : 0/0
+  1776 ;;		On exit  : 0/0
+  1777 ;;		Unchanged: 0/0
+  1778 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1779 ;;      Params:         0       0       0       0
+  1780 ;;      Locals:         6       0       0       0
+  1781 ;;      Temps:          0       0       0       0
+  1782 ;;      Totals:         6       0       0       0
+  1783 ;;Total ram usage:        6 bytes
+  1784 ;; Hardware stack levels used: 1
+  1785 ;; Hardware stack levels required when called: 1
+  1786 ;; This function calls:
+  1787 ;;		_wait
+  1788 ;; This function is called by:
+  1789 ;;		_main
+  1790 ;; This function uses a non-reentrant model
+  1791 ;;
+  1792                           
+  1793     04E4                     _checkSignal:	
+  1794                           ;psect for function _checkSignal
+  1795                           
+  1796     04E4                     l1083:	
+  1797                           ;incstack = 0
+  1798                           ; Regs used in _checkSignal: [wreg+status,2+status,0+btemp+1+pclath+cstack]
+  1799                           
+  1800                           
+  1801                           ;JordTermometerStyreBox.c: 194:     for (int i = 0; i < 15; i++) {
+  1802     04E4  01F4               	clrf	checkSignal@i
+  1803     04E5  01F5               	clrf	checkSignal@i+1
+  1804     04E6                     l49:
+  1805                           
+  1806                           ;JordTermometerStyreBox.c: 195:         if (!PORTAbits.RA3) {
+  1807     04E6  1283               	bcf	3,5	;RP0=0, select bank0
+  1808     04E7  1303               	bcf	3,6	;RP1=0, select bank0
+  1809     04E8  1985               	btfsc	5,3	;volatile
+  1810     04E9  2CEB               	goto	u221
+  1811     04EA  2CEC               	goto	u220
+  1812     04EB                     u221:
+  1813     04EB  2CEE               	goto	l1093
+  1814     04EC                     u220:
+  1815     04EC                     l1089:
+  1816                           
+  1817                           ;JordTermometerStyreBox.c: 196:             return 0;
+  1818     04EC  3000               	movlw	0
+  1819     04ED  2D51               	goto	l52
+  1820     04EE                     l1093:
+  1821                           
+  1822                           ;JordTermometerStyreBox.c: 198:     }
+  1823     04EE  3001               	movlw	1
+  1824     04EF  07F4               	addwf	checkSignal@i,f
+  1825     04F0  1803               	skipnc
+  1826     04F1  0AF5               	incf	checkSignal@i+1,f
+  1827     04F2  3000               	movlw	0
+  1828     04F3  07F5               	addwf	checkSignal@i+1,f
+  1829     04F4                     l1095:
+  1830     04F4  0875               	movf	checkSignal@i+1,w
+  1831     04F5  3A80               	xorlw	128
+  1832     04F6  00FF               	movwf	btemp+1
+  1833     04F7  3080               	movlw	128
+  1834     04F8  027F               	subwf	btemp+1,w
+  1835     04F9  1D03               	skipz
+  1836     04FA  2CFD               	goto	u235
+  1837     04FB  300F               	movlw	15
+  1838     04FC  0274               	subwf	checkSignal@i,w
+  1839     04FD                     u235:
+  1840     04FD  1C03               	skipc
+  1841     04FE  2D00               	goto	u231
+  1842     04FF  2D01               	goto	u230
+  1843     0500                     u231:
+  1844     0500  2CE6               	goto	l49
+  1845     0501                     u230:
+  1846     0501                     l53:
+  1847     0501  1283               	bcf	3,5	;RP0=0, select bank0
+  1848     0502  1303               	bcf	3,6	;RP1=0, select bank0
+  1849     0503  1985               	btfsc	5,3	;volatile
+  1850     0504  2D06               	goto	u241
+  1851     0505  2D07               	goto	u240
+  1852     0506                     u241:
+  1853     0506  2D01               	goto	l53
+  1854     0507                     u240:
+  1855     0507                     l1097:
+  1856                           
+  1857                           ;JordTermometerStyreBox.c: 200:     for (int i = 0; i < 7; i++) {
+  1858     0507  01F6               	clrf	checkSignal@i_84
+  1859     0508  01F7               	clrf	checkSignal@i_84+1
+  1860     0509                     l56:
+  1861                           
+  1862                           ;JordTermometerStyreBox.c: 201:         if (PORTAbits.RA3) {
+  1863     0509  1283               	bcf	3,5	;RP0=0, select bank0
+  1864     050A  1303               	bcf	3,6	;RP1=0, select bank0
+  1865     050B  1D85               	btfss	5,3	;volatile
+  1866     050C  2D0E               	goto	u251
+  1867     050D  2D0F               	goto	u250
+  1868     050E                     u251:
+  1869     050E  2D10               	goto	l1107
+  1870     050F                     u250:
+  1871     050F  2CEC               	goto	l1089
+  1872     0510                     l1107:
+  1873                           
+  1874                           ;JordTermometerStyreBox.c: 204:     }
+  1875     0510  3001               	movlw	1
+  1876     0511  07F6               	addwf	checkSignal@i_84,f
+  1877     0512  1803               	skipnc
+  1878     0513  0AF7               	incf	checkSignal@i_84+1,f
+  1879     0514  3000               	movlw	0
+  1880     0515  07F7               	addwf	checkSignal@i_84+1,f
+  1881     0516                     l1109:
+  1882     0516  0877               	movf	checkSignal@i_84+1,w
+  1883     0517  3A80               	xorlw	128
+  1884     0518  00FF               	movwf	btemp+1
+  1885     0519  3080               	movlw	128
+  1886     051A  027F               	subwf	btemp+1,w
+  1887     051B  1D03               	skipz
+  1888     051C  2D1F               	goto	u265
+  1889     051D  3007               	movlw	7
+  1890     051E  0276               	subwf	checkSignal@i_84,w
+  1891     051F                     u265:
+  1892     051F  1C03               	skipc
+  1893     0520  2D22               	goto	u261
+  1894     0521  2D23               	goto	u260
+  1895     0522                     u261:
+  1896     0522  2D09               	goto	l56
+  1897     0523                     u260:
+  1898     0523                     l59:
+  1899     0523  1283               	bcf	3,5	;RP0=0, select bank0
+  1900     0524  1303               	bcf	3,6	;RP1=0, select bank0
+  1901     0525  1D85               	btfss	5,3	;volatile
+  1902     0526  2D28               	goto	u271
+  1903     0527  2D29               	goto	u270
+  1904     0528                     u271:
+  1905     0528  2D23               	goto	l59
+  1906     0529                     u270:
+  1907     0529                     l1111:
+  1908                           
+  1909                           ;JordTermometerStyreBox.c: 206:     for (int i = 0; i < 7; i++) {
+  1910     0529  01F8               	clrf	checkSignal@i_85
+  1911     052A  01F9               	clrf	checkSignal@i_85+1
+  1912     052B                     l62:
+  1913                           
+  1914                           ;JordTermometerStyreBox.c: 207:         if (!PORTAbits.RA3) {
+  1915     052B  1283               	bcf	3,5	;RP0=0, select bank0
+  1916     052C  1303               	bcf	3,6	;RP1=0, select bank0
+  1917     052D  1985               	btfsc	5,3	;volatile
+  1918     052E  2D30               	goto	u281
+  1919     052F  2D31               	goto	u280
+  1920     0530                     u281:
+  1921     0530  2D32               	goto	l1121
+  1922     0531                     u280:
+  1923     0531  2CEC               	goto	l1089
+  1924     0532                     l1121:
+  1925                           
+  1926                           ;JordTermometerStyreBox.c: 210:     }
+  1927     0532  3001               	movlw	1
+  1928     0533  07F8               	addwf	checkSignal@i_85,f
+  1929     0534  1803               	skipnc
+  1930     0535  0AF9               	incf	checkSignal@i_85+1,f
+  1931     0536  3000               	movlw	0
+  1932     0537  07F9               	addwf	checkSignal@i_85+1,f
+  1933     0538                     l1123:
+  1934     0538  0879               	movf	checkSignal@i_85+1,w
+  1935     0539  3A80               	xorlw	128
+  1936     053A  00FF               	movwf	btemp+1
+  1937     053B  3080               	movlw	128
+  1938     053C  027F               	subwf	btemp+1,w
+  1939     053D  1D03               	skipz
+  1940     053E  2D41               	goto	u295
+  1941     053F  3007               	movlw	7
+  1942     0540  0278               	subwf	checkSignal@i_85,w
+  1943     0541                     u295:
+  1944     0541  1C03               	skipc
+  1945     0542  2D44               	goto	u291
+  1946     0543  2D45               	goto	u290
+  1947     0544                     u291:
+  1948     0544  2D2B               	goto	l62
+  1949     0545                     u290:
+  1950     0545                     l65:
+  1951     0545  1283               	bcf	3,5	;RP0=0, select bank0
+  1952     0546  1303               	bcf	3,6	;RP1=0, select bank0
+  1953     0547  1985               	btfsc	5,3	;volatile
+  1954     0548  2D4A               	goto	u301
+  1955     0549  2D4B               	goto	u300
+  1956     054A                     u301:
+  1957     054A  2D45               	goto	l65
+  1958     054B                     u300:
+  1959     054B                     l1125:
+  1960                           
+  1961                           ;JordTermometerStyreBox.c: 212:     wait(13);
+  1962     054B  300D               	movlw	13
+  1963     054C  00F0               	movwf	wait@time
+  1964     054D  3000               	movlw	0
+  1965     054E  00F1               	movwf	wait@time+1
+  1966     054F  243C               	fcall	_wait
+  1967     0550                     l1127:
+  1968                           
+  1969                           ;JordTermometerStyreBox.c: 214:     return 1;
+  1970     0550  3001               	movlw	1
+  1971     0551                     l52:
+  1972     0551  0008               	return
+  1973     0552                     __end_of_checkSignal:
+  1974                           
+  1975                           	psect	text6
+  1976     043C                     __ptext6:	
+  1977 ;; *************** function _wait *****************
+  1978 ;; Defined at:
+  1979 ;;		line 41 in file "JordTermometerStyreBox.c"
+  1980 ;; Parameters:    Size  Location     Type
+  1981 ;;  time            2    0[COMMON] unsigned int 
+  1982 ;; Auto vars:     Size  Location     Type
+  1983 ;;  t               2    2[COMMON] unsigned int 
+  1984 ;; Return value:  Size  Location     Type
+  1985 ;;                  1    wreg      void 
+  1986 ;; Registers used:
+  1987 ;;		wreg, status,2, status,0
+  1988 ;; Tracked objects:
+  1989 ;;		On entry : 0/0
+  1990 ;;		On exit  : 0/0
+  1991 ;;		Unchanged: 0/0
+  1992 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1993 ;;      Params:         2       0       0       0
+  1994 ;;      Locals:         2       0       0       0
+  1995 ;;      Temps:          0       0       0       0
+  1996 ;;      Totals:         4       0       0       0
+  1997 ;;Total ram usage:        4 bytes
+  1998 ;; Hardware stack levels used: 1
+  1999 ;; This function calls:
+  2000 ;;		Nothing
+  2001 ;; This function is called by:
+  2002 ;;		_CommandLCD
+  2003 ;;		_writeChar
+  2004 ;;		_readMessage
+  2005 ;;		_checkSignal
+  2006 ;;		_main
+  2007 ;; This function uses a non-reentrant model
+  2008 ;;
+  2009                           
+  2010     043C                     _wait:	
+  2011                           ;psect for function _wait
+  2012                           
+  2013     043C                     l893:	
+  2014                           ;incstack = 0
+  2015                           ; Regs used in _wait: [wreg+status,2+status,0]
+  2016                           
+  2017                           
+  2018                           ;JordTermometerStyreBox.c: 42:     unsigned int t = time;
+  2019     043C  0871               	movf	wait@time+1,w
+  2020     043D  00F3               	movwf	wait@t+1
+  2021     043E  0870               	movf	wait@time,w
+  2022     043F  00F2               	movwf	wait@t
+  2023                           
+  2024                           ;JordTermometerStyreBox.c: 43:     while (t > 0) {
+  2025     0440  2C47               	goto	l897
+  2026     0441                     l895:
+  2027                           
+  2028                           ;JordTermometerStyreBox.c: 44:         t--;
+  2029     0441  3001               	movlw	1
+  2030     0442  02F2               	subwf	wait@t,f
+  2031     0443  3000               	movlw	0
+  2032     0444  1C03               	skipc
+  2033     0445  03F3               	decf	wait@t+1,f
+  2034     0446  02F3               	subwf	wait@t+1,f
+  2035     0447                     l897:
+  2036                           
+  2037                           ;JordTermometerStyreBox.c: 43:     while (t > 0) {
+  2038     0447  0872               	movf	wait@t,w
+  2039     0448  0473               	iorwf	wait@t+1,w
+  2040     0449  1D03               	btfss	3,2
+  2041     044A  2C4C               	goto	u171
+  2042     044B  2C4D               	goto	u170
+  2043     044C                     u171:
+  2044     044C  2C41               	goto	l895
+  2045     044D                     u170:
+  2046     044D                     l26:
+  2047     044D  0008               	return
+  2048     044E                     __end_of_wait:
+  2049                           
+  2050                           	psect	text7
+  2051     0429                     __ptext7:	
+  2052 ;; *************** function _TimerInit *****************
+  2053 ;; Defined at:
+  2054 ;;		line 35 in file "JordTermometerStyreBox.c"
+  2055 ;; Parameters:    Size  Location     Type
+  2056 ;;		None
+  2057 ;; Auto vars:     Size  Location     Type
+  2058 ;;		None
+  2059 ;; Return value:  Size  Location     Type
+  2060 ;;                  1    wreg      void 
+  2061 ;; Registers used:
+  2062 ;;		wreg
+  2063 ;; Tracked objects:
+  2064 ;;		On entry : 0/0
+  2065 ;;		On exit  : 0/0
+  2066 ;;		Unchanged: 0/0
+  2067 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  2068 ;;      Params:         0       0       0       0
+  2069 ;;      Locals:         0       0       0       0
+  2070 ;;      Temps:          0       0       0       0
+  2071 ;;      Totals:         0       0       0       0
+  2072 ;;Total ram usage:        0 bytes
+  2073 ;; Hardware stack levels used: 1
+  2074 ;; This function calls:
+  2075 ;;		Nothing
+  2076 ;; This function is called by:
+  2077 ;;		_main
+  2078 ;; This function uses a non-reentrant model
+  2079 ;;
+  2080                           
+  2081     0429                     _TimerInit:	
+  2082                           ;psect for function _TimerInit
+  2083                           
+  2084     0429                     l675:	
+  2085                           ;incstack = 0
+  2086                           ; Regs used in _TimerInit: [wreg]
+  2087                           
+  2088                           
+  2089                           ;JordTermometerStyreBox.c: 36:     OPTION_REG = 0b11000011;
+  2090     0429  30C3               	movlw	195
+  2091     042A  1683               	bsf	3,5	;RP0=1, select bank1
+  2092     042B  1303               	bcf	3,6	;RP1=0, select bank1
+  2093     042C  0081               	movwf	1	;volatile
+  2094     042D                     l20:
+  2095     042D  0008               	return
+  2096     042E                     __end_of_TimerInit:
+  2097                           
+  2098                           	psect	text8
+  2099     042E                     __ptext8:	
+  2100 ;; *************** function _IOInit *****************
+  2101 ;; Defined at:
+  2102 ;;		line 27 in file "JordTermometerStyreBox.c"
+  2103 ;; Parameters:    Size  Location     Type
+  2104 ;;		None
+  2105 ;; Auto vars:     Size  Location     Type
+  2106 ;;		None
+  2107 ;; Return value:  Size  Location     Type
+  2108 ;;                  1    wreg      void 
+  2109 ;; Registers used:
+  2110 ;;		wreg, status,2
+  2111 ;; Tracked objects:
+  2112 ;;		On entry : 0/0
+  2113 ;;		On exit  : 0/0
+  2114 ;;		Unchanged: 0/0
+  2115 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  2116 ;;      Params:         0       0       0       0
+  2117 ;;      Locals:         0       0       0       0
+  2118 ;;      Temps:          0       0       0       0
+  2119 ;;      Totals:         0       0       0       0
+  2120 ;;Total ram usage:        0 bytes
+  2121 ;; Hardware stack levels used: 1
+  2122 ;; This function calls:
+  2123 ;;		Nothing
+  2124 ;; This function is called by:
+  2125 ;;		_main
+  2126 ;; This function uses a non-reentrant model
+  2127 ;;
+  2128                           
+  2129     042E                     _IOInit:	
+  2130                           ;psect for function _IOInit
+  2131                           
+  2132     042E                     l665:	
+  2133                           ;incstack = 0
+  2134                           ; Regs used in _IOInit: [wreg+status,2]
+  2135                           
+  2136                           
+  2137                           ;JordTermometerStyreBox.c: 28:     ADCON1 = 0x06;
+  2138     042E  3006               	movlw	6
+  2139     042F  1683               	bsf	3,5	;RP0=1, select bank1
+  2140     0430  1303               	bcf	3,6	;RP1=0, select bank1
+  2141     0431  009F               	movwf	31	;volatile
+  2142     0432                     l667:
+  2143                           
+  2144                           ;JordTermometerStyreBox.c: 29:     PORTA = 0;
+  2145     0432  1283               	bcf	3,5	;RP0=0, select bank0
+  2146     0433  1303               	bcf	3,6	;RP1=0, select bank0
+  2147     0434  0185               	clrf	5	;volatile
+  2148     0435                     l669:
+  2149                           
+  2150                           ;JordTermometerStyreBox.c: 30:     PORTB = 0;
+  2151     0435  0186               	clrf	6	;volatile
+  2152     0436                     l671:
+  2153                           
+  2154                           ;JordTermometerStyreBox.c: 31:     TRISB = 0;
+  2155     0436  1683               	bsf	3,5	;RP0=1, select bank1
+  2156     0437  1303               	bcf	3,6	;RP1=0, select bank1
+  2157     0438  0186               	clrf	6	;volatile
+  2158     0439                     l673:
+  2159                           
+  2160                           ;JordTermometerStyreBox.c: 32:     TRISA = 0b00001000;
+  2161     0439  3008               	movlw	8
+  2162     043A  0085               	movwf	5	;volatile
+  2163     043B                     l17:
+  2164     043B  0008               	return
+  2165     043C                     __end_of_IOInit:
+  2166     007E                     btemp	set	126	;btemp
+  2167     007E                     wtemp0	set	126
+  2168                           
+  2169                           	psect	config
+  2170                           
+  2171                           ;Config register CONFIG @ 0x2007
+  2172                           ;	Oscillator Selection bits
+  2173                           ;	FOSC = INTOSCIO, INTRC oscillator; port I/O function on both RA6/OSC2/CLKO pin and RA7
       +                          /OSC1/CLKI pin
-   830                           ;	Watchdog Timer Enable bit
-   831                           ;	WDTE = OFF, WDT disabled
-   832                           ;	Power-up Timer Enable bit
-   833                           ;	PWRTE = ON, PWRT enabled
-   834                           ;	RA5/MCLR/VPP Pin Function Select bit
-   835                           ;	MCLRE = OFF, RA5/MCLR/VPP pin function is digital I/O, MCLR internally tied to VDD
-   836                           ;	Brown-out Reset Enable bit
-   837                           ;	BOREN = OFF, BOR disabled
-   838                           ;	Low-Voltage Programming Enable bit
-   839                           ;	LVP = OFF, RB3/PGM pin has digital I/O function, HV on MCLR must be used for programmi
+  2174                           ;	Watchdog Timer Enable bit
+  2175                           ;	WDTE = OFF, WDT disabled
+  2176                           ;	Power-up Timer Enable bit
+  2177                           ;	PWRTE = ON, PWRT enabled
+  2178                           ;	RA5/MCLR/VPP Pin Function Select bit
+  2179                           ;	MCLRE = OFF, RA5/MCLR/VPP pin function is digital I/O, MCLR internally tied to VDD
+  2180                           ;	Brown-out Reset Enable bit
+  2181                           ;	BOREN = OFF, BOR disabled
+  2182                           ;	Low-Voltage Programming Enable bit
+  2183                           ;	LVP = OFF, RB3/PGM pin has digital I/O function, HV on MCLR must be used for programmi
       +                          ng
-   840                           ;	Data EE Memory Code Protection bit
-   841                           ;	CPD = OFF, Code protection off
-   842                           ;	Flash Program Memory Write Enable bits
-   843                           ;	WRT = OFF, Write protection off
-   844                           ;	In-Circuit Debugger Mode bit
-   845                           ;	DEBUG = 0x1, unprogrammed default
-   846                           ;	CCP1 Pin Selection bit
-   847                           ;	CCPMX = RB2, CCP1 function on RB2
-   848                           ;	Flash Program Memory Code Protection bit
-   849                           ;	CP = OFF, Code protection off
-   850     2007                     	org	8199
-   851     2007  3F10               	dw	16144
+  2184                           ;	Data EE Memory Code Protection bit
+  2185                           ;	CPD = OFF, Code protection off
+  2186                           ;	Flash Program Memory Write Enable bits
+  2187                           ;	WRT = OFF, Write protection off
+  2188                           ;	In-Circuit Debugger Mode bit
+  2189                           ;	DEBUG = 0x1, unprogrammed default
+  2190                           ;	CCP1 Pin Selection bit
+  2191                           ;	CCPMX = RB2, CCP1 function on RB2
+  2192                           ;	Flash Program Memory Code Protection bit
+  2193                           ;	CP = OFF, Code protection off
+  2194     2007                     	org	8199
+  2195     2007  3F10               	dw	16144
 
 Data Sizes:
-    Strings     34
+    Strings     49
     Constant    0
     Data        0
     BSS         0
@@ -876,27 +2223,30 @@ Data Sizes:
 
 Auto Spaces:
     Space          Size  Autos    Used
-    COMMON           14      8       8
-    BANK0            80      0       0
+    COMMON           14     10      10
+    BANK0            80     14      14
     BANK1            80      0       0
     BANK2            80      0       0
 
 Pointer List with Targets:
 
     writeString@string	PTR unsigned char  size(1) Largest target is 9
-		 -> STR_1(CODE[9]), STR_2(CODE[8]), STR_3(CODE[9]), STR_4(CODE[8]), 
+		 -> STR_1(CODE[5]), STR_2(CODE[5]), STR_3(CODE[5]), STR_4(CODE[9]), 
+		 -> STR_5(CODE[8]), STR_6(CODE[9]), STR_7(CODE[8]), 
 
 
 Critical Paths under _main in COMMON
 
-    _main->_writeString
+    _main->_checkSignal
+    _readMessage->_writeString
     _writeString->_writeChar
     _writeChar->_wait
     _CommandLCD->_wait
+    _checkSignal->_wait
 
 Critical Paths under _main in BANK0
 
-    None.
+    _main->_readMessage
 
 Critical Paths under _main in BANK1
 
@@ -911,29 +2261,45 @@ Call Graph Tables:
  ---------------------------------------------------------------------------------
  (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
  ---------------------------------------------------------------------------------
- (0) _main                                                 0     0      0    3512
+ (0) _main                                                 0     0      0   21973
                          _CommandLCD
                              _IOInit
+                          _TimerInit
+                        _checkSignal
+                        _readMessage
                                _wait
                           _writeChar
                         _writeString
  ---------------------------------------------------------------------------------
- (1) _writeString                                          3     2      1    1278
+ (1) _readMessage                                         14    14      0   10046
+                                              0 BANK0     14    14      0
+                         _CommandLCD
+                               _wait
+                          _writeChar
+                        _writeString
+ ---------------------------------------------------------------------------------
+ (1) _writeString                                          3     2      1    3049
                                               5 COMMON     3     2      1
                           _writeChar
  ---------------------------------------------------------------------------------
- (2) _writeChar                                            1     1      0     752
+ (2) _writeChar                                            1     1      0    2196
                                               4 COMMON     1     1      0
                                _wait
+ ---------------------------------------------------------------------------------
+ (2) _CommandLCD                                           1     1      0    2196
+                                              4 COMMON     1     1      0
+                               _wait
+ ---------------------------------------------------------------------------------
+ (1) _checkSignal                                          6     6      0    2312
+                                              4 COMMON     6     6      0
+                               _wait
+ ---------------------------------------------------------------------------------
+ (3) _wait                                                 4     2      2    2174
+                                              0 COMMON     4     2      2
+ ---------------------------------------------------------------------------------
+ (1) _TimerInit                                            0     0      0       0
  ---------------------------------------------------------------------------------
  (1) _IOInit                                               0     0      0       0
- ---------------------------------------------------------------------------------
- (1) _CommandLCD                                           1     1      0     752
-                                              4 COMMON     1     1      0
-                               _wait
- ---------------------------------------------------------------------------------
- (3) _wait                                                 4     2      2     730
-                                              0 COMMON     4     2      2
  ---------------------------------------------------------------------------------
  Estimated maximum stack depth 3
  ---------------------------------------------------------------------------------
@@ -944,11 +2310,19 @@ Call Graph Tables:
    _CommandLCD
      _wait
    _IOInit
+   _TimerInit
+   _checkSignal
+     _wait
+   _readMessage
+     _CommandLCD
+     _wait
+     _writeChar
+       _wait
+     _writeString
+       _writeChar
    _wait
    _writeChar
-     _wait
    _writeString
-     _writeChar
 
  Address spaces:
 Name               Size   Autos  Total    Cost      Usage
@@ -956,13 +2330,13 @@ BITCOMMON            E      0       0       0        0.0%
 EEDATA             100      0       0       0        0.0%
 NULL                 0      0       0       0        0.0%
 CODE                 0      0       0       0        0.0%
-COMMON               E      8       8       1       57.1%
+COMMON               E      A       A       1       71.4%
 BITSFR0              0      0       0       1        0.0%
 SFR0                 0      0       0       1        0.0%
 BITSFR1              0      0       0       2        0.0%
 SFR1                 0      0       0       2        0.0%
 STACK                0      0       0       2        0.0%
-BANK0               50      0       0       3        0.0%
+BANK0               50      E       E       3       17.5%
 BITBANK1            50      0       0       4        0.0%
 BITSFR3              0      0       0       4        0.0%
 SFR3                 0      0       0       4        0.0%
@@ -977,44 +2351,94 @@ DATA                 0      0       0      10        0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.45 build 20230818022343 
-Symbol Table                                                                                   Fri Mar 21 15:29:08 2025
+Symbol Table                                                                                   Thu Apr 10 09:59:07 2025
 
-                      pc 0002                       l13 0768                       l23 07CD  
-                     l32 078D                       l26 07A7                       l19 077A  
-                     l37 07FC                       l38 07FC                       u40 077A  
-                     u41 0779                       u50 07B2                       u51 07B1  
-                     u60 078D                       u61 078C                       fsr 0004  
-                    l600 0760                      l700 0783                      l702 0787  
-                    l710 07D6                      l720 07E5                      l712 07D8  
-                    l704 07CE                      l730 07F6                      l722 07E7  
-                    l714 07DA                      l706 07CF                      l660 0769  
-                    l732 07F8                      l724 07EB                      l716 07DC  
-                    l708 07D4                      l662 076E                      l670 079A  
-                    l726 07F0                      l718 07E1                      l664 0774  
-                    l680 07B2                      l672 07A3                      l728 07F2  
-                    l690 07C5                      l682 07B3                      l666 078F  
-                    l692 07C8                      l684 07B8                      l676 07A9  
-                    l668 0795                      l686 07BD                      l678 07AD  
-                    l688 07C0                      l696 077C                      l698 077E  
-                    fsr0 0004                     STR_1 0007                     STR_2 0021  
-                   STR_3 0010                     STR_4 0019                     _main 07CE  
-                   _wait 0769                     btemp 007E                     start 0000  
-                  ?_main 0070                    ?_wait 0070                    _PORTA 0005  
-                  _PORTB 0006                    _TRISA 0085                    _TRISB 0086  
-             _CommandLCD 07A8              _writeString 077B                    pclath 000A  
-                  wait@t 0072                    status 0003                    wtemp0 007E  
-        __initialization 07FE             __end_of_main 07FE             __end_of_wait 077B  
-                 ??_main 0078                   ??_wait 0072                   _IOInit 0760  
-            ?_CommandLCD 0070  __end_of__initialization 07FE           __pcstackCOMMON 0070  
-                ?_IOInit 0070               __pmaintext 07CE       writeChar@character 0074  
-           ?_writeString 0075               __stringtab 0001                  __ptext1 077B  
-                __ptext2 078E                  __ptext3 0760                  __ptext4 07A8  
-                __ptext5 0769     end_of_initialization 07FE        CommandLCD@command 0074  
-              _PORTAbits 0005        __end_of_writeChar 07A8             ??_CommandLCD 0074  
-           writeString@i 0077           __end_of_IOInit 0769       __end_of_CommandLCD 07CE  
-      writeString@length 0075        writeString@string 0076      start_initialization 07FE  
-               ??_IOInit 0070                ___latbits 0000                __pstrings 0001  
-            __stringbase 0006                _writeChar 078E       __end_of__stringtab 0007  
-             ?_writeChar 0070            ??_writeString 0076                 wait@time 0070  
-              stringcode 0001                 stringdir 0001                 stringtab 0001  
-            ??_writeChar 0074      __end_of_writeString 078E  
+                            pc 0002                             l20 042D                             l30 04A0  
+                           l17 043B                             l33 047A                             l26 044D  
+                           l52 0551                             l53 0501                             l62 052B  
+                           l46 07FD                             l39 0460                             l56 0509  
+                           l65 0545                             l49 04E6                             l59 0523  
+                           fsr 0004                            l901 0468                            l671 0436  
+                          l911 0480                            l903 046D                            l673 0439  
+                          l665 042E                            l921 0493                            l913 0485  
+                          l905 0476                            l667 0432                            l675 0429  
+                          l923 0498                            l915 0486                            l931 0451  
+                          l669 0435                            l925 049B                            l917 048B  
+                          l909 047C                            l933 0456                            l941 0560  
+                          l919 0490                            l935 045A                            l951 0592  
+                          l943 056A                            l929 044F                            l961 05D2  
+                          l953 05AA                            l945 0582                            l937 0552  
+                          l971 05FB                            l963 05D3                            l955 05AB  
+                          l947 0583                            l939 055B                            l893 043C  
+                          l981 0628                            l973 0600                            l965 05D8  
+                          l957 05B0                            l949 0588                            l895 0441  
+                          l991 065A                            l983 0632                            l975 060A  
+                          l967 05E2                            l959 05BA                            l897 0447  
+                          l993 0672                            l985 064A                            l977 0622  
+                          l969 05FA                            l899 0462                            l995 0673  
+                          l987 064B                            l979 0623                            l997 0678  
+                          l989 0650                            l999 0682                            u200 07E0  
+                          u201 07DF                            u210 07F4                            u211 07F3  
+                          u300 054B                            u220 04EC                            u301 054A  
+                          u221 04EB                            u205 07DC                            u230 0501  
+                          u310 04DB                            u231 0500                            u215 07F0  
+                          u311 04DA                            u240 0507                            u320 04E1  
+                          u241 0506                            u321 04E0                            u170 044D  
+                          u250 050F                            u171 044C                            u251 050E  
+                          u235 04FD                            u260 0523                            u180 0485  
+                          u261 0522                            u181 0484                            u270 0529  
+                          u190 0460                            u271 0528                            u191 045F  
+                          u280 0531                            u281 0530                            u265 051F  
+                          u290 0545                            u291 0544                            u295 0541  
+                          fsr0 0004                           l1001 069A                           l1011 06C3  
+                         l1003 069B                           l1021 06F0                           l1013 06C8  
+                         l1005 06A0                           l1111 0529                           l1031 0722  
+                         l1023 06FA                           l1015 06D2                           l1007 06AA  
+                         l1121 0532                           l1041 0762                           l1033 073A  
+                         l1025 0712                           l1017 06EA                           l1009 06C2  
+                         l1123 0538                           l1107 0510                           l1051 078B  
+                         l1043 0763                           l1035 073B                           l1027 0713  
+                         l1019 06EB                           l1131 04A1                           l1125 054B  
+                         l1109 0516                           l1061 07B8                           l1053 0790  
+                         l1045 0768                           l1037 0740                           l1029 0718  
+                         l1141 04CA                           l1133 04B5                           l1127 0550  
+                         l1071 07CF                           l1063 07C2                           l1055 079A  
+                         l1047 0772                           l1039 074A                           l1143 04CC  
+                         l1135 04B9                           l1081 07F9                           l1073 07D1  
+                         l1065 07C3                           l1057 07B2                           l1049 078A  
+                         l1145 04D5                           l1137 04BF                           l1083 04E4  
+                         l1075 07E0                           l1067 07C8                           l1059 07B3  
+                         l1147 04DB                           l1139 04C4                           l1093 04EE  
+                         l1077 07E5                           l1069 07CA                           l1149 04E1  
+                         l1095 04F4                           l1079 07F4                           l1097 0507  
+                         l1089 04EC                           STR_1 0033                           STR_2 002E  
+                         STR_3 0029                           STR_4 0007                           STR_5 0021  
+                         STR_6 0010                           STR_7 0019                           _main 04A1  
+                         _wait 043C                           btemp 007E                           start 0000  
+                 ?_readMessage 0070                          ?_main 0070                          ?_wait 0070  
+                        _PORTA 0005                          _PORTB 0006                          _TRISA 0085  
+                        _TRISB 0086                     _CommandLCD 047B                    _writeString 044E  
+                        pclath 000A                          wait@t 0072                          status 0003  
+                        wtemp0 007E                __initialization 07FE                   __end_of_main 04E4  
+                 __end_of_wait 044E                         ??_main 007A                         ??_wait 0072  
+                       _ADCON1 009F                         _IOInit 042E                    ?_CommandLCD 0070  
+      __end_of__initialization 07FE         readMessage@Batt_status 0028                 __pcstackCOMMON 0070  
+                      ?_IOInit 0070              __end_of_TimerInit 042E                     __pmaintext 04A1  
+     readMessage@Termometer_id 002A             writeChar@character 0074                   ?_writeString 0075  
+                   __stringtab 0001                  ??_checkSignal 0074                        __ptext1 0552  
+                      __ptext2 044E                        __ptext3 0461                        __ptext4 047B  
+                      __ptext5 04E4                        __ptext6 043C                        __ptext7 0429  
+                      __ptext8 042E  readMessage@Expected_check_bit 0027           end_of_initialization 07FE  
+            CommandLCD@command 0074                      _PORTAbits 0005              __end_of_writeChar 047B  
+                 ??_CommandLCD 0074            __end_of_checkSignal 0552                   writeString@i 0076  
+         readMessage@temp_data 002C                 __end_of_IOInit 043C             __end_of_CommandLCD 04A1  
+            writeString@length 0075              writeString@string 0077            start_initialization 07FE  
+                     ??_IOInit 0070                      _TimerInit 0429                  ??_readMessage 0020  
+                 checkSignal@i 0074                    _checkSignal 04E4                      ___latbits 0000  
+                __pcstackBANK0 0020                     ?_TimerInit 0070                      __pstrings 0001  
+          __end_of_readMessage 07FE                    __stringbase 0006                      _writeChar 0461  
+                  ??_TimerInit 0070                    _readMessage 0552             __end_of__stringtab 0007  
+                   ?_writeChar 0070                   ?_checkSignal 0070                  ??_writeString 0076  
+                     wait@time 0070                      stringcode 0001                     _OPTION_REG 0081  
+              checkSignal@i_84 0076                checkSignal@i_85 0078                       stringdir 0001  
+                     stringtab 0001                    ??_writeChar 0074            __end_of_writeString 0461  
