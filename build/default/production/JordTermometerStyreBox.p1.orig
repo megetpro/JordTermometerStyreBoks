@@ -1,0 +1,1263 @@
+Version 4.0 HI-TECH Software Intermediate Code
+<<<<<<< HEAD
+"1455 C:/Users/chris/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f819.h
+[; ;C:/Users/chris/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f819.h: 1455: extern volatile unsigned char ADCON1 __attribute__((address(0x09F)));
+[v _ADCON1 `Vuc ~T0 @X0 0 e@159 ]
+"166
+[; ;C:/Users/chris/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f819.h: 166: extern volatile unsigned char PORTA __attribute__((address(0x005)));
+=======
+"166 C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 166: extern volatile unsigned char PORTA __attribute__((address(0x005)));
+>>>>>>> 5cab985368cfbbaaa989e37532541c4603df9ad5
+[v _PORTA `Vuc ~T0 @X0 0 e@5 ]
+"228
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 228: extern volatile unsigned char PORTB __attribute__((address(0x006)));
+[v _PORTB `Vuc ~T0 @X0 0 e@6 ]
+"996
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 996: extern volatile unsigned char TRISB __attribute__((address(0x086)));
+[v _TRISB `Vuc ~T0 @X0 0 e@134 ]
+"934
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 934: extern volatile unsigned char TRISA __attribute__((address(0x085)));
+[v _TRISA `Vuc ~T0 @X0 0 e@133 ]
+"864
+[; ;C:/Users/chris/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f819.h: 864: extern volatile unsigned char OPTION_REG __attribute__((address(0x081)));
+[v _OPTION_REG `Vuc ~T0 @X0 0 e@129 ]
+"172
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 172:     struct {
+[s S10 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S10 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 RA7 ]
+"171
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 171: typedef union {
+[u S9 `S10 1 ]
+[n S9 . . ]
+"183
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 183: extern volatile PORTAbits_t PORTAbits __attribute__((address(0x005)));
+[v _PORTAbits `VS9 ~T0 @X0 0 e@5 ]
+[p mainexit ]
+"9 JordTermometerStyreBox.c
+[p x FOSC  =  INTOSCIO   ]
+"10
+[p x WDTE  =  OFF        ]
+"11
+[p x PWRTE  =  ON       ]
+"12
+[p x MCLRE  =  OFF        ]
+"13
+[p x BOREN  =  OFF        ]
+"14
+[p x LVP  =  OFF         ]
+"15
+[p x CPD  =  OFF         ]
+"16
+[p x WRT  =  OFF         ]
+"17
+[p x CCPMX  =  RB2       ]
+"18
+[p x CP  =  OFF         ]
+"54 C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 54: __asm("INDF equ 00h");
+[; <" INDF equ 00h ;# ">
+"61
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 61: __asm("TMR0 equ 01h");
+[; <" TMR0 equ 01h ;# ">
+"68
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 68: __asm("PCL equ 02h");
+[; <" PCL equ 02h ;# ">
+"75
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 75: __asm("STATUS equ 03h");
+[; <" STATUS equ 03h ;# ">
+"161
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 161: __asm("FSR equ 04h");
+[; <" FSR equ 04h ;# ">
+"168
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 168: __asm("PORTA equ 05h");
+[; <" PORTA equ 05h ;# ">
+"230
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 230: __asm("PORTB equ 06h");
+[; <" PORTB equ 06h ;# ">
+"292
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 292: __asm("PCLATH equ 0Ah");
+[; <" PCLATH equ 0Ah ;# ">
+"312
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 312: __asm("INTCON equ 0Bh");
+[; <" INTCON equ 0Bh ;# ">
+"374
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 374: __asm("PIR1 equ 0Ch");
+[; <" PIR1 equ 0Ch ;# ">
+"419
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 419: __asm("PIR2 equ 0Dh");
+[; <" PIR2 equ 0Dh ;# ">
+"440
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 440: __asm("TMR1 equ 0Eh");
+[; <" TMR1 equ 0Eh ;# ">
+"447
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 447: __asm("TMR1L equ 0Eh");
+[; <" TMR1L equ 0Eh ;# ">
+"454
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 454: __asm("TMR1H equ 0Fh");
+[; <" TMR1H equ 0Fh ;# ">
+"461
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 461: __asm("T1CON equ 010h");
+[; <" T1CON equ 010h ;# ">
+"529
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 529: __asm("TMR2 equ 011h");
+[; <" TMR2 equ 011h ;# ">
+"536
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 536: __asm("T2CON equ 012h");
+[; <" T2CON equ 012h ;# ">
+"607
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 607: __asm("SSPBUF equ 013h");
+[; <" SSPBUF equ 013h ;# ">
+"614
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 614: __asm("SSPCON equ 014h");
+[; <" SSPCON equ 014h ;# ">
+"684
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 684: __asm("CCPR1 equ 015h");
+[; <" CCPR1 equ 015h ;# ">
+"691
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 691: __asm("CCPR1L equ 015h");
+[; <" CCPR1L equ 015h ;# ">
+"698
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 698: __asm("CCPR1H equ 016h");
+[; <" CCPR1H equ 016h ;# ">
+"705
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 705: __asm("CCP1CON equ 017h");
+[; <" CCP1CON equ 017h ;# ">
+"763
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 763: __asm("ADRESH equ 01Eh");
+[; <" ADRESH equ 01Eh ;# ">
+"770
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 770: __asm("ADCON0 equ 01Fh");
+[; <" ADCON0 equ 01Fh ;# ">
+"866
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 866: __asm("OPTION_REG equ 081h");
+[; <" OPTION_REG equ 081h ;# ">
+"936
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 936: __asm("TRISA equ 085h");
+[; <" TRISA equ 085h ;# ">
+"998
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 998: __asm("TRISB equ 086h");
+[; <" TRISB equ 086h ;# ">
+"1060
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 1060: __asm("PIE1 equ 08Ch");
+[; <" PIE1 equ 08Ch ;# ">
+"1105
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 1105: __asm("PIE2 equ 08Dh");
+[; <" PIE2 equ 08Dh ;# ">
+"1126
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 1126: __asm("PCON equ 08Eh");
+[; <" PCON equ 08Eh ;# ">
+"1160
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 1160: __asm("OSCCON equ 08Fh");
+[; <" OSCCON equ 08Fh ;# ">
+"1209
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 1209: __asm("OSCTUNE equ 090h");
+[; <" OSCTUNE equ 090h ;# ">
+"1267
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 1267: __asm("PR2 equ 092h");
+[; <" PR2 equ 092h ;# ">
+"1274
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 1274: __asm("SSPADD equ 093h");
+[; <" SSPADD equ 093h ;# ">
+"1281
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 1281: __asm("SSPSTAT equ 094h");
+[; <" SSPSTAT equ 094h ;# ">
+"1450
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 1450: __asm("ADRESL equ 09Eh");
+[; <" ADRESL equ 09Eh ;# ">
+"1457
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 1457: __asm("ADCON1 equ 09Fh");
+[; <" ADCON1 equ 09Fh ;# ">
+"1516
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 1516: __asm("EEDATA equ 010Ch");
+[; <" EEDATA equ 010Ch ;# ">
+"1523
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 1523: __asm("EEADR equ 010Dh");
+[; <" EEADR equ 010Dh ;# ">
+"1530
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 1530: __asm("EEDATH equ 010Eh");
+[; <" EEDATH equ 010Eh ;# ">
+"1537
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 1537: __asm("EEADRH equ 010Fh");
+[; <" EEADRH equ 010Fh ;# ">
+"1544
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 1544: __asm("EECON1 equ 018Ch");
+[; <" EECON1 equ 018Ch ;# ">
+"1595
+[; ;C:/Users/impos/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f819.h: 1595: __asm("EECON2 equ 018Dh");
+[; <" EECON2 equ 018Dh ;# ">
+"27 JordTermometerStyreBox.c
+[; ;JordTermometerStyreBox.c: 27: void IOInit() {
+[v _IOInit `(v ~T0 @X0 1 ef ]
+{
+[e :U _IOInit ]
+[f ]
+"28
+[; ;JordTermometerStyreBox.c: 28:     ADCON1 = 0x06;
+[e = _ADCON1 -> -> 6 `i `uc ]
+"29
+[; ;JordTermometerStyreBox.c: 29:     PORTA = 0;
+[e = _PORTA -> -> 0 `i `uc ]
+"30
+[; ;JordTermometerStyreBox.c: 30:     PORTB = 0;
+[e = _PORTB -> -> 0 `i `uc ]
+"31
+[; ;JordTermometerStyreBox.c: 31:     TRISB = 0;
+[e = _TRISB -> -> 0 `i `uc ]
+"32
+[; ;JordTermometerStyreBox.c: 32:     TRISA = 0b00001000;
+[e = _TRISA -> -> 8 `i `uc ]
+"33
+[; ;JordTermometerStyreBox.c: 33: }
+[e :UE 72 ]
+}
+"35
+[; ;JordTermometerStyreBox.c: 35: void TimerInit() {
+[v _TimerInit `(v ~T0 @X0 1 ef ]
+{
+[e :U _TimerInit ]
+[f ]
+"36
+[; ;JordTermometerStyreBox.c: 36:     OPTION_REG = 0b11000011;
+[e = _OPTION_REG -> -> 195 `i `uc ]
+"38
+[; ;JordTermometerStyreBox.c: 38:     return;
+[e $UE 73  ]
+"39
+[; ;JordTermometerStyreBox.c: 39: }
+[e :UE 73 ]
+}
+"41
+[; ;JordTermometerStyreBox.c: 41: void wait(unsigned int time) {
+[v _wait `(v ~T0 @X0 1 ef1`ui ]
+{
+[e :U _wait ]
+[v _time `ui ~T0 @X0 1 r1 ]
+[f ]
+"42
+[; ;JordTermometerStyreBox.c: 42:     unsigned int t = time;
+[v _t `ui ~T0 @X0 1 a ]
+[e = _t _time ]
+"43
+[; ;JordTermometerStyreBox.c: 43:     while (t > 0) {
+[e $U 75  ]
+[e :U 76 ]
+{
+"44
+[; ;JordTermometerStyreBox.c: 44:         t--;
+[e -- _t -> -> 1 `i `ui ]
+"45
+[; ;JordTermometerStyreBox.c: 45:     }
+}
+[e :U 75 ]
+"43
+[; ;JordTermometerStyreBox.c: 43:     while (t > 0) {
+[e $ > _t -> -> 0 `i `ui 76  ]
+[e :U 77 ]
+"46
+[; ;JordTermometerStyreBox.c: 46:     return;
+[e $UE 74  ]
+"47
+[; ;JordTermometerStyreBox.c: 47: }
+[e :UE 74 ]
+}
+"49
+[; ;JordTermometerStyreBox.c: 49: void CommandLCD(unsigned char command) {
+[v _CommandLCD `(v ~T0 @X0 1 ef1`uc ]
+{
+[e :U _CommandLCD ]
+[v _command `uc ~T0 @X0 1 r1 ]
+[f ]
+"50
+[; ;JordTermometerStyreBox.c: 50:     PORTB = command & 0xFF;
+[e = _PORTB -> & -> _command `i -> 255 `i `uc ]
+"52
+[; ;JordTermometerStyreBox.c: 52:     if (PORTA != 0x00) {
+[e $ ! != -> _PORTA `i -> 0 `i 79  ]
+{
+"53
+[; ;JordTermometerStyreBox.c: 53:         PORTA = 0x00;
+[e = _PORTA -> -> 0 `i `uc ]
+"54
+[; ;JordTermometerStyreBox.c: 54:         wait(50);
+[e ( _wait (1 -> -> 50 `i `ui ]
+"55
+[; ;JordTermometerStyreBox.c: 55:     }
+}
+[e :U 79 ]
+"57
+[; ;JordTermometerStyreBox.c: 57:     wait(10);
+[e ( _wait (1 -> -> 10 `i `ui ]
+"59
+[; ;JordTermometerStyreBox.c: 59:     PORTAbits.RA2 = 1;
+[e = . . _PORTAbits 0 2 -> -> 1 `i `uc ]
+"61
+[; ;JordTermometerStyreBox.c: 61:     wait(50);
+[e ( _wait (1 -> -> 50 `i `ui ]
+"63
+[; ;JordTermometerStyreBox.c: 63:     PORTAbits.RA2 = 0;
+[e = . . _PORTAbits 0 2 -> -> 0 `i `uc ]
+"65
+[; ;JordTermometerStyreBox.c: 65:     wait(100);
+[e ( _wait (1 -> -> 100 `i `ui ]
+"67
+[; ;JordTermometerStyreBox.c: 67:     return;
+[e $UE 78  ]
+"68
+[; ;JordTermometerStyreBox.c: 68: }
+[e :UE 78 ]
+}
+"70
+[; ;JordTermometerStyreBox.c: 70: void writeChar(char character) {
+[v _writeChar `(v ~T0 @X0 1 ef1`uc ]
+{
+[e :U _writeChar ]
+[v _character `uc ~T0 @X0 1 r1 ]
+[f ]
+"71
+[; ;JordTermometerStyreBox.c: 71:     PORTA = 0b00000001;
+[e = _PORTA -> -> 1 `i `uc ]
+<<<<<<< HEAD
+=======
+"64
+[; ;JordTermometerStyreBox.c: 64:     PORTB = character;
+[e = _PORTB -> _character `uc ]
+"68
+[; ;JordTermometerStyreBox.c: 68:     PORTA = 0b00000101;
+[e = _PORTA -> -> 5 `i `uc ]
+>>>>>>> 5cab985368cfbbaaa989e37532541c4603df9ad5
+"72
+[; ;JordTermometerStyreBox.c: 72:     PORTB = character;
+[e = _PORTB -> _character `uc ]
+"74
+[; ;JordTermometerStyreBox.c: 74:     wait(50);
+[e ( _wait (1 -> -> 50 `i `ui ]
+"76
+[; ;JordTermometerStyreBox.c: 76:     PORTA = 0b00000101;
+[e = _PORTA -> -> 5 `i `uc ]
+"78
+[; ;JordTermometerStyreBox.c: 78:     wait(50);
+[e ( _wait (1 -> -> 50 `i `ui ]
+"80
+[; ;JordTermometerStyreBox.c: 80:     PORTA = 0b00000001;
+[e = _PORTA -> -> 1 `i `uc ]
+"81
+[; ;JordTermometerStyreBox.c: 81:     return;
+[e $UE 80  ]
+"82
+[; ;JordTermometerStyreBox.c: 82: }
+[e :UE 80 ]
+}
+"84
+[; ;JordTermometerStyreBox.c: 84: void writeString(char* string, char length) {
+[v _writeString `(v ~T0 @X0 1 ef2`*uc`uc ]
+{
+[e :U _writeString ]
+[v _string `*uc ~T0 @X0 1 r1 ]
+[v _length `uc ~T0 @X0 1 r2 ]
+[f ]
+"85
+[; ;JordTermometerStyreBox.c: 85:     for (unsigned char i = 0; i < length; i++) {
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $U 85  ]
+[e :U 82 ]
+{
+"86
+[; ;JordTermometerStyreBox.c: 86:         writeChar(string[i]);
+[e ( _writeChar (1 *U + _string * -> _i `ux -> -> # *U _string `ui `ux ]
+"87
+[; ;JordTermometerStyreBox.c: 87:     }
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 85 ]
+[e $ < -> _i `i -> _length `i 82  ]
+[e :U 83 ]
+}
+"88
+[; ;JordTermometerStyreBox.c: 88:     return;
+[e $UE 81  ]
+"89
+[; ;JordTermometerStyreBox.c: 89: }
+[e :UE 81 ]
+}
+"91
+[; ;JordTermometerStyreBox.c: 91: void readMessage() {
+[v _readMessage `(v ~T0 @X0 1 ef ]
+{
+[e :U _readMessage ]
+[f ]
+"93
+[; ;JordTermometerStyreBox.c: 93:     short int Termometer_id = 0;
+[v _Termometer_id `s ~T0 @X0 1 a ]
+[e = _Termometer_id -> -> 0 `i `s ]
+"94
+[; ;JordTermometerStyreBox.c: 94:     short int temp_data = 0;
+[v _temp_data `s ~T0 @X0 1 a ]
+[e = _temp_data -> -> 0 `i `s ]
+"95
+[; ;JordTermometerStyreBox.c: 95:     short int Batt_status = 0;
+[v _Batt_status `s ~T0 @X0 1 a ]
+[e = _Batt_status -> -> 0 `i `s ]
+"96
+[; ;JordTermometerStyreBox.c: 96:     char Expected_check_bit = 0;
+[v _Expected_check_bit `uc ~T0 @X0 1 a ]
+[e = _Expected_check_bit -> -> 0 `i `uc ]
+"98
+[; ;JordTermometerStyreBox.c: 98:     wait(5);
+[e ( _wait (1 -> -> 5 `i `ui ]
+"99
+[; ;JordTermometerStyreBox.c: 99:     Expected_check_bit ^= PORTAbits.RA3;
+[e =^ _Expected_check_bit -> . . _PORTAbits 0 3 `uc ]
+"100
+[; ;JordTermometerStyreBox.c: 100:     Termometer_id = (Termometer_id << 1) | PORTAbits.RA3;
+[e = _Termometer_id -> | << -> _Termometer_id `i -> 1 `i -> . . _PORTAbits 0 3 `i `s ]
+"101
+[; ;JordTermometerStyreBox.c: 101:     PORTAbits.RA4 = 1;
+[e = . . _PORTAbits 0 4 -> -> 1 `i `uc ]
+"103
+[; ;JordTermometerStyreBox.c: 103:     wait(10);
+[e ( _wait (1 -> -> 10 `i `ui ]
+"104
+[; ;JordTermometerStyreBox.c: 104:     Expected_check_bit ^= PORTAbits.RA3;
+[e =^ _Expected_check_bit -> . . _PORTAbits 0 3 `uc ]
+"105
+[; ;JordTermometerStyreBox.c: 105:     Termometer_id = (Termometer_id << 1) | PORTAbits.RA3;
+[e = _Termometer_id -> | << -> _Termometer_id `i -> 1 `i -> . . _PORTAbits 0 3 `i `s ]
+"106
+[; ;JordTermometerStyreBox.c: 106:     PORTAbits.RA4 = 0;
+[e = . . _PORTAbits 0 4 -> -> 0 `i `uc ]
+"108
+[; ;JordTermometerStyreBox.c: 108:     wait(13);
+[e ( _wait (1 -> -> 13 `i `ui ]
+"109
+[; ;JordTermometerStyreBox.c: 109:     Expected_check_bit ^= PORTAbits.RA3;
+[e =^ _Expected_check_bit -> . . _PORTAbits 0 3 `uc ]
+"110
+[; ;JordTermometerStyreBox.c: 110:     Termometer_id = (Termometer_id << 1) | PORTAbits.RA3;
+[e = _Termometer_id -> | << -> _Termometer_id `i -> 1 `i -> . . _PORTAbits 0 3 `i `s ]
+"111
+[; ;JordTermometerStyreBox.c: 111:     PORTAbits.RA4 = 1;
+[e = . . _PORTAbits 0 4 -> -> 1 `i `uc ]
+"113
+[; ;JordTermometerStyreBox.c: 113:     wait(13);
+[e ( _wait (1 -> -> 13 `i `ui ]
+"114
+[; ;JordTermometerStyreBox.c: 114:     Expected_check_bit ^= PORTAbits.RA3;
+[e =^ _Expected_check_bit -> . . _PORTAbits 0 3 `uc ]
+"115
+[; ;JordTermometerStyreBox.c: 115:     temp_data = (temp_data << 1) | PORTAbits.RA3;
+[e = _temp_data -> | << -> _temp_data `i -> 1 `i -> . . _PORTAbits 0 3 `i `s ]
+"116
+[; ;JordTermometerStyreBox.c: 116:     PORTAbits.RA4 = 0;
+[e = . . _PORTAbits 0 4 -> -> 0 `i `uc ]
+"118
+[; ;JordTermometerStyreBox.c: 118:     wait(12);
+[e ( _wait (1 -> -> 12 `i `ui ]
+"119
+[; ;JordTermometerStyreBox.c: 119:     Expected_check_bit ^= PORTAbits.RA3;
+[e =^ _Expected_check_bit -> . . _PORTAbits 0 3 `uc ]
+"120
+[; ;JordTermometerStyreBox.c: 120:     temp_data = (temp_data << 1) | PORTAbits.RA3;
+[e = _temp_data -> | << -> _temp_data `i -> 1 `i -> . . _PORTAbits 0 3 `i `s ]
+"121
+[; ;JordTermometerStyreBox.c: 121:     PORTAbits.RA4 = 1;
+[e = . . _PORTAbits 0 4 -> -> 1 `i `uc ]
+"123
+[; ;JordTermometerStyreBox.c: 123:     wait(13);
+[e ( _wait (1 -> -> 13 `i `ui ]
+"124
+[; ;JordTermometerStyreBox.c: 124:     Expected_check_bit ^= PORTAbits.RA3;
+[e =^ _Expected_check_bit -> . . _PORTAbits 0 3 `uc ]
+"125
+[; ;JordTermometerStyreBox.c: 125:     temp_data = (temp_data << 1) | PORTAbits.RA3;
+[e = _temp_data -> | << -> _temp_data `i -> 1 `i -> . . _PORTAbits 0 3 `i `s ]
+"126
+[; ;JordTermometerStyreBox.c: 126:     PORTAbits.RA4 = 0;
+[e = . . _PORTAbits 0 4 -> -> 0 `i `uc ]
+"128
+[; ;JordTermometerStyreBox.c: 128:     wait(13);
+[e ( _wait (1 -> -> 13 `i `ui ]
+"129
+[; ;JordTermometerStyreBox.c: 129:     Expected_check_bit ^= PORTAbits.RA3;
+[e =^ _Expected_check_bit -> . . _PORTAbits 0 3 `uc ]
+"130
+[; ;JordTermometerStyreBox.c: 130:     temp_data = (temp_data << 1) | PORTAbits.RA3;
+[e = _temp_data -> | << -> _temp_data `i -> 1 `i -> . . _PORTAbits 0 3 `i `s ]
+"131
+[; ;JordTermometerStyreBox.c: 131:     PORTAbits.RA4 = 1;
+[e = . . _PORTAbits 0 4 -> -> 1 `i `uc ]
+"133
+[; ;JordTermometerStyreBox.c: 133:     wait(12);
+[e ( _wait (1 -> -> 12 `i `ui ]
+"134
+[; ;JordTermometerStyreBox.c: 134:     Expected_check_bit ^= PORTAbits.RA3;
+[e =^ _Expected_check_bit -> . . _PORTAbits 0 3 `uc ]
+"135
+[; ;JordTermometerStyreBox.c: 135:     temp_data = (temp_data << 1) | PORTAbits.RA3;
+[e = _temp_data -> | << -> _temp_data `i -> 1 `i -> . . _PORTAbits 0 3 `i `s ]
+"136
+[; ;JordTermometerStyreBox.c: 136:     PORTAbits.RA4 = 0;
+[e = . . _PORTAbits 0 4 -> -> 0 `i `uc ]
+"138
+[; ;JordTermometerStyreBox.c: 138:     wait(13);
+[e ( _wait (1 -> -> 13 `i `ui ]
+"139
+[; ;JordTermometerStyreBox.c: 139:     Expected_check_bit ^= PORTAbits.RA3;
+[e =^ _Expected_check_bit -> . . _PORTAbits 0 3 `uc ]
+"140
+[; ;JordTermometerStyreBox.c: 140:     temp_data = (temp_data << 1) | PORTAbits.RA3;
+[e = _temp_data -> | << -> _temp_data `i -> 1 `i -> . . _PORTAbits 0 3 `i `s ]
+"141
+[; ;JordTermometerStyreBox.c: 141:     PORTAbits.RA4 = 1;
+[e = . . _PORTAbits 0 4 -> -> 1 `i `uc ]
+"143
+[; ;JordTermometerStyreBox.c: 143:     wait(13);
+[e ( _wait (1 -> -> 13 `i `ui ]
+"144
+[; ;JordTermometerStyreBox.c: 144:     Expected_check_bit ^= PORTAbits.RA3;
+[e =^ _Expected_check_bit -> . . _PORTAbits 0 3 `uc ]
+"145
+[; ;JordTermometerStyreBox.c: 145:     temp_data = (temp_data << 1) | PORTAbits.RA3;
+[e = _temp_data -> | << -> _temp_data `i -> 1 `i -> . . _PORTAbits 0 3 `i `s ]
+"146
+[; ;JordTermometerStyreBox.c: 146:     PORTAbits.RA4 = 0;
+[e = . . _PORTAbits 0 4 -> -> 0 `i `uc ]
+"148
+[; ;JordTermometerStyreBox.c: 148:     wait(12);
+[e ( _wait (1 -> -> 12 `i `ui ]
+"149
+[; ;JordTermometerStyreBox.c: 149:     Expected_check_bit ^= PORTAbits.RA3;
+[e =^ _Expected_check_bit -> . . _PORTAbits 0 3 `uc ]
+"150
+[; ;JordTermometerStyreBox.c: 150:     temp_data = (temp_data << 1) | PORTAbits.RA3;
+[e = _temp_data -> | << -> _temp_data `i -> 1 `i -> . . _PORTAbits 0 3 `i `s ]
+"151
+[; ;JordTermometerStyreBox.c: 151:     PORTAbits.RA4 = 1;
+[e = . . _PORTAbits 0 4 -> -> 1 `i `uc ]
+"153
+[; ;JordTermometerStyreBox.c: 153:     wait(13);
+[e ( _wait (1 -> -> 13 `i `ui ]
+"154
+[; ;JordTermometerStyreBox.c: 154:     Expected_check_bit ^= PORTAbits.RA3;
+[e =^ _Expected_check_bit -> . . _PORTAbits 0 3 `uc ]
+"155
+[; ;JordTermometerStyreBox.c: 155:     temp_data = (temp_data << 1) | PORTAbits.RA3;
+[e = _temp_data -> | << -> _temp_data `i -> 1 `i -> . . _PORTAbits 0 3 `i `s ]
+"156
+[; ;JordTermometerStyreBox.c: 156:     PORTAbits.RA4 = 0;
+[e = . . _PORTAbits 0 4 -> -> 0 `i `uc ]
+"158
+[; ;JordTermometerStyreBox.c: 158:     wait(13);
+[e ( _wait (1 -> -> 13 `i `ui ]
+"159
+[; ;JordTermometerStyreBox.c: 159:     Expected_check_bit ^= PORTAbits.RA3;
+[e =^ _Expected_check_bit -> . . _PORTAbits 0 3 `uc ]
+"160
+[; ;JordTermometerStyreBox.c: 160:     temp_data = (temp_data << 1) | PORTAbits.RA3;
+[e = _temp_data -> | << -> _temp_data `i -> 1 `i -> . . _PORTAbits 0 3 `i `s ]
+"161
+[; ;JordTermometerStyreBox.c: 161:     PORTAbits.RA4 = 1;
+[e = . . _PORTAbits 0 4 -> -> 1 `i `uc ]
+"163
+[; ;JordTermometerStyreBox.c: 163:     wait(12);
+[e ( _wait (1 -> -> 12 `i `ui ]
+"164
+[; ;JordTermometerStyreBox.c: 164:     Expected_check_bit ^= PORTAbits.RA3;
+[e =^ _Expected_check_bit -> . . _PORTAbits 0 3 `uc ]
+"165
+[; ;JordTermometerStyreBox.c: 165:     Batt_status = (Batt_status << 1) | PORTAbits.RA3;
+[e = _Batt_status -> | << -> _Batt_status `i -> 1 `i -> . . _PORTAbits 0 3 `i `s ]
+"166
+[; ;JordTermometerStyreBox.c: 166:     PORTAbits.RA4 = 0;
+[e = . . _PORTAbits 0 4 -> -> 0 `i `uc ]
+"168
+[; ;JordTermometerStyreBox.c: 168:     wait(13);
+[e ( _wait (1 -> -> 13 `i `ui ]
+"169
+[; ;JordTermometerStyreBox.c: 169:     Expected_check_bit ^= PORTAbits.RA3;
+[e =^ _Expected_check_bit -> . . _PORTAbits 0 3 `uc ]
+"170
+[; ;JordTermometerStyreBox.c: 170:     Batt_status = (Batt_status << 1) | PORTAbits.RA3;
+[e = _Batt_status -> | << -> _Batt_status `i -> 1 `i -> . . _PORTAbits 0 3 `i `s ]
+"171
+[; ;JordTermometerStyreBox.c: 171:     PORTAbits.RA4 = 1;
+[e = . . _PORTAbits 0 4 -> -> 1 `i `uc ]
+"173
+[; ;JordTermometerStyreBox.c: 173:     wait(13);
+[e ( _wait (1 -> -> 13 `i `ui ]
+"174
+[; ;JordTermometerStyreBox.c: 174:     Expected_check_bit ^= PORTAbits.RA3;
+[e =^ _Expected_check_bit -> . . _PORTAbits 0 3 `uc ]
+"175
+[; ;JordTermometerStyreBox.c: 175:     PORTAbits.RA4 = 0;
+[e = . . _PORTAbits 0 4 -> -> 0 `i `uc ]
+"177
+[; ;JordTermometerStyreBox.c: 177:     wait(26);
+[e ( _wait (1 -> -> 26 `i `ui ]
+"179
+[; ;JordTermometerStyreBox.c: 179:     CommandLCD(0b10000000);
+[e ( _CommandLCD (1 -> -> 128 `i `uc ]
+"180
+[; ;JordTermometerStyreBox.c: 180:     writeChar(Termometer_id + '0');
+[e ( _writeChar (1 -> + -> _Termometer_id `ui -> 48 `ui `uc ]
+"182
+[; ;JordTermometerStyreBox.c: 182:     CommandLCD(0b10001100);
+[e ( _CommandLCD (1 -> -> 140 `i `uc ]
+"183
+[; ;JordTermometerStyreBox.c: 183:     if (Batt_status >= 3) {
+[e $ ! >= -> _Batt_status `i -> 3 `i 87  ]
+{
+"184
+[; ;JordTermometerStyreBox.c: 184:         writeString("Okay", 4);
+[e ( _writeString (2 , :s 1C -> -> 4 `i `uc ]
+"185
+[; ;JordTermometerStyreBox.c: 185:     } else if (Batt_status < 1) {
+}
+[e $U 88  ]
+[e :U 87 ]
+[e $ ! < -> _Batt_status `i -> 1 `i 89  ]
+{
+"186
+[; ;JordTermometerStyreBox.c: 186:         writeString(" Lav", 4);
+[e ( _writeString (2 , :s 2C -> -> 4 `i `uc ]
+"187
+[; ;JordTermometerStyreBox.c: 187:     } else {
+}
+[e $U 90  ]
+[e :U 89 ]
+{
+"188
+[; ;JordTermometerStyreBox.c: 188:         writeString("Fejl", 4);
+[e ( _writeString (2 , :s 3C -> -> 4 `i `uc ]
+"189
+[; ;JordTermometerStyreBox.c: 189:     }
+}
+[e :U 90 ]
+[e :U 88 ]
+"191
+[; ;JordTermometerStyreBox.c: 191: }
+[e :UE 86 ]
+}
+"193
+[; ;JordTermometerStyreBox.c: 193: char checkSignal() {
+[v _checkSignal `(uc ~T0 @X0 1 ef ]
+{
+[e :U _checkSignal ]
+[f ]
+"194
+[; ;JordTermometerStyreBox.c: 194:     for (int i = 0; i < 15; i++) {
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 15 `i 92  ]
+[e $U 93  ]
+[e :U 92 ]
+{
+"195
+[; ;JordTermometerStyreBox.c: 195:         if (!PORTAbits.RA3) {
+[e $ ! ! != -> . . _PORTAbits 0 3 `i -> 0 `i 95  ]
+{
+"196
+[; ;JordTermometerStyreBox.c: 196:             return 0;
+[e ) -> -> 0 `i `uc ]
+[e $UE 91  ]
+"197
+[; ;JordTermometerStyreBox.c: 197:         }
+}
+[e :U 95 ]
+"198
+[; ;JordTermometerStyreBox.c: 198:     }
+}
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 15 `i 92  ]
+[e :U 93 ]
+}
+"199
+[; ;JordTermometerStyreBox.c: 199:     while (PORTAbits.RA3) {}
+[e $U 96  ]
+[e :U 97 ]
+{
+}
+[e :U 96 ]
+[e $ != -> . . _PORTAbits 0 3 `i -> 0 `i 97  ]
+[e :U 98 ]
+"200
+[; ;JordTermometerStyreBox.c: 200:     for (int i = 0; i < 7; i++) {
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 7 `i 99  ]
+[e $U 100  ]
+[e :U 99 ]
+{
+"201
+[; ;JordTermometerStyreBox.c: 201:         if (PORTAbits.RA3) {
+[e $ ! != -> . . _PORTAbits 0 3 `i -> 0 `i 102  ]
+{
+"202
+[; ;JordTermometerStyreBox.c: 202:             return 0;
+[e ) -> -> 0 `i `uc ]
+[e $UE 91  ]
+"203
+[; ;JordTermometerStyreBox.c: 203:         }
+}
+[e :U 102 ]
+"204
+[; ;JordTermometerStyreBox.c: 204:     }
+}
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 7 `i 99  ]
+[e :U 100 ]
+}
+"205
+[; ;JordTermometerStyreBox.c: 205:     while (!PORTAbits.RA3) {}
+[e $U 103  ]
+[e :U 104 ]
+{
+}
+[e :U 103 ]
+[e $ ! != -> . . _PORTAbits 0 3 `i -> 0 `i 104  ]
+[e :U 105 ]
+"206
+[; ;JordTermometerStyreBox.c: 206:     for (int i = 0; i < 7; i++) {
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 7 `i 106  ]
+[e $U 107  ]
+[e :U 106 ]
+{
+"207
+[; ;JordTermometerStyreBox.c: 207:         if (!PORTAbits.RA3) {
+[e $ ! ! != -> . . _PORTAbits 0 3 `i -> 0 `i 109  ]
+{
+"208
+[; ;JordTermometerStyreBox.c: 208:             return 0;
+[e ) -> -> 0 `i `uc ]
+[e $UE 91  ]
+"209
+[; ;JordTermometerStyreBox.c: 209:         }
+}
+[e :U 109 ]
+"210
+[; ;JordTermometerStyreBox.c: 210:     }
+}
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 7 `i 106  ]
+[e :U 107 ]
+}
+"211
+[; ;JordTermometerStyreBox.c: 211:     while (PORTAbits.RA3) {}
+[e $U 110  ]
+[e :U 111 ]
+{
+}
+[e :U 110 ]
+[e $ != -> . . _PORTAbits 0 3 `i -> 0 `i 111  ]
+[e :U 112 ]
+"212
+[; ;JordTermometerStyreBox.c: 212:     wait(13);
+[e ( _wait (1 -> -> 13 `i `ui ]
+"214
+[; ;JordTermometerStyreBox.c: 214:     return 1;
+[e ) -> -> 1 `i `uc ]
+[e $UE 91  ]
+"215
+[; ;JordTermometerStyreBox.c: 215: }
+[e :UE 91 ]
+}
+<<<<<<< HEAD
+[v $root$_main `(v ~T0 @X0 0 e ]
+"217
+[; ;JordTermometerStyreBox.c: 217: void main(void) {
+[v _main `(v ~T0 @X0 1 ef ]
+=======
+"82
+[; ;JordTermometerStyreBox.c: 82: void staticInfo (){
+[v _staticInfo `(v ~T0 @X0 1 ef ]
+>>>>>>> 5cab985368cfbbaaa989e37532541c4603df9ad5
+{
+[e :U _staticInfo ]
+[f ]
+<<<<<<< HEAD
+"218
+[; ;JordTermometerStyreBox.c: 218:     IOInit();
+[e ( _IOInit ..  ]
+"219
+[; ;JordTermometerStyreBox.c: 219:     TimerInit();
+[e ( _TimerInit ..  ]
+"221
+[; ;JordTermometerStyreBox.c: 221:     wait(100);
+[e ( _wait (1 -> -> 100 `i `ui ]
+"223
+[; ;JordTermometerStyreBox.c: 223:     CommandLCD(0b00111000);
+[e ( _CommandLCD (1 -> -> 56 `i `uc ]
+"224
+[; ;JordTermometerStyreBox.c: 224:     CommandLCD(0b00001110);
+[e ( _CommandLCD (1 -> -> 14 `i `uc ]
+"225
+[; ;JordTermometerStyreBox.c: 225:     CommandLCD(0b00000001);
+[e ( _CommandLCD (1 -> -> 1 `i `uc ]
+"226
+[; ;JordTermometerStyreBox.c: 226:     CommandLCD(0b00000110);
+[e ( _CommandLCD (1 -> -> 6 `i `uc ]
+"228
+[; ;JordTermometerStyreBox.c: 228:     wait(200);
+[e ( _wait (1 -> -> 200 `i `ui ]
+"230
+[; ;JordTermometerStyreBox.c: 230:     writeString("1: -13.9", 8);
+[e ( _writeString (2 , :s 4C -> -> 8 `i `uc ]
+"231
+[; ;JordTermometerStyreBox.c: 231:     writeChar(0b11011111);
+[e ( _writeChar (1 -> -> 223 `i `uc ]
+"232
+[; ;JordTermometerStyreBox.c: 232:     writeString("C    9%", 7);
+[e ( _writeString (2 , :s 5C -> -> 7 `i `uc ]
+"234
+[; ;JordTermometerStyreBox.c: 234:     wait(200);
+[e ( _wait (1 -> -> 200 `i `ui ]
+"236
+[; ;JordTermometerStyreBox.c: 236:     CommandLCD(0b11000000);
+[e ( _CommandLCD (1 -> -> 192 `i `uc ]
+"238
+[; ;JordTermometerStyreBox.c: 238:     writeString("2:  19.9", 8);
+[e ( _writeString (2 , :s 6C -> -> 8 `i `uc ]
+"239
+[; ;JordTermometerStyreBox.c: 239:     writeChar(0b11011111);
+[e ( _writeChar (1 -> -> 223 `i `uc ]
+"240
+[; ;JordTermometerStyreBox.c: 240:     writeString("C  100%", 7);
+[e ( _writeString (2 , :s 7C -> -> 7 `i `uc ]
+"242
+[; ;JordTermometerStyreBox.c: 242:     wait(200);
+[e ( _wait (1 -> -> 200 `i `ui ]
+"244
+[; ;JordTermometerStyreBox.c: 244:     while (1) {
+[e :U 115 ]
+{
+"245
+[; ;JordTermometerStyreBox.c: 245:         if (PORTAbits.RA3) {
+[e $ ! != -> . . _PORTAbits 0 3 `i -> 0 `i 117  ]
+{
+"246
+[; ;JordTermometerStyreBox.c: 246:             if (checkSignal()) {
+[e $ ! != -> ( _checkSignal ..  `i -> 0 `i 118  ]
+{
+"247
+[; ;JordTermometerStyreBox.c: 247:                 readMessage();
+[e ( _readMessage ..  ]
+"248
+[; ;JordTermometerStyreBox.c: 248:             }
+}
+[e :U 118 ]
+"249
+[; ;JordTermometerStyreBox.c: 249:         }
+}
+[e :U 117 ]
+"250
+[; ;JordTermometerStyreBox.c: 250:     }
+}
+[e :U 114 ]
+[e $U 115  ]
+[e :U 116 ]
+"252
+[; ;JordTermometerStyreBox.c: 252:     return;
+[e $UE 113  ]
+"253
+[; ;JordTermometerStyreBox.c: 253: }
+[e :UE 113 ]
+}
+[a 1C 79 107 97 121 0 ]
+[a 2C 32 76 97 118 0 ]
+[a 3C 70 101 106 108 0 ]
+[a 6C 50 58 32 32 49 57 46 57 0 ]
+[a 4C 49 58 32 45 49 51 46 57 0 ]
+[a 5C 67 32 32 32 32 57 37 0 ]
+[a 7C 67 32 32 49 48 48 37 0 ]
+=======
+"83
+[; ;JordTermometerStyreBox.c: 83:     writeString("1: ", 3);
+[e ( _writeString (2 , :s 1C -> -> 3 `i `uc ]
+"85
+[; ;JordTermometerStyreBox.c: 85:     CommandLCD(0b10001000);
+[e ( _CommandLCD (1 -> -> 136 `i `uc ]
+"86
+[; ;JordTermometerStyreBox.c: 86:     writeChar(0b11011111);
+[e ( _writeChar (1 -> -> 223 `i `uc ]
+"88
+[; ;JordTermometerStyreBox.c: 88:     writeString("C", 1);
+[e ( _writeString (2 , :s 2C -> -> 1 `i `uc ]
+"90
+[; ;JordTermometerStyreBox.c: 90:     CommandLCD(0b11000000);
+[e ( _CommandLCD (1 -> -> 192 `i `uc ]
+"92
+[; ;JordTermometerStyreBox.c: 92:     writeString("2: ", 3);
+[e ( _writeString (2 , :s 3C -> -> 3 `i `uc ]
+"94
+[; ;JordTermometerStyreBox.c: 94:     CommandLCD(0b11001000);
+[e ( _CommandLCD (1 -> -> 200 `i `uc ]
+"95
+[; ;JordTermometerStyreBox.c: 95:     writeChar(0b11011111);
+[e ( _writeChar (1 -> -> 223 `i `uc ]
+"96
+[; ;JordTermometerStyreBox.c: 96:     writeString("C", 1);
+[e ( _writeString (2 , :s 4C -> -> 1 `i `uc ]
+"97
+[; ;JordTermometerStyreBox.c: 97: }
+[e :UE 85 ]
+}
+"99
+[; ;JordTermometerStyreBox.c: 99: char* doubbelDabbel(int rawData) {
+[v _doubbelDabbel `(*uc ~T0 @X0 1 ef1`i ]
+{
+[e :U _doubbelDabbel ]
+[v _rawData `i ~T0 @X0 1 r1 ]
+[f ]
+"100
+[; ;JordTermometerStyreBox.c: 100:     int raw = rawData;
+[v _raw `i ~T0 @X0 1 a ]
+[e = _raw _rawData ]
+"102
+[; ;JordTermometerStyreBox.c: 102:     for (int i = 0; i < 12; i ++) {
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 12 `i 87  ]
+[e $U 88  ]
+[e :U 87 ]
+{
+"103
+[; ;JordTermometerStyreBox.c: 103:         raw = raw << 1;
+[e = _raw << _raw -> 1 `i ]
+"105
+[; ;JordTermometerStyreBox.c: 105:         if ((raw & 0xF000) >= 0x5000){
+[e $ ! >= & -> _raw `ui -> 61440 `ui -> -> 20480 `i `ui 90  ]
+{
+"106
+[; ;JordTermometerStyreBox.c: 106:             raw += 0x3000;
+[e =+ _raw -> 12288 `i ]
+"107
+[; ;JordTermometerStyreBox.c: 107:         }
+}
+[e :U 90 ]
+"109
+[; ;JordTermometerStyreBox.c: 109:         if ((raw & 0xF0000) >= 0x50000){
+[e $ ! >= & -> _raw `l -> 983040 `l -> 327680 `l 91  ]
+{
+"110
+[; ;JordTermometerStyreBox.c: 110:             raw += 0x30000;
+[e =+ _raw -> -> 196608 `l `i ]
+"111
+[; ;JordTermometerStyreBox.c: 111:         }
+}
+[e :U 91 ]
+"113
+[; ;JordTermometerStyreBox.c: 113:         if ((raw & 0xF00000) >= 0x500000){
+[e $ ! >= & -> _raw `l -> 15728640 `l -> 5242880 `l 92  ]
+{
+"114
+[; ;JordTermometerStyreBox.c: 114:             raw += 0x300000;
+[e =+ _raw -> -> 3145728 `l `i ]
+"115
+[; ;JordTermometerStyreBox.c: 115:         }
+}
+[e :U 92 ]
+"117
+[; ;JordTermometerStyreBox.c: 117:     }
+}
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 12 `i 87  ]
+[e :U 88 ]
+}
+"119
+[; ;JordTermometerStyreBox.c: 119:     raw = raw >> 12;
+[e = _raw >> _raw -> 12 `i ]
+"121
+[; ;JordTermometerStyreBox.c: 121:     static char digits[3];
+[v F748 `uc ~T0 @X0 -> 3 `i s digits ]
+"123
+[; ;JordTermometerStyreBox.c: 123:     digits[0] = raw & 0x0F + '0';
+[e = *U + &U F748 * -> -> -> 0 `i `ui `ux -> -> # *U &U F748 `ui `ux -> & -> _raw `ui + -> -> 15 `i `ui -> 48 `ui `uc ]
+"124
+[; ;JordTermometerStyreBox.c: 124:     raw = raw >> 4;
+[e = _raw >> _raw -> 4 `i ]
+"126
+[; ;JordTermometerStyreBox.c: 126:     digits[1] = raw & 0x0F + '0';
+[e = *U + &U F748 * -> -> -> 1 `i `ui `ux -> -> # *U &U F748 `ui `ux -> & -> _raw `ui + -> -> 15 `i `ui -> 48 `ui `uc ]
+"127
+[; ;JordTermometerStyreBox.c: 127:     raw = raw >> 4;
+[e = _raw >> _raw -> 4 `i ]
+"129
+[; ;JordTermometerStyreBox.c: 129:     digits[2] = raw & 0x0F + '0';
+[e = *U + &U F748 * -> -> -> 2 `i `ui `ux -> -> # *U &U F748 `ui `ux -> & -> _raw `ui + -> -> 15 `i `ui -> 48 `ui `uc ]
+"130
+[; ;JordTermometerStyreBox.c: 130:     raw = raw >> 4;
+[e = _raw >> _raw -> 4 `i ]
+"132
+[; ;JordTermometerStyreBox.c: 132:     return digits;
+[e ) &U F748 ]
+[e $UE 86  ]
+"133
+[; ;JordTermometerStyreBox.c: 133: }
+[e :UE 86 ]
+}
+"135
+[; ;JordTermometerStyreBox.c: 135: char* mV2Celcius(unsigned int bcdValue){
+[v _mV2Celcius `(*uc ~T0 @X0 1 ef1`ui ]
+{
+[e :U _mV2Celcius ]
+[v _bcdValue `ui ~T0 @X0 1 r1 ]
+[f ]
+"138
+[; ;JordTermometerStyreBox.c: 138:     int thousand = (bcdValue >> 12) & 0xF;
+[v _thousand `i ~T0 @X0 1 a ]
+[e = _thousand -> & >> _bcdValue -> 12 `i -> -> 15 `i `ui `i ]
+"139
+[; ;JordTermometerStyreBox.c: 139:     int hundreds = (bcdValue >> 8) & 0xF;
+[v _hundreds `i ~T0 @X0 1 a ]
+[e = _hundreds -> & >> _bcdValue -> 8 `i -> -> 15 `i `ui `i ]
+"140
+[; ;JordTermometerStyreBox.c: 140:     int tens = (bcdValue >> 4) & 0xF;
+[v _tens `i ~T0 @X0 1 a ]
+[e = _tens -> & >> _bcdValue -> 4 `i -> -> 15 `i `ui `i ]
+"141
+[; ;JordTermometerStyreBox.c: 141:     int ones = bcdValue & 0xF;
+[v _ones `i ~T0 @X0 1 a ]
+[e = _ones -> & _bcdValue -> -> 15 `i `ui `i ]
+"144
+[; ;JordTermometerStyreBox.c: 144:     int milivolts = thousand * 1000 + hundreds * 100 + tens * 10 + ones;
+[v _milivolts `i ~T0 @X0 1 a ]
+[e = _milivolts + + + * _thousand -> 1000 `i * _hundreds -> 100 `i * _tens -> 10 `i _ones ]
+"147
+[; ;JordTermometerStyreBox.c: 147:     int totalC = milivolts - 2731;
+[v _totalC `i ~T0 @X0 1 a ]
+[e = _totalC - _milivolts -> 2731 `i ]
+"149
+[; ;JordTermometerStyreBox.c: 149:     static char tempStr[6];
+[v F757 `uc ~T0 @X0 -> 6 `i s tempStr ]
+"152
+[; ;JordTermometerStyreBox.c: 152:     if (totalC < 0) {
+[e $ ! < _totalC -> 0 `i 94  ]
+{
+"153
+[; ;JordTermometerStyreBox.c: 153:         totalC = -totalC;
+[e = _totalC -U _totalC ]
+"154
+[; ;JordTermometerStyreBox.c: 154:         tempStr[0] = '-';
+[e = *U + &U F757 * -> -> -> 0 `i `ui `ux -> -> # *U &U F757 `ui `ux -> -> 45 `ui `uc ]
+"155
+[; ;JordTermometerStyreBox.c: 155:     }
+}
+[e $U 95  ]
+"156
+[; ;JordTermometerStyreBox.c: 156:     else {
+[e :U 94 ]
+{
+"157
+[; ;JordTermometerStyreBox.c: 157:         tempStr[0] = ' ';
+[e = *U + &U F757 * -> -> -> 0 `i `ui `ux -> -> # *U &U F757 `ui `ux -> -> 32 `ui `uc ]
+"158
+[; ;JordTermometerStyreBox.c: 158:     }
+}
+[e :U 95 ]
+"160
+[; ;JordTermometerStyreBox.c: 160:     int intPart = totalC / 10;
+[v _intPart `i ~T0 @X0 1 a ]
+[e = _intPart / _totalC -> 10 `i ]
+"161
+[; ;JordTermometerStyreBox.c: 161:     int decPart = totalC % 10;
+[v _decPart `i ~T0 @X0 1 a ]
+[e = _decPart % _totalC -> 10 `i ]
+"163
+[; ;JordTermometerStyreBox.c: 163:     tempStr[1] = (intPart / 10) + '0';
+[e = *U + &U F757 * -> -> -> 1 `i `ui `ux -> -> # *U &U F757 `ui `ux -> + -> / _intPart -> 10 `i `ui -> 48 `ui `uc ]
+"164
+[; ;JordTermometerStyreBox.c: 164:     tempStr[2] = (intPart % 10) + '0';
+[e = *U + &U F757 * -> -> -> 2 `i `ui `ux -> -> # *U &U F757 `ui `ux -> + -> % _intPart -> 10 `i `ui -> 48 `ui `uc ]
+"165
+[; ;JordTermometerStyreBox.c: 165:     tempStr[3] = '.';
+[e = *U + &U F757 * -> -> -> 3 `i `ui `ux -> -> # *U &U F757 `ui `ux -> -> 46 `ui `uc ]
+"166
+[; ;JordTermometerStyreBox.c: 166:     tempStr[4] = decPart + '0';
+[e = *U + &U F757 * -> -> -> 4 `i `ui `ux -> -> # *U &U F757 `ui `ux -> + -> _decPart `ui -> 48 `ui `uc ]
+"167
+[; ;JordTermometerStyreBox.c: 167:     tempStr[5] = '\0';
+[e = *U + &U F757 * -> -> -> 5 `i `ui `ux -> -> # *U &U F757 `ui `ux -> -> 0 `ui `uc ]
+"169
+[; ;JordTermometerStyreBox.c: 169:     return tempStr;
+[e ) &U F757 ]
+[e $UE 93  ]
+"170
+[; ;JordTermometerStyreBox.c: 170: }
+[e :UE 93 ]
+}
+"172
+[; ;JordTermometerStyreBox.c: 172: void updateLCD(unsigned int value, char line, char batStatus) {
+[v _updateLCD `(v ~T0 @X0 1 ef3`ui`uc`uc ]
+{
+[e :U _updateLCD ]
+[v _value `ui ~T0 @X0 1 r1 ]
+[v _line `uc ~T0 @X0 1 r2 ]
+[v _batStatus `uc ~T0 @X0 1 r3 ]
+[f ]
+"174
+[; ;JordTermometerStyreBox.c: 174:     if(line){
+[e $ ! != -> _line `i -> 0 `i 97  ]
+{
+"175
+[; ;JordTermometerStyreBox.c: 175:         CommandLCD(0b11000011);
+[e ( _CommandLCD (1 -> -> 195 `i `uc ]
+"176
+[; ;JordTermometerStyreBox.c: 176:         char* tempStr = mV2Celcius(value);
+[v _tempStr `*uc ~T0 @X0 1 a ]
+[e = _tempStr ( _mV2Celcius (1 _value ]
+"177
+[; ;JordTermometerStyreBox.c: 177:         writeString(tempStr, 5);
+[e ( _writeString (2 , _tempStr -> -> 5 `i `uc ]
+"179
+[; ;JordTermometerStyreBox.c: 179:         if (batStatus) {
+[e $ ! != -> _batStatus `i -> 0 `i 98  ]
+{
+"180
+[; ;JordTermometerStyreBox.c: 180:             CommandLCD(0b11001100);
+[e ( _CommandLCD (1 -> -> 204 `i `uc ]
+"181
+[; ;JordTermometerStyreBox.c: 181:             writeString("Okay", 4);
+[e ( _writeString (2 , :s 5C -> -> 4 `i `uc ]
+"182
+[; ;JordTermometerStyreBox.c: 182:         } else {
+}
+[e $U 99  ]
+[e :U 98 ]
+{
+"183
+[; ;JordTermometerStyreBox.c: 183:             CommandLCD(0b11001100);
+[e ( _CommandLCD (1 -> -> 204 `i `uc ]
+"184
+[; ;JordTermometerStyreBox.c: 184:             writeString(" Low", 4);
+[e ( _writeString (2 , :s 6C -> -> 4 `i `uc ]
+"185
+[; ;JordTermometerStyreBox.c: 185:         }
+}
+[e :U 99 ]
+"186
+[; ;JordTermometerStyreBox.c: 186:     } else {
+}
+[e $U 100  ]
+[e :U 97 ]
+{
+"187
+[; ;JordTermometerStyreBox.c: 187:         CommandLCD(0b10000011);
+[e ( _CommandLCD (1 -> -> 131 `i `uc ]
+"188
+[; ;JordTermometerStyreBox.c: 188:         char* tempStr = mV2Celcius(value);
+[v _tempStr `*uc ~T0 @X0 1 a ]
+[e = _tempStr ( _mV2Celcius (1 _value ]
+"189
+[; ;JordTermometerStyreBox.c: 189:         writeString(tempStr, 5);
+[e ( _writeString (2 , _tempStr -> -> 5 `i `uc ]
+"191
+[; ;JordTermometerStyreBox.c: 191:         if (batStatus) {
+[e $ ! != -> _batStatus `i -> 0 `i 101  ]
+{
+"192
+[; ;JordTermometerStyreBox.c: 192:             CommandLCD(0b10001100);
+[e ( _CommandLCD (1 -> -> 140 `i `uc ]
+"193
+[; ;JordTermometerStyreBox.c: 193:             writeString("Okay", 4);
+[e ( _writeString (2 , :s 7C -> -> 4 `i `uc ]
+"194
+[; ;JordTermometerStyreBox.c: 194:         } else {
+}
+[e $U 102  ]
+[e :U 101 ]
+{
+"195
+[; ;JordTermometerStyreBox.c: 195:             CommandLCD(0b10001100);
+[e ( _CommandLCD (1 -> -> 140 `i `uc ]
+"196
+[; ;JordTermometerStyreBox.c: 196:             writeString(" Low", 4);
+[e ( _writeString (2 , :s 8C -> -> 4 `i `uc ]
+"197
+[; ;JordTermometerStyreBox.c: 197:         }
+}
+[e :U 102 ]
+"198
+[; ;JordTermometerStyreBox.c: 198:     }
+}
+[e :U 100 ]
+"201
+[; ;JordTermometerStyreBox.c: 201: }
+[e :UE 96 ]
+}
+[v $root$_main `(v ~T0 @X0 0 e ]
+"203
+[; ;JordTermometerStyreBox.c: 203: void main(void) {
+[v _main `(v ~T0 @X0 1 ef ]
+{
+[e :U _main ]
+[f ]
+"205
+[; ;JordTermometerStyreBox.c: 205:     IOInit();
+[e ( _IOInit ..  ]
+"207
+[; ;JordTermometerStyreBox.c: 207:     wait(100);
+[e ( _wait (1 -> -> 100 `i `ui ]
+"210
+[; ;JordTermometerStyreBox.c: 210:     CommandLCD(0b00111000);
+[e ( _CommandLCD (1 -> -> 56 `i `uc ]
+"211
+[; ;JordTermometerStyreBox.c: 211:     CommandLCD(0b00001110);
+[e ( _CommandLCD (1 -> -> 14 `i `uc ]
+"212
+[; ;JordTermometerStyreBox.c: 212:     CommandLCD(0b00000001);
+[e ( _CommandLCD (1 -> -> 1 `i `uc ]
+"213
+[; ;JordTermometerStyreBox.c: 213:     CommandLCD(0b00000110);
+[e ( _CommandLCD (1 -> -> 6 `i `uc ]
+"215
+[; ;JordTermometerStyreBox.c: 215:     wait(200);
+[e ( _wait (1 -> -> 200 `i `ui ]
+"217
+[; ;JordTermometerStyreBox.c: 217:     staticInfo();
+[e ( _staticInfo ..  ]
+"219
+[; ;JordTermometerStyreBox.c: 219:     while(1) {
+[e :U 105 ]
+{
+"220
+[; ;JordTermometerStyreBox.c: 220:         updateLCD(0x2931, 0, 1);
+[e ( _updateLCD (3 , , -> -> 10545 `i `ui -> -> 0 `i `uc -> -> 1 `i `uc ]
+"222
+[; ;JordTermometerStyreBox.c: 222:         updateLCD(0x2900, 1, 1);
+[e ( _updateLCD (3 , , -> -> 10496 `i `ui -> -> 1 `i `uc -> -> 1 `i `uc ]
+"225
+[; ;JordTermometerStyreBox.c: 225:         updateLCD(0x2800, 0, 1);
+[e ( _updateLCD (3 , , -> -> 10240 `i `ui -> -> 0 `i `uc -> -> 1 `i `uc ]
+"227
+[; ;JordTermometerStyreBox.c: 227:         updateLCD(0x2931, 1, 0);
+[e ( _updateLCD (3 , , -> -> 10545 `i `ui -> -> 1 `i `uc -> -> 0 `i `uc ]
+"228
+[; ;JordTermometerStyreBox.c: 228:     }
+}
+[e :U 104 ]
+[e $U 105  ]
+[e :U 106 ]
+"230
+[; ;JordTermometerStyreBox.c: 230:     return;
+[e $UE 103  ]
+"231
+[; ;JordTermometerStyreBox.c: 231: }
+[e :UE 103 ]
+}
+[a 5C 79 107 97 121 0 ]
+[a 7C 79 107 97 121 0 ]
+[a 6C 32 76 111 119 0 ]
+[a 8C 32 76 111 119 0 ]
+[a 2C 67 0 ]
+[a 4C 67 0 ]
+[a 3C 50 58 32 0 ]
+[a 1C 49 58 32 0 ]
+>>>>>>> 5cab985368cfbbaaa989e37532541c4603df9ad5

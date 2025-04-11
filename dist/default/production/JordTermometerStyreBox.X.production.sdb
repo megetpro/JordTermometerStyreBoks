@@ -3,31 +3,43 @@
 [d edition pro ]
 [d chip 16F819 ]
 [d frameptr 0 ]
+"5 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"5 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
 "10 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
+"15 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\Umul8_16.c
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
 "6 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\pic\__eeprom.c
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"27 C:\Users\chris\MPLABXProjects\JordTermometerStyreBox.X\JordTermometerStyreBox.c
+"26 C:\Users\chris\MPLABXProjects\JordTermometerStyreBox.X\JordTermometerStyreBox.c
 [v _IOInit IOInit `(v  1 e 1 0 ]
-"35
+"34
 [v _TimerInit TimerInit `(v  1 e 1 0 ]
-"41
+"40
 [v _wait wait `(v  1 e 1 0 ]
-"49
+"48
 [v _CommandLCD CommandLCD `(v  1 e 1 0 ]
-"70
+"69
 [v _writeChar writeChar `(v  1 e 1 0 ]
-"84
+"83
 [v _writeString writeString `(v  1 e 1 0 ]
-"91
+"90
+[v _mV2Celcius mV2Celcius `(*.4uc  1 e 1 0 ]
+"121
+[v _updateLCD updateLCD `(v  1 e 1 0 ]
+"162
 [v _readMessage readMessage `(v  1 e 1 0 ]
-"193
+"289
 [v _checkSignal checkSignal `(uc  1 e 1 0 ]
-"217
+"332
+[v _staticInfo staticInfo `(v  1 e 1 0 ]
+"350
 [v _main main `(v  1 e 1 0 ]
 "166 C:/Users/chris/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f819.h
 [v _PORTA PORTA `VEuc  1 e 1 @5 ]
@@ -53,79 +65,155 @@
 [v _TRISB TRISB `VEuc  1 e 1 @134 ]
 "1455
 [v _ADCON1 ADCON1 `VEuc  1 e 1 @159 ]
-"217 C:\Users\chris\MPLABXProjects\JordTermometerStyreBox.X\JordTermometerStyreBox.c
+"350 C:\Users\chris\MPLABXProjects\JordTermometerStyreBox.X\JordTermometerStyreBox.c
 [v _main main `(v  1 e 1 0 ]
 {
-"253
+"375
 } 0
-"91
+"332
+[v _staticInfo staticInfo `(v  1 e 1 0 ]
+{
+"347
+} 0
+"162
 [v _readMessage readMessage `(v  1 e 1 0 ]
 {
-"94
-[v readMessage@temp_data temp_data `s  1 a 2 12 ]
-"93
-[v readMessage@Termometer_id Termometer_id `s  1 a 2 10 ]
-"95
-[v readMessage@Batt_status Batt_status `s  1 a 2 8 ]
-"96
-[v readMessage@Expected_check_bit Expected_check_bit `uc  1 a 1 7 ]
-"191
+"165
+[v readMessage@temp_data temp_data `us  1 a 2 29 ]
+"265
+[v readMessage@temp temp `ui  1 a 2 27 ]
+"166
+[v readMessage@Batt_status Batt_status `s  1 a 2 25 ]
+"164
+[v readMessage@Termometer_id Termometer_id `s  1 a 2 22 ]
+"167
+[v readMessage@Expected_check_bit Expected_check_bit `uc  1 a 1 24 ]
+"272
+[v readMessage@Batt Batt `uc  1 a 1 21 ]
+"273
+[v readMessage@Error_state Error_state `uc  1 a 1 20 ]
+"287
 } 0
-"84
+"121
+[v _updateLCD updateLCD `(v  1 e 1 0 ]
+{
+"142
+[v updateLCD@tempStr_93 tempStr `*.4uc  1 a 1 11 ]
+"125
+[v updateLCD@tempStr tempStr `*.4uc  1 a 1 10 ]
+"121
+[v updateLCD@value value `ui  1 p 2 8 ]
+[v updateLCD@line line `uc  1 p 1 10 ]
+[v updateLCD@batStatus batStatus `uc  1 p 1 11 ]
+[v updateLCD@error error `uc  1 p 1 12 ]
+"160
+} 0
+"83
 [v _writeString writeString `(v  1 e 1 0 ]
 {
-[v writeString@string string `*.24uc  1 a 1 wreg ]
-"85
-[v writeString@i i `uc  1 a 1 6 ]
 "84
-[v writeString@string string `*.24uc  1 a 1 wreg ]
-[v writeString@length length `uc  1 p 1 5 ]
-[v writeString@string string `*.24uc  1 a 1 7 ]
-"89
+[v writeString@i i `uc  1 a 1 4 ]
+"83
+[v writeString@string string `*.26uc  1 p 2 1 ]
+[v writeString@length length `uc  1 p 1 3 ]
+"88
 } 0
-"70
+"69
 [v _writeChar writeChar `(v  1 e 1 0 ]
 {
 [v writeChar@character character `uc  1 a 1 wreg ]
 [v writeChar@character character `uc  1 a 1 wreg ]
-[v writeChar@character character `uc  1 a 1 4 ]
-"82
+[v writeChar@character character `uc  1 a 1 0 ]
+"81
 } 0
-"49
+"90
+[v _mV2Celcius mV2Celcius `(*.4uc  1 e 1 0 ]
+{
+"96
+[v mV2Celcius@totalC totalC `i  1 a 2 6 ]
+"109
+[v mV2Celcius@intPart intPart `i  1 a 2 4 ]
+"110
+[v mV2Celcius@decPart decPart `i  1 a 2 2 ]
+"93
+[v mV2Celcius@milivolts milivolts `i  1 a 2 0 ]
+"90
+[v mV2Celcius@inputValue inputValue `ui  1 p 2 8 ]
+"98
+[v mV2Celcius@tempStr tempStr `[6]uc  1 s 6 tempStr ]
+"119
+} 0
+"5 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+{
+"10
+[v ___awmod@sign sign `uc  1 a 1 5 ]
+[v ___awmod@counter counter `uc  1 a 1 4 ]
+"5
+[v ___awmod@divisor divisor `i  1 p 2 0 ]
+[v ___awmod@dividend dividend `i  1 p 2 2 ]
+"34
+} 0
+"5 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"10
+[v ___awdiv@quotient quotient `i  1 a 2 6 ]
+"11
+[v ___awdiv@sign sign `uc  1 a 1 5 ]
+[v ___awdiv@counter counter `uc  1 a 1 4 ]
+"5
+[v ___awdiv@divisor divisor `i  1 p 2 0 ]
+[v ___awdiv@dividend dividend `i  1 p 2 2 ]
+"41
+} 0
+"48 C:\Users\chris\MPLABXProjects\JordTermometerStyreBox.X\JordTermometerStyreBox.c
 [v _CommandLCD CommandLCD `(v  1 e 1 0 ]
 {
 [v CommandLCD@command command `uc  1 a 1 wreg ]
 [v CommandLCD@command command `uc  1 a 1 wreg ]
 [v CommandLCD@command command `uc  1 a 1 4 ]
-"68
+"67
 } 0
-"193
+"15 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 4 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
+"53
+} 0
+"289 C:\Users\chris\MPLABXProjects\JordTermometerStyreBox.X\JordTermometerStyreBox.c
 [v _checkSignal checkSignal `(uc  1 e 1 0 ]
 {
-"206
-[v checkSignal@i_85 i `i  1 a 2 8 ]
-"200
-[v checkSignal@i_84 i `i  1 a 2 6 ]
-"194
+"315
+[v checkSignal@i_110 i `i  1 a 2 8 ]
+"303
+[v checkSignal@i_109 i `i  1 a 2 6 ]
+"291
 [v checkSignal@i i `i  1 a 2 4 ]
-"215
+"290
+[v checkSignal@j j `i  1 a 2 10 ]
+"330
 } 0
-"41
+"40
 [v _wait wait `(v  1 e 1 0 ]
 {
-"42
-[v wait@t t `ui  1 a 2 2 ]
 "41
+[v wait@t t `ui  1 a 2 2 ]
+"40
 [v wait@time time `ui  1 p 2 0 ]
-"47
+"46
 } 0
-"35
+"34
 [v _TimerInit TimerInit `(v  1 e 1 0 ]
 {
-"39
+"38
 } 0
-"27
+"26
 [v _IOInit IOInit `(v  1 e 1 0 ]
 {
-"33
+"32
 } 0

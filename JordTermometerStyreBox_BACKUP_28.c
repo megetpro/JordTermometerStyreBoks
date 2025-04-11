@@ -22,6 +22,7 @@
 
 
 #include <xc.h>
+#include <pic16f819.h>
 
 void IOInit() {
     ADCON1 = 0x06; // Set all pins in portA to be digital
@@ -87,13 +88,198 @@ void writeString(char* string, char length) {
     return;
 }
 
-char* mV2Celcius(unsigned int inputValue){
+void readMessage() {
+    
+    short int Termometer_id = 0;
+    short int temp_data = 0;
+    short int Batt_status = 0;
+    char Expected_check_bit = 0;
+    
+    wait(5);
+    Expected_check_bit ^= PORTAbits.RA3; // Updater forventet checkbit ved at XOR med inputtet
+    Termometer_id = (Termometer_id << 1) | PORTAbits.RA3;
+    PORTAbits.RA4 = 1;
+    
+    wait(10); // fine
+    Expected_check_bit ^= PORTAbits.RA3; // Updater forventet checkbit ved at XOR med inputtet
+    Termometer_id = (Termometer_id << 1) | PORTAbits.RA3;
+    PORTAbits.RA4 = 0;
+    
+    wait(13); // fine
+    Expected_check_bit ^= PORTAbits.RA3;
+    Termometer_id = (Termometer_id << 1) | PORTAbits.RA3;
+    PORTAbits.RA4 = 1;
+    
+    wait(13);
+    Expected_check_bit ^= PORTAbits.RA3;
+    temp_data = (temp_data << 1) | PORTAbits.RA3;
+    PORTAbits.RA4 = 0;
+    
+    wait(12);
+    Expected_check_bit ^= PORTAbits.RA3;
+    temp_data = (temp_data << 1) | PORTAbits.RA3;
+    PORTAbits.RA4 = 1;
+    
+    wait(13);
+    Expected_check_bit ^= PORTAbits.RA3;
+    temp_data = (temp_data << 1) | PORTAbits.RA3;
+    PORTAbits.RA4 = 0;
+    
+    wait(13);
+    Expected_check_bit ^= PORTAbits.RA3;
+    temp_data = (temp_data << 1) | PORTAbits.RA3;
+    PORTAbits.RA4 = 1;
+    
+    wait(12);
+    Expected_check_bit ^= PORTAbits.RA3;
+    temp_data = (temp_data << 1) | PORTAbits.RA3;
+    PORTAbits.RA4 = 0;
+    
+    wait(13);
+    Expected_check_bit ^= PORTAbits.RA3;
+    temp_data = (temp_data << 1) | PORTAbits.RA3;
+    PORTAbits.RA4 = 1;
+    
+    wait(13);
+    Expected_check_bit ^= PORTAbits.RA3;
+    temp_data = (temp_data << 1) | PORTAbits.RA3;
+    PORTAbits.RA4 = 0;
+    
+    wait(12);
+    Expected_check_bit ^= PORTAbits.RA3;
+    temp_data = (temp_data << 1) | PORTAbits.RA3;
+    PORTAbits.RA4 = 1;
+    
+    wait(13);
+    Expected_check_bit ^= PORTAbits.RA3;
+    temp_data = (temp_data << 1) | PORTAbits.RA3;
+    PORTAbits.RA4 = 0;
+    
+    wait(13);
+    Expected_check_bit ^= PORTAbits.RA3;
+    temp_data = (temp_data << 1) | PORTAbits.RA3;
+    PORTAbits.RA4 = 1;
+    
+    wait(12);
+    Expected_check_bit ^= PORTAbits.RA3;
+    Batt_status = (Batt_status << 1) | PORTAbits.RA3;
+    PORTAbits.RA4 = 0;
+    
+    wait(13);
+    Expected_check_bit ^= PORTAbits.RA3;
+    Batt_status = (Batt_status << 1) | PORTAbits.RA3;
+    PORTAbits.RA4 = 1;
+    
+    wait(13);
+    Expected_check_bit ^= PORTAbits.RA3;
+    PORTAbits.RA4 = 0;
+    
+    wait(26);
+    
+    CommandLCD(0b10000000); 
+    writeChar(Termometer_id + '1');
+    
+    CommandLCD(0b10001100);
+    if (Batt_status >= 3) {
+        writeString("Okay", 4);
+    } else if (Batt_status < 1) {
+        writeString(" Lav", 4);
+    } else {
+        writeString("Fejl", 4);
+    }
+
+}
+
+char checkSignal() {
+    for (int i = 0; i < 15; i++) {
+        if (!PORTAbits.RA3) {
+            return 0;
+        }
+    }
+    while (PORTAbits.RA3) {}
+    for (int i = 0; i < 7; i++) {
+        if (PORTAbits.RA3) {
+            return 0;
+        }
+    }
+    while (!PORTAbits.RA3) {}
+    for (int i = 0; i < 7; i++) {
+        if (!PORTAbits.RA3) {
+            return 0;
+        }
+    }
+    while (PORTAbits.RA3) {}
+    wait(13);
+
+    return 1;
+}
+
+void staticInfo (){
+    writeString("1: ", 3);
+    
+    CommandLCD(0b10001000); //Set courser to the 8 position in 1 row
+    writeChar(0b11011111); //Degree symbol
+    
+    writeString("C", 1);
+
+    CommandLCD(0b11000000); //Next line
+    
+    writeString("2: ", 3);
+    
+    CommandLCD(0b11001000); //Set courser to the 8 position in 2 row
+    writeChar(0b11011111); //Degree symbol
+    writeString("C", 1);
+}
+
+char* doubbelDabbel(int rawData) {
+    int raw = rawData;
+    
+    for (int i = 0; i < 12; i ++) {
+        raw = raw << 1;
+        
+        if ((raw & 0xF000) >= 0x5000){
+            raw += 0x3000;
+        }
+        
+        if ((raw & 0xF0000) >= 0x50000){
+            raw += 0x30000;
+        }
+        
+        if ((raw & 0xF00000) >= 0x500000){
+            raw += 0x300000;
+        }
+    
+    }
+    
+    raw = raw >> 12;
+    
+    static char digits[3];
+    
+    digits[0] = raw & 0x0F + '0';
+    raw = raw >> 4;
+    
+    digits[1] = raw & 0x0F + '0';
+    raw = raw >> 4;
+    
+    digits[2] = raw & 0x0F + '0';
+    raw = raw >> 4;
+    
+    return digits;
+}
+
+char* mV2Celcius(unsigned int bcdValue){
+    
+    //Convert BCD
+    int thousand = (bcdValue >> 12) & 0xF;
+    int hundreds = (bcdValue >> 8) & 0xF;
+    int tens = (bcdValue >> 4) & 0xF;
+    int ones = bcdValue & 0xF;
     
     //Total mV value
-    int milivolts = inputValue;
+    int milivolts = thousand * 1000 + hundreds * 100 + tens * 10 + ones;
     
     //Convert to temerature in C from kelvin
-    int totalC = milivolts - 2731 + 29;
+    int totalC = milivolts - 2731;
     
     static char tempStr[6]; // Format: " XX.X" + '\0'
     
@@ -118,234 +304,36 @@ char* mV2Celcius(unsigned int inputValue){
     return tempStr;
 }
 
-void updateLCD(unsigned int value, char line, char batStatus, char error) {
+void updateLCD(unsigned int value, char line, char batStatus) {
     
     if(line){
         CommandLCD(0b11000011);
         char* tempStr = mV2Celcius(value);
         writeString(tempStr, 5);
         
-        if (!error) {
-            if (batStatus) {
-                CommandLCD(0b11001100);
-                writeString("Okay", 4);
-            } else {
-                CommandLCD(0b11001100);
-                writeString(" Low", 4);
-            }
+        if (batStatus) {
+            CommandLCD(0b11001100);
+            writeString("Okay", 4);
         } else {
             CommandLCD(0b11001100);
-            writeString(" Err", 4);
+            writeString(" Low", 4);
         }
     } else {
         CommandLCD(0b10000011);
         char* tempStr = mV2Celcius(value);
         writeString(tempStr, 5);
         
-        if (!error) {
-            if (batStatus) {
-                CommandLCD(0b10001100);
-                writeString("Okay", 4);
-            } else {
-                CommandLCD(0b10001100);
-                writeString(" Low", 4);
-            }
+        if (batStatus) {
+            CommandLCD(0b10001100);
+            writeString("Okay", 4);
         } else {
             CommandLCD(0b10001100);
-            writeString(" Err", 4);
+            writeString(" Low", 4);
         }
     }
     
     
 }
-
-void readMessage() {
-    
-    short int Termometer_id = 0;
-    unsigned short int temp_data = 0;
-    short int Batt_status = 0;
-    char Expected_check_bit = 0;
-    
-    wait(5);
-    Expected_check_bit ^= PORTAbits.RA3; // Updater forventet checkbit ved at XOR med inputtet
-    Termometer_id = (Termometer_id << 1) | PORTAbits.RA3;
-    PORTAbits.RA4 = 1;
-    
-    wait(10); // fine
-    Expected_check_bit ^= PORTAbits.RA3; // Updater forventet checkbit ved at XOR med inputtet
-    Termometer_id = (Termometer_id << 1) | PORTAbits.RA3;
-    PORTAbits.RA4 = 0;
-    
-    wait(13); // fine
-    Expected_check_bit ^= PORTAbits.RA3;
-    Termometer_id = (Termometer_id << 1) | PORTAbits.RA3;
-    PORTAbits.RA4 = 1;
-    
-    wait(13);
-    while(!PORTAbits.RA3) {}
-    
-    wait(18);
-    
-    //wait(13);
-    Expected_check_bit ^= PORTAbits.RA3;
-    temp_data = (temp_data << 1) | PORTAbits.RA3;
-    PORTAbits.RA4 = 0;
-    
-    wait(13);
-    Expected_check_bit ^= PORTAbits.RA3;
-    temp_data = (temp_data << 1) | PORTAbits.RA3;
-    PORTAbits.RA4 = 1;
-    
-    wait(13);
-    Expected_check_bit ^= PORTAbits.RA3;
-    temp_data = (temp_data << 1) | PORTAbits.RA3;
-    PORTAbits.RA4 = 0;
-    
-    wait(13);
-    Expected_check_bit ^= PORTAbits.RA3;
-    temp_data = (temp_data << 1) | PORTAbits.RA3;
-    PORTAbits.RA4 = 1;
-    
-    wait(13);
-    Expected_check_bit ^= PORTAbits.RA3;
-    temp_data = (temp_data << 1) | PORTAbits.RA3;
-    PORTAbits.RA4 = 0;
-    
-    wait(13);
-    while(!PORTAbits.RA3) {}
-    
-    wait(18);
-    
-    // wait(13);
-    Expected_check_bit ^= PORTAbits.RA3;
-    temp_data = (temp_data << 1) | PORTAbits.RA3;
-    PORTAbits.RA4 = 1;
-    
-    wait(13);
-    Expected_check_bit ^= PORTAbits.RA3;
-    temp_data = (temp_data << 1) | PORTAbits.RA3;
-    PORTAbits.RA4 = 0;
-    
-    wait(13);
-    Expected_check_bit ^= PORTAbits.RA3;
-    temp_data = (temp_data << 1) | PORTAbits.RA3;
-    PORTAbits.RA4 = 1;
-    
-    wait(13);
-    Expected_check_bit ^= PORTAbits.RA3;
-    temp_data = (temp_data << 1) | PORTAbits.RA3;
-    PORTAbits.RA4 = 0;
-    
-    wait(13);
-    Expected_check_bit ^= PORTAbits.RA3;
-    temp_data = (temp_data << 1) | PORTAbits.RA3;
-    PORTAbits.RA4 = 1;
-    
-    wait(13);
-    while(!PORTAbits.RA3) {}
-    
-    wait(18);
-    
-    //wait(12);
-    Expected_check_bit ^= PORTAbits.RA3;
-    Batt_status = (Batt_status << 1) | PORTAbits.RA3;
-    PORTAbits.RA4 = 0;
-    
-    wait(13);
-    Expected_check_bit ^= PORTAbits.RA3;
-    Batt_status = (Batt_status << 1) | PORTAbits.RA3;
-    PORTAbits.RA4 = 1;
-    
-    wait(13);
-    Expected_check_bit ^= PORTAbits.RA3;
-    PORTAbits.RA4 = 0;
-    
-    wait(26);
-    
-    unsigned int temp = (temp_data & 0x00ff) << 8 | (temp_data & 0xff00) >> 8; // Bytter på bits så fedcba9876543210 bliver 76543210fedcba98
-    temp = (temp & 0x0f0f) << 4 | (temp & 0xf0f0) >> 4; // 32107654ba98fedc
-    temp = (temp & 0x3333) << 2 | (temp & 0xcccc) >> 2; // 1032547698badcfe
-    temp = (temp & 0x5555) << 1 | (temp & 0xaaaa) >> 1; // 0123456789abcdef
-    
-    temp = temp >> 6;
-    
-    char Batt = 0;
-    char Error_state = 0;
-    
-    if (Batt_status == 3) {
-        Batt = 1;
-    } else if (Batt_status == 0) {
-        Batt = 0;
-    } else {
-        Error_state = 1;
-    }
-    
-    //temp -= 500;
-    
-    updateLCD(temp*5 - (temp >> 3), 0, Batt, Error_state);
-
-}
-
-char checkSignal() {
-    int j = 0;
-    for (int i = 0; i < 15; i++) {
-        if (!PORTAbits.RA3) {
-            return 0;
-        }
-    }
-    while (PORTAbits.RA3) {
-        if (j > 5) {
-            return 0;
-        }
-        j++;
-    }
-    j = 0;
-    for (int i = 0; i < 7; i++) {
-        if (PORTAbits.RA3) {
-            return 0;
-        }
-    }
-    while (!PORTAbits.RA3) {
-        if (j > 10) {
-            return 0;
-        }
-        j++;
-    }
-    j = 0;
-    for (int i = 0; i < 7; i++) {
-        if (!PORTAbits.RA3) {
-            return 0;
-        }
-    }
-    while (PORTAbits.RA3) {
-        if (j > 10) {
-            return 0;
-        }
-        j++;
-    }
-    j = 0;
-    wait(13);
-
-    return 1;
-}
-
-void staticInfo (){
-    writeString("1: ", 3);
-    
-    CommandLCD(0b10001000); //Set courser to the 8 position in 1 row
-    writeChar(0b11011111); //Degree symbol
-    
-    writeString("C", 1);
-
-    CommandLCD(0b11000000); //Next line
-    
-    writeString("2: ", 3);
-    
-    CommandLCD(0b11001000); //Set courser to the 8 position in 2 row
-    writeChar(0b11011111); //Degree symbol
-    writeString("C", 1);
-}
-
 
 void main(void) {
     //PIC setup
@@ -362,13 +350,40 @@ void main(void) {
     
     wait(200);
     
+<<<<<<< HEAD
+    writeString("1: -13.9", 8);
+    writeChar(0b11011111);
+    writeString("C    9%", 7);
+
+    wait(200);
+
+    CommandLCD(0b11000000);     
+    
+    writeString("2:  19.9", 8);
+    writeChar(0b11011111);
+    writeString("C  100%", 7);
+    
+    wait(200);
+    
+    while (1) {
+        if (PORTAbits.RA3) {
+            if (checkSignal()) {
+                readMessage();
+            }
+        }
+=======
     staticInfo();
             
     while(1) {
-        if (checkSignal()) {
-            readMessage();
-        }
+        updateLCD(0x2931, 0, 1);
         
+        updateLCD(0x2900, 1, 1);
+        
+        
+        updateLCD(0x2800, 0, 1);
+        
+        updateLCD(0x2931, 1, 0);
+>>>>>>> 5cab985368cfbbaaa989e37532541c4603df9ad5
     }
     
     return;
