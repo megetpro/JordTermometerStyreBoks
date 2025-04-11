@@ -1,0 +1,2321 @@
+
+
+Microchip MPLAB XC8 Assembler V3.00 build 20241204225717 
+                                                                                               Mon Apr 07 14:44:14 2025
+
+Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1 
+     1                           	processor	16F819
+     2                           	pagewidth 120
+     3                           	opt	flic
+     4                           	psect	strings,global,class=STRING,space=0,delta=2,noexec
+     5                           	psect	cinit,global,class=CODE,space=0,merge=1,delta=2
+     6                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1,noexec
+     7                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1,noexec
+     8                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1,noexec
+     9                           	psect	maintext,global,class=CODE,space=0,split=1,delta=2
+    10                           	psect	text1,local,class=CODE,space=0,merge=1,delta=2
+    11                           	psect	text2,local,class=CODE,space=0,merge=1,delta=2
+    12                           	psect	text3,local,class=CODE,space=0,merge=1,delta=2,group=1
+    13                           	psect	text4,local,class=CODE,space=0,merge=1,delta=2,group=1
+    14                           	psect	text5,local,class=CODE,space=0,merge=1,delta=2,group=1
+    15                           	psect	text6,local,class=CODE,space=0,merge=1,delta=2
+    16                           	psect	text7,local,class=CODE,space=0,merge=1,delta=2
+    17                           	psect	text8,local,class=CODE,space=0,merge=1,delta=2
+    18                           	psect	text9,local,class=CODE,space=0,merge=1,delta=2
+    19                           	psect	text10,local,class=CODE,space=0,merge=1,delta=2
+    20                           	psect	text11,local,class=CODE,space=0,merge=1,delta=2
+    21                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
+    22                           	dabs	1,0x7E,2
+    23     0000                     
+    24                           ; Generated 12/10/2023 GMT
+    25                           ; 
+    26                           ; Copyright © 2023, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    27                           ; All rights reserved.
+    28                           ; 
+    29                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    30                           ; 
+    31                           ; Redistribution and use in source and binary forms, with or without modification, are
+    32                           ; permitted provided that the following conditions are met:
+    33                           ; 
+    34                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    35                           ;        conditions and the following disclaimer.
+    36                           ; 
+    37                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    38                           ;        of conditions and the following disclaimer in the documentation and/or other
+    39                           ;        materials provided with the distribution. Publication is not required when
+    40                           ;        this file is used in an embedded application.
+    41                           ; 
+    42                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    43                           ;        software without specific prior written permission.
+    44                           ; 
+    45                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    46                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    47                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    48                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    49                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    50                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    51                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    52                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    53                           ; 
+    54                           ; 
+    55                           ; Code-generator required, PIC16F819 Definitions
+    56                           ; 
+    57                           ; SFR Addresses
+    58     0004                     fsr             equ	4
+    59     0004                     fsr0            equ	4
+    60     0000                     indf            equ	0
+    61     0000                     indf0           equ	0
+    62     0002                     pc              equ	2
+    63     0002                     pcl             equ	2
+    64     000A                     pclath          equ	10
+    65     0003                     status          equ	3
+    66     0000                     INDF            equ	0	;# 
+    67     0001                     TMR0            equ	1	;# 
+    68     0002                     PCL             equ	2	;# 
+    69     0003                     STATUS          equ	3	;# 
+    70     0004                     FSR             equ	4	;# 
+    71     0005                     PORTA           equ	5	;# 
+    72     0006                     PORTB           equ	6	;# 
+    73     000A                     PCLATH          equ	10	;# 
+    74     000B                     INTCON          equ	11	;# 
+    75     000C                     PIR1            equ	12	;# 
+    76     000D                     PIR2            equ	13	;# 
+    77     000E                     TMR1            equ	14	;# 
+    78     000E                     TMR1L           equ	14	;# 
+    79     000F                     TMR1H           equ	15	;# 
+    80     0010                     T1CON           equ	16	;# 
+    81     0011                     TMR2            equ	17	;# 
+    82     0012                     T2CON           equ	18	;# 
+    83     0013                     SSPBUF          equ	19	;# 
+    84     0014                     SSPCON          equ	20	;# 
+    85     0015                     CCPR1           equ	21	;# 
+    86     0015                     CCPR1L          equ	21	;# 
+    87     0016                     CCPR1H          equ	22	;# 
+    88     0017                     CCP1CON         equ	23	;# 
+    89     001E                     ADRESH          equ	30	;# 
+    90     001F                     ADCON0          equ	31	;# 
+    91     0081                     OPTION_REG      equ	129	;# 
+    92     0085                     TRISA           equ	133	;# 
+    93     0086                     TRISB           equ	134	;# 
+    94     008C                     PIE1            equ	140	;# 
+    95     008D                     PIE2            equ	141	;# 
+    96     008E                     PCON            equ	142	;# 
+    97     008F                     OSCCON          equ	143	;# 
+    98     0090                     OSCTUNE         equ	144	;# 
+    99     0092                     PR2             equ	146	;# 
+   100     0093                     SSPADD          equ	147	;# 
+   101     0094                     SSPSTAT         equ	148	;# 
+   102     009E                     ADRESL          equ	158	;# 
+   103     009F                     ADCON1          equ	159	;# 
+   104     010C                     EEDATA          equ	268	;# 
+   105     010D                     EEADR           equ	269	;# 
+   106     010E                     EEDATH          equ	270	;# 
+   107     010F                     EEADRH          equ	271	;# 
+   108     018C                     EECON1          equ	396	;# 
+   109     018D                     EECON2          equ	397	;# 
+   110     0000                     INDF            equ	0	;# 
+   111     0001                     TMR0            equ	1	;# 
+   112     0002                     PCL             equ	2	;# 
+   113     0003                     STATUS          equ	3	;# 
+   114     0004                     FSR             equ	4	;# 
+   115     0005                     PORTA           equ	5	;# 
+   116     0006                     PORTB           equ	6	;# 
+   117     000A                     PCLATH          equ	10	;# 
+   118     000B                     INTCON          equ	11	;# 
+   119     000C                     PIR1            equ	12	;# 
+   120     000D                     PIR2            equ	13	;# 
+   121     000E                     TMR1            equ	14	;# 
+   122     000E                     TMR1L           equ	14	;# 
+   123     000F                     TMR1H           equ	15	;# 
+   124     0010                     T1CON           equ	16	;# 
+   125     0011                     TMR2            equ	17	;# 
+   126     0012                     T2CON           equ	18	;# 
+   127     0013                     SSPBUF          equ	19	;# 
+   128     0014                     SSPCON          equ	20	;# 
+   129     0015                     CCPR1           equ	21	;# 
+   130     0015                     CCPR1L          equ	21	;# 
+   131     0016                     CCPR1H          equ	22	;# 
+   132     0017                     CCP1CON         equ	23	;# 
+   133     001E                     ADRESH          equ	30	;# 
+   134     001F                     ADCON0          equ	31	;# 
+   135     0081                     OPTION_REG      equ	129	;# 
+   136     0085                     TRISA           equ	133	;# 
+   137     0086                     TRISB           equ	134	;# 
+   138     008C                     PIE1            equ	140	;# 
+   139     008D                     PIE2            equ	141	;# 
+   140     008E                     PCON            equ	142	;# 
+   141     008F                     OSCCON          equ	143	;# 
+   142     0090                     OSCTUNE         equ	144	;# 
+   143     0092                     PR2             equ	146	;# 
+   144     0093                     SSPADD          equ	147	;# 
+   145     0094                     SSPSTAT         equ	148	;# 
+   146     009E                     ADRESL          equ	158	;# 
+   147     009F                     ADCON1          equ	159	;# 
+   148     010C                     EEDATA          equ	268	;# 
+   149     010D                     EEADR           equ	269	;# 
+   150     010E                     EEDATH          equ	270	;# 
+   151     010F                     EEADRH          equ	271	;# 
+   152     018C                     EECON1          equ	396	;# 
+   153     018D                     EECON2          equ	397	;# 
+   154     0005                     _PORTAbits      set	5
+   155     0006                     _PORTB          set	6
+   156     0005                     _PORTA          set	5
+   157     0085                     _TRISA          set	133
+   158     0086                     _TRISB          set	134
+   159                           
+   160                           	psect	strings
+   161     0001                     __pstrings:
+   162     0001                     stringtab:
+   163     0001                     __stringtab:
+   164                           
+   165                           ;	String table - string pointers are 1 byte each
+   166     0001  1BFF               	btfsc	btemp+1,7
+   167     0002  280B               	ljmp	stringcode
+   168     0003  1383               	bcf	3,7
+   169     0004  187F               	btfsc	btemp+1,0
+   170     0005  1783               	bsf	3,7
+   171     0006  0800               	movf	0,w
+   172     0007  0A84               	incf	4,f
+   173     0008  1903               	skipnz
+   174     0009  0AFF               	incf	btemp+1,f
+   175     000A  0008               	return
+   176     000B                     stringcode:
+   177     000B                     stringdir:
+   178     000B  3000               	movlw	high stringdir
+   179     000C  008A               	movwf	10
+   180     000D  0804               	movf	4,w
+   181     000E  0A84               	incf	4,f
+   182     000F  0782               	addwf	2,f
+   183     0010                     __stringbase:
+   184     0010  3400               	retlw	0
+   185     0011                     __end_of__stringtab:
+   186     0011                     STR_6:
+   187     0011  3420               	retlw	32	;' '
+   188     0012  344C               	retlw	76	;'L'
+   189     0013  346F               	retlw	111	;'o'
+   190     0014  3477               	retlw	119	;'w'
+   191     0015  3400               	retlw	0
+   192     0016                     STR_5:
+   193     0016  344F               	retlw	79	;'O'
+   194     0017  346B               	retlw	107	;'k'
+   195     0018  3461               	retlw	97	;'a'
+   196     0019  3479               	retlw	121	;'y'
+   197     001A  3400               	retlw	0
+   198     001B                     STR_1:
+   199     001B  3431               	retlw	49	;'1'
+   200     001C  343A               	retlw	58	;':'
+   201     001D  3420               	retlw	32	;' '
+   202     001E  3400               	retlw	0
+   203     001F                     STR_3:
+   204     001F  3432               	retlw	50	;'2'
+   205     0020  343A               	retlw	58	;':'
+   206     0021  3420               	retlw	32	;' '
+   207     0022  3400               	retlw	0
+   208     0023                     STR_2:
+   209     0023  3443               	retlw	67	;'C'
+   210     0024  3400               	retlw	0
+   211     0016                     STR_7           equ	STR_5
+   212     0011                     STR_8           equ	STR_6
+   213     0023                     STR_4           equ	STR_2
+   214                           
+   215                           	psect	cinit
+   216     07F3                     start_initialization:	
+   217                           ; #config settings
+   218                           
+   219     07F3                     __initialization:
+   220                           
+   221                           ; Clear objects allocated to BANK0
+   222     07F3  1283               	bcf	3,5	;RP0=0, select bank0
+   223     07F4  1303               	bcf	3,6	;RP1=0, select bank0
+   224     07F5  01B8               	clrf	__pbssBANK0& (0+127)
+   225     07F6  01B9               	clrf	(__pbssBANK0+1)& (0+127)
+   226     07F7  01BA               	clrf	(__pbssBANK0+2)& (0+127)
+   227     07F8  01BB               	clrf	(__pbssBANK0+3)& (0+127)
+   228     07F9  01BC               	clrf	(__pbssBANK0+4)& (0+127)
+   229     07FA  01BD               	clrf	(__pbssBANK0+5)& (0+127)
+   230     07FB  01BE               	clrf	(__pbssBANK0+6)& (0+127)
+   231     07FC  01BF               	clrf	(__pbssBANK0+7)& (0+127)
+   232     07FD  01C0               	clrf	(__pbssBANK0+8)& (0+127)
+   233     07FE                     end_of_initialization:	
+   234                           ;End of C runtime variable initialization code
+   235                           
+   236     07FE                     __end_of__initialization:
+   237     07FE  0183               	clrf	3
+   238     07FF  2DE0               	ljmp	_main	;jump to C main() function
+   239                           
+   240                           	psect	bssBANK0
+   241     0038                     __pbssBANK0:
+   242     0038                     mV2Celcius@tempStr:
+   243     0038                     	ds	6
+   244     003E                     doubbelDabbel@digits:
+   245     003E                     	ds	3
+   246                           
+   247                           	psect	cstackCOMMON
+   248     0070                     __pcstackCOMMON:
+   249     0070                     ?_IOInit:
+   250     0070                     ?_wait:	
+   251                           ; 1 bytes @ 0x0
+   252                           
+   253     0070                     ?_CommandLCD:	
+   254                           ; 1 bytes @ 0x0
+   255                           
+   256     0070                     ?_writeChar:	
+   257                           ; 1 bytes @ 0x0
+   258                           
+   259     0070                     ?_staticInfo:	
+   260                           ; 1 bytes @ 0x0
+   261                           
+   262     0070                     ?_main:	
+   263                           ; 1 bytes @ 0x0
+   264                           
+   265     0070                     ?___wmul:	
+   266                           ; 1 bytes @ 0x0
+   267                           
+   268     0070                     ?___awdiv:	
+   269                           ; 2 bytes @ 0x0
+   270                           
+   271     0070                     ?___awmod:	
+   272                           ; 2 bytes @ 0x0
+   273                           
+   274     0070                     writeChar@character:	
+   275                           ; 2 bytes @ 0x0
+   276                           
+   277     0070                     wait@time:	
+   278                           ; 1 bytes @ 0x0
+   279                           
+   280     0070                     ___wmul@multiplier:	
+   281                           ; 2 bytes @ 0x0
+   282                           
+   283     0070                     ___awdiv@divisor:	
+   284                           ; 2 bytes @ 0x0
+   285                           
+   286     0070                     ___awmod@divisor:	
+   287                           ; 2 bytes @ 0x0
+   288                           
+   289     0070                     ??_IOInit:	
+   290                           ; 2 bytes @ 0x0
+   291                           
+   292     0070                     ??_writeChar:	
+   293                           ; 1 bytes @ 0x0
+   294                           
+   295                           
+   296                           ; 1 bytes @ 0x0
+   297     0070                     	ds	1
+   298     0071                     ?_writeString:
+   299     0071                     writeString@string:	
+   300                           ; 1 bytes @ 0x1
+   301                           
+   302                           
+   303                           ; 2 bytes @ 0x1
+   304     0071                     	ds	1
+   305     0072                     wait@t:
+   306     0072                     ___wmul@multiplicand:	
+   307                           ; 2 bytes @ 0x2
+   308                           
+   309     0072                     ___awdiv@dividend:	
+   310                           ; 2 bytes @ 0x2
+   311                           
+   312     0072                     ___awmod@dividend:	
+   313                           ; 2 bytes @ 0x2
+   314                           
+   315     0072                     ??_wait:	
+   316                           ; 2 bytes @ 0x2
+   317                           
+   318                           
+   319                           ; 1 bytes @ 0x2
+   320     0072                     	ds	1
+   321     0073                     writeString@length:
+   322                           
+   323                           ; 1 bytes @ 0x3
+   324     0073                     	ds	1
+   325     0074                     CommandLCD@command:
+   326     0074                     writeString@i:	
+   327                           ; 1 bytes @ 0x4
+   328                           
+   329     0074                     ___awdiv@counter:	
+   330                           ; 1 bytes @ 0x4
+   331                           
+   332     0074                     ___awmod@counter:	
+   333                           ; 1 bytes @ 0x4
+   334                           
+   335     0074                     ___wmul@product:	
+   336                           ; 1 bytes @ 0x4
+   337                           
+   338     0074                     ??_CommandLCD:	
+   339                           ; 2 bytes @ 0x4
+   340                           
+   341     0074                     ??_writeString:	
+   342                           ; 1 bytes @ 0x4
+   343                           
+   344     0074                     ??___wmul:	
+   345                           ; 1 bytes @ 0x4
+   346                           
+   347     0074                     ??___awdiv:	
+   348                           ; 1 bytes @ 0x4
+   349                           
+   350     0074                     ??___awmod:	
+   351                           ; 1 bytes @ 0x4
+   352                           
+   353                           
+   354                           ; 1 bytes @ 0x4
+   355     0074                     	ds	1
+   356     0075                     ___awdiv@sign:
+   357     0075                     ___awmod@sign:	
+   358                           ; 1 bytes @ 0x5
+   359                           
+   360     0075                     ??_staticInfo:	
+   361                           ; 1 bytes @ 0x5
+   362                           
+   363                           
+   364                           ; 1 bytes @ 0x5
+   365     0075                     	ds	1
+   366     0076                     ___awdiv@quotient:
+   367                           
+   368                           ; 2 bytes @ 0x6
+   369     0076                     	ds	2
+   370     0078                     ?_mV2Celcius:
+   371     0078                     mV2Celcius@bcdValue:	
+   372                           ; 1 bytes @ 0x8
+   373                           
+   374                           
+   375                           ; 2 bytes @ 0x8
+   376     0078                     	ds	2
+   377     007A                     ?_updateLCD:
+   378     007A                     updateLCD@value:	
+   379                           ; 1 bytes @ 0xA
+   380                           
+   381                           
+   382                           ; 2 bytes @ 0xA
+   383     007A                     	ds	2
+   384     007C                     updateLCD@line:
+   385                           
+   386                           ; 1 bytes @ 0xC
+   387     007C                     	ds	1
+   388     007D                     updateLCD@batStatus:
+   389                           
+   390                           ; 1 bytes @ 0xD
+   391     007D                     	ds	1
+   392     007E                     ??_updateLCD:
+   393     007E                     ??_main:	
+   394                           ; 1 bytes @ 0xE
+   395                           
+   396                           
+   397                           	psect	cstackBANK0
+   398     0020                     __pcstackBANK0:	
+   399                           ; 1 bytes @ 0xE
+   400                           
+   401     0020                     ??_mV2Celcius:
+   402                           
+   403                           ; 1 bytes @ 0x0
+   404     0020                     	ds	6
+   405     0026                     mV2Celcius@thousand:
+   406                           
+   407                           ; 2 bytes @ 0x6
+   408     0026                     	ds	2
+   409     0028                     mV2Celcius@hundreds:
+   410                           
+   411                           ; 2 bytes @ 0x8
+   412     0028                     	ds	2
+   413     002A                     mV2Celcius@tens:
+   414                           
+   415                           ; 2 bytes @ 0xA
+   416     002A                     	ds	2
+   417     002C                     mV2Celcius@ones:
+   418                           
+   419                           ; 2 bytes @ 0xC
+   420     002C                     	ds	2
+   421     002E                     mV2Celcius@milivolts:
+   422                           
+   423                           ; 2 bytes @ 0xE
+   424     002E                     	ds	2
+   425     0030                     mV2Celcius@decPart:
+   426                           
+   427                           ; 2 bytes @ 0x10
+   428     0030                     	ds	2
+   429     0032                     mV2Celcius@intPart:
+   430                           
+   431                           ; 2 bytes @ 0x12
+   432     0032                     	ds	2
+   433     0034                     mV2Celcius@totalC:
+   434                           
+   435                           ; 2 bytes @ 0x14
+   436     0034                     	ds	2
+   437     0036                     updateLCD@tempStr:
+   438                           
+   439                           ; 1 bytes @ 0x16
+   440     0036                     	ds	1
+   441     0037                     updateLCD@tempStr_105:
+   442                           
+   443                           ; 1 bytes @ 0x17
+   444     0037                     	ds	1
+   445                           
+   446                           	psect	maintext
+   447     05E0                     __pmaintext:	
+   448 ;;
+   449 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   450 ;;
+   451 ;; *************** function _main *****************
+   452 ;; Defined at:
+   453 ;;		line 203 in file "JordTermometerStyreBox.c"
+   454 ;; Parameters:    Size  Location     Type
+   455 ;;		None
+   456 ;; Auto vars:     Size  Location     Type
+   457 ;;		None
+   458 ;; Return value:  Size  Location     Type
+   459 ;;                  1    wreg      void 
+   460 ;; Registers used:
+   461 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
+   462 ;; Tracked objects:
+   463 ;;		On entry : B00/0
+   464 ;;		On exit  : 0/0
+   465 ;;		Unchanged: 0/0
+   466 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   467 ;;      Params:         0       0       0       0
+   468 ;;      Locals:         0       0       0       0
+   469 ;;      Temps:          0       0       0       0
+   470 ;;      Totals:         0       0       0       0
+   471 ;;Total ram usage:        0 bytes
+   472 ;; Hardware stack levels required when called: 3
+   473 ;; This function calls:
+   474 ;;		_CommandLCD
+   475 ;;		_IOInit
+   476 ;;		_staticInfo
+   477 ;;		_updateLCD
+   478 ;;		_wait
+   479 ;; This function is called by:
+   480 ;;		Startup code after reset
+   481 ;; This function uses a non-reentrant model
+   482 ;;
+   483                           
+   484     05E0                     _main:	
+   485                           ;psect for function _main
+   486                           
+   487     05E0                     l1131:	
+   488                           ;incstack = 0
+   489                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
+   490                           
+   491                           
+   492                           ;JordTermometerStyreBox.c: 205:     IOInit();
+   493     05E0  2531               	fcall	_IOInit
+   494     05E1                     l1133:
+   495                           
+   496                           ;JordTermometerStyreBox.c: 207:     wait(100);
+   497     05E1  3064               	movlw	100
+   498     05E2  00F0               	movwf	wait@time
+   499     05E3  3000               	movlw	0
+   500     05E4  00F1               	movwf	wait@time+1
+   501     05E5  2546               	fcall	_wait
+   502     05E6                     l1135:
+   503                           
+   504                           ;JordTermometerStyreBox.c: 210:     CommandLCD(0b00111000);
+   505     05E6  3038               	movlw	56
+   506     05E7  2593               	fcall	_CommandLCD
+   507     05E8                     l1137:
+   508                           
+   509                           ;JordTermometerStyreBox.c: 211:     CommandLCD(0b00001110);
+   510     05E8  300E               	movlw	14
+   511     05E9  2593               	fcall	_CommandLCD
+   512     05EA                     l1139:
+   513                           
+   514                           ;JordTermometerStyreBox.c: 212:     CommandLCD(0b00000001);
+   515     05EA  3001               	movlw	1
+   516     05EB  2593               	fcall	_CommandLCD
+   517     05EC                     l1141:
+   518                           
+   519                           ;JordTermometerStyreBox.c: 213:     CommandLCD(0b00000110);
+   520     05EC  3006               	movlw	6
+   521     05ED  2593               	fcall	_CommandLCD
+   522     05EE                     l1143:
+   523                           
+   524                           ;JordTermometerStyreBox.c: 215:     wait(200);
+   525     05EE  30C8               	movlw	200
+   526     05EF  00F0               	movwf	wait@time
+   527     05F0  3000               	movlw	0
+   528     05F1  00F1               	movwf	wait@time+1
+   529     05F2  2546               	fcall	_wait
+   530     05F3                     l1145:
+   531                           
+   532                           ;JordTermometerStyreBox.c: 217:     staticInfo();
+   533     05F3  25B9               	fcall	_staticInfo
+   534     05F4                     l1147:
+   535                           
+   536                           ;JordTermometerStyreBox.c: 220:         updateLCD(0x2931, 0, 1);
+   537     05F4  3031               	movlw	49
+   538     05F5  00FA               	movwf	updateLCD@value
+   539     05F6  3029               	movlw	41
+   540     05F7  00FB               	movwf	updateLCD@value+1
+   541     05F8  01FC               	clrf	updateLCD@line
+   542     05F9  01FD               	clrf	updateLCD@batStatus
+   543     05FA  0AFD               	incf	updateLCD@batStatus,f
+   544     05FB  266E               	fcall	_updateLCD
+   545     05FC                     l1149:
+   546                           
+   547                           ;JordTermometerStyreBox.c: 222:         updateLCD(0x2900, 1, 1);
+   548     05FC  3000               	movlw	0
+   549     05FD  00FA               	movwf	updateLCD@value
+   550     05FE  3029               	movlw	41
+   551     05FF  00FB               	movwf	updateLCD@value+1
+   552     0600  01FC               	clrf	updateLCD@line
+   553     0601  0AFC               	incf	updateLCD@line,f
+   554     0602  01FD               	clrf	updateLCD@batStatus
+   555     0603  0AFD               	incf	updateLCD@batStatus,f
+   556     0604  266E               	fcall	_updateLCD
+   557     0605                     l1151:
+   558                           
+   559                           ;JordTermometerStyreBox.c: 225:         updateLCD(0x2800, 0, 1);
+   560     0605  3000               	movlw	0
+   561     0606  00FA               	movwf	updateLCD@value
+   562     0607  3028               	movlw	40
+   563     0608  00FB               	movwf	updateLCD@value+1
+   564     0609  01FC               	clrf	updateLCD@line
+   565     060A  01FD               	clrf	updateLCD@batStatus
+   566     060B  0AFD               	incf	updateLCD@batStatus,f
+   567     060C  266E               	fcall	_updateLCD
+   568     060D                     l1153:
+   569                           
+   570                           ;JordTermometerStyreBox.c: 227:         updateLCD(0x2931, 1, 0);
+   571     060D  3031               	movlw	49
+   572     060E  00FA               	movwf	updateLCD@value
+   573     060F  3029               	movlw	41
+   574     0610  00FB               	movwf	updateLCD@value+1
+   575     0611  01FC               	clrf	updateLCD@line
+   576     0612  0AFC               	incf	updateLCD@line,f
+   577     0613  01FD               	clrf	updateLCD@batStatus
+   578     0614  266E               	fcall	_updateLCD
+   579     0615  2DF4               	goto	l1147
+   580     0616  2800               	ljmp	start
+   581     0617                     __end_of_main:
+   582                           
+   583                           	psect	text1
+   584     066E                     __ptext1:	
+   585 ;; *************** function _updateLCD *****************
+   586 ;; Defined at:
+   587 ;;		line 172 in file "JordTermometerStyreBox.c"
+   588 ;; Parameters:    Size  Location     Type
+   589 ;;  value           2   10[COMMON] unsigned int 
+   590 ;;  line            1   12[COMMON] unsigned char 
+   591 ;;  batStatus       1   13[COMMON] unsigned char 
+   592 ;; Auto vars:     Size  Location     Type
+   593 ;;  tempStr         1   23[BANK0 ] PTR unsigned char 
+   594 ;;		 -> mV2Celcius@tempStr(6), 
+   595 ;;  tempStr         1   22[BANK0 ] PTR unsigned char 
+   596 ;;		 -> mV2Celcius@tempStr(6), 
+   597 ;; Return value:  Size  Location     Type
+   598 ;;                  1    wreg      void 
+   599 ;; Registers used:
+   600 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
+   601 ;; Tracked objects:
+   602 ;;		On entry : 0/0
+   603 ;;		On exit  : 0/0
+   604 ;;		Unchanged: 0/0
+   605 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   606 ;;      Params:         4       0       0       0
+   607 ;;      Locals:         0       2       0       0
+   608 ;;      Temps:          0       0       0       0
+   609 ;;      Totals:         4       2       0       0
+   610 ;;Total ram usage:        6 bytes
+   611 ;; Hardware stack levels used: 1
+   612 ;; Hardware stack levels required when called: 2
+   613 ;; This function calls:
+   614 ;;		_CommandLCD
+   615 ;;		_mV2Celcius
+   616 ;;		_writeString
+   617 ;; This function is called by:
+   618 ;;		_main
+   619 ;; This function uses a non-reentrant model
+   620 ;;
+   621                           
+   622     066E                     _updateLCD:	
+   623                           ;psect for function _updateLCD
+   624                           
+   625     066E                     l1063:	
+   626                           ;incstack = 0
+   627                           ; Regs used in _updateLCD: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
+   628                           
+   629                           
+   630                           ;JordTermometerStyreBox.c: 174:     if(line){
+   631     066E  087C               	movf	updateLCD@line,w
+   632     066F  1903               	btfsc	3,2
+   633     0670  2E72               	goto	u631
+   634     0671  2E73               	goto	u630
+   635     0672                     u631:
+   636     0672  2E9D               	goto	l1079
+   637     0673                     u630:
+   638     0673                     l1065:
+   639                           
+   640                           ;JordTermometerStyreBox.c: 175:         CommandLCD(0b11000011);
+   641     0673  30C3               	movlw	195
+   642     0674  2593               	fcall	_CommandLCD
+   643                           
+   644                           ;JordTermometerStyreBox.c: 176:         char* tempStr = mV2Celcius(value);
+   645     0675  087B               	movf	updateLCD@value+1,w
+   646     0676  00F9               	movwf	mV2Celcius@bcdValue+1
+   647     0677  087A               	movf	updateLCD@value,w
+   648     0678  00F8               	movwf	mV2Celcius@bcdValue
+   649     0679  272A               	fcall	_mV2Celcius
+   650     067A  1283               	bcf	3,5	;RP0=0, select bank0
+   651     067B  1303               	bcf	3,6	;RP1=0, select bank0
+   652     067C  00B6               	movwf	updateLCD@tempStr
+   653     067D                     l1067:
+   654                           
+   655                           ;JordTermometerStyreBox.c: 177:         writeString(tempStr, 5);
+   656     067D  0836               	movf	updateLCD@tempStr,w
+   657     067E  00F1               	movwf	writeString@string
+   658     067F  3000               	movlw	0
+   659     0680  00F2               	movwf	writeString@string+1
+   660     0681  3005               	movlw	5
+   661     0682  00F3               	movwf	writeString@length
+   662     0683  2558               	fcall	_writeString
+   663     0684                     l1069:
+   664                           
+   665                           ;JordTermometerStyreBox.c: 179:         if (batStatus) {
+   666     0684  087D               	movf	updateLCD@batStatus,w
+   667     0685  1903               	btfsc	3,2
+   668     0686  2E88               	goto	u641
+   669     0687  2E89               	goto	u640
+   670     0688                     u641:
+   671     0688  2E93               	goto	l1075
+   672     0689                     u640:
+   673     0689                     l1071:
+   674                           
+   675                           ;JordTermometerStyreBox.c: 180:             CommandLCD(0b11001100);
+   676     0689  30CC               	movlw	204
+   677     068A  2593               	fcall	_CommandLCD
+   678     068B                     l1073:
+   679                           
+   680                           ;JordTermometerStyreBox.c: 181:             writeString("Okay", 4);
+   681     068B  3006               	movlw	(low ((STR_5-__stringbase)| (0+32768)))& (0+255)
+   682     068C  00F1               	movwf	writeString@string
+   683     068D  3080               	movlw	128
+   684     068E  00F2               	movwf	writeString@string+1
+   685     068F  3004               	movlw	4
+   686     0690  00F3               	movwf	writeString@length
+   687     0691  2558               	fcall	_writeString
+   688                           
+   689                           ;JordTermometerStyreBox.c: 182:         } else {
+   690     0692  2EC6               	goto	l61
+   691     0693                     l1075:
+   692                           
+   693                           ;JordTermometerStyreBox.c: 183:             CommandLCD(0b11001100);
+   694     0693  30CC               	movlw	204
+   695     0694  2593               	fcall	_CommandLCD
+   696     0695                     l1077:
+   697                           
+   698                           ;JordTermometerStyreBox.c: 184:             writeString(" Low", 4);
+   699     0695  3001               	movlw	(low ((STR_6-__stringbase)| (0+32768)))& (0+255)
+   700     0696  00F1               	movwf	writeString@string
+   701     0697  3080               	movlw	128
+   702     0698  00F2               	movwf	writeString@string+1
+   703     0699  3004               	movlw	4
+   704     069A  00F3               	movwf	writeString@length
+   705     069B  2558               	fcall	_writeString
+   706     069C  2EC6               	goto	l61
+   707     069D                     l1079:
+   708                           
+   709                           ;JordTermometerStyreBox.c: 187:         CommandLCD(0b10000011);
+   710     069D  3083               	movlw	131
+   711     069E  2593               	fcall	_CommandLCD
+   712                           
+   713                           ;JordTermometerStyreBox.c: 188:         char* tempStr = mV2Celcius(value);
+   714     069F  087B               	movf	updateLCD@value+1,w
+   715     06A0  00F9               	movwf	mV2Celcius@bcdValue+1
+   716     06A1  087A               	movf	updateLCD@value,w
+   717     06A2  00F8               	movwf	mV2Celcius@bcdValue
+   718     06A3  272A               	fcall	_mV2Celcius
+   719     06A4  1283               	bcf	3,5	;RP0=0, select bank0
+   720     06A5  1303               	bcf	3,6	;RP1=0, select bank0
+   721     06A6  00B7               	movwf	updateLCD@tempStr_105
+   722     06A7                     l1081:
+   723                           
+   724                           ;JordTermometerStyreBox.c: 189:         writeString(tempStr, 5);
+   725     06A7  0837               	movf	updateLCD@tempStr_105,w
+   726     06A8  00F1               	movwf	writeString@string
+   727     06A9  3000               	movlw	0
+   728     06AA  00F2               	movwf	writeString@string+1
+   729     06AB  3005               	movlw	5
+   730     06AC  00F3               	movwf	writeString@length
+   731     06AD  2558               	fcall	_writeString
+   732     06AE                     l1083:
+   733                           
+   734                           ;JordTermometerStyreBox.c: 191:         if (batStatus) {
+   735     06AE  087D               	movf	updateLCD@batStatus,w
+   736     06AF  1903               	btfsc	3,2
+   737     06B0  2EB2               	goto	u651
+   738     06B1  2EB3               	goto	u650
+   739     06B2                     u651:
+   740     06B2  2EBD               	goto	l1089
+   741     06B3                     u650:
+   742     06B3                     l1085:
+   743                           
+   744                           ;JordTermometerStyreBox.c: 192:             CommandLCD(0b10001100);
+   745     06B3  308C               	movlw	140
+   746     06B4  2593               	fcall	_CommandLCD
+   747     06B5                     l1087:
+   748                           
+   749                           ;JordTermometerStyreBox.c: 193:             writeString("Okay", 4);
+   750     06B5  3006               	movlw	(low ((STR_5-__stringbase)| (0+32768)))& (0+255)
+   751     06B6  00F1               	movwf	writeString@string
+   752     06B7  3080               	movlw	128
+   753     06B8  00F2               	movwf	writeString@string+1
+   754     06B9  3004               	movlw	4
+   755     06BA  00F3               	movwf	writeString@length
+   756     06BB  2558               	fcall	_writeString
+   757                           
+   758                           ;JordTermometerStyreBox.c: 194:         } else {
+   759     06BC  2EC6               	goto	l61
+   760     06BD                     l1089:
+   761                           
+   762                           ;JordTermometerStyreBox.c: 195:             CommandLCD(0b10001100);
+   763     06BD  308C               	movlw	140
+   764     06BE  2593               	fcall	_CommandLCD
+   765     06BF                     l1091:
+   766                           
+   767                           ;JordTermometerStyreBox.c: 196:             writeString(" Low", 4);
+   768     06BF  3001               	movlw	(low ((STR_6-__stringbase)| (0+32768)))& (0+255)
+   769     06C0  00F1               	movwf	writeString@string
+   770     06C1  3080               	movlw	128
+   771     06C2  00F2               	movwf	writeString@string+1
+   772     06C3  3004               	movlw	4
+   773     06C4  00F3               	movwf	writeString@length
+   774     06C5  2558               	fcall	_writeString
+   775     06C6                     l61:
+   776     06C6  0008               	return
+   777     06C7                     __end_of_updateLCD:
+   778                           
+   779                           	psect	text2
+   780     072A                     __ptext2:	
+   781 ;; *************** function _mV2Celcius *****************
+   782 ;; Defined at:
+   783 ;;		line 135 in file "JordTermometerStyreBox.c"
+   784 ;; Parameters:    Size  Location     Type
+   785 ;;  bcdValue        2    8[COMMON] unsigned int 
+   786 ;; Auto vars:     Size  Location     Type
+   787 ;;  totalC          2   20[BANK0 ] int 
+   788 ;;  intPart         2   18[BANK0 ] int 
+   789 ;;  decPart         2   16[BANK0 ] int 
+   790 ;;  milivolts       2   14[BANK0 ] int 
+   791 ;;  ones            2   12[BANK0 ] int 
+   792 ;;  tens            2   10[BANK0 ] int 
+   793 ;;  hundreds        2    8[BANK0 ] int 
+   794 ;;  thousand        2    6[BANK0 ] int 
+   795 ;; Return value:  Size  Location     Type
+   796 ;;                  1    8[COMMON] PTR unsigned char 
+   797 ;; Registers used:
+   798 ;;		wreg, status,2, status,0, pclath, cstack
+   799 ;; Tracked objects:
+   800 ;;		On entry : 0/0
+   801 ;;		On exit  : 0/0
+   802 ;;		Unchanged: 0/0
+   803 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   804 ;;      Params:         2       0       0       0
+   805 ;;      Locals:         0      16       0       0
+   806 ;;      Temps:          0       6       0       0
+   807 ;;      Totals:         2      22       0       0
+   808 ;;Total ram usage:       24 bytes
+   809 ;; Hardware stack levels used: 1
+   810 ;; Hardware stack levels required when called: 1
+   811 ;; This function calls:
+   812 ;;		___awdiv
+   813 ;;		___awmod
+   814 ;;		___wmul
+   815 ;; This function is called by:
+   816 ;;		_updateLCD
+   817 ;; This function uses a non-reentrant model
+   818 ;;
+   819                           
+   820     072A                     _mV2Celcius:	
+   821                           ;psect for function _mV2Celcius
+   822                           
+   823     072A                     l1025:	
+   824                           ;incstack = 0
+   825                           ; Regs used in _mV2Celcius: [wreg+status,2+status,0+pclath+cstack]
+   826                           
+   827                           
+   828                           ;JordTermometerStyreBox.c: 138:     int thousand = (bcdValue >> 12) & 0xF;
+   829     072A  0879               	movf	mV2Celcius@bcdValue+1,w
+   830     072B  1283               	bcf	3,5	;RP0=0, select bank0
+   831     072C  1303               	bcf	3,6	;RP1=0, select bank0
+   832     072D  00A1               	movwf	??_mV2Celcius+1
+   833     072E  0878               	movf	mV2Celcius@bcdValue,w
+   834     072F  00A0               	movwf	??_mV2Celcius
+   835     0730  0E21               	swapf	??_mV2Celcius+1,w
+   836     0731  390F               	andlw	15
+   837     0732  00A0               	movwf	??_mV2Celcius
+   838     0733  01A1               	clrf	??_mV2Celcius+1
+   839     0734  300F               	movlw	15
+   840     0735  0520               	andwf	??_mV2Celcius,w
+   841     0736  00A6               	movwf	mV2Celcius@thousand
+   842     0737  3000               	movlw	0
+   843     0738  0521               	andwf	??_mV2Celcius+1,w
+   844     0739  00A7               	movwf	mV2Celcius@thousand+1
+   845                           
+   846                           ;JordTermometerStyreBox.c: 139:     int hundreds = (bcdValue >> 8) & 0xF;
+   847     073A  0879               	movf	mV2Celcius@bcdValue+1,w
+   848     073B  00A1               	movwf	??_mV2Celcius+1
+   849     073C  0878               	movf	mV2Celcius@bcdValue,w
+   850     073D  00A0               	movwf	??_mV2Celcius
+   851     073E  0821               	movf	??_mV2Celcius+1,w
+   852     073F  00A0               	movwf	??_mV2Celcius
+   853     0740  01A1               	clrf	??_mV2Celcius+1
+   854     0741  300F               	movlw	15
+   855     0742  0520               	andwf	??_mV2Celcius,w
+   856     0743  00A8               	movwf	mV2Celcius@hundreds
+   857     0744  3000               	movlw	0
+   858     0745  0521               	andwf	??_mV2Celcius+1,w
+   859     0746  00A9               	movwf	mV2Celcius@hundreds+1
+   860                           
+   861                           ;JordTermometerStyreBox.c: 140:     int tens = (bcdValue >> 4) & 0xF;
+   862     0747  0879               	movf	mV2Celcius@bcdValue+1,w
+   863     0748  00A1               	movwf	??_mV2Celcius+1
+   864     0749  0878               	movf	mV2Celcius@bcdValue,w
+   865     074A  00A0               	movwf	??_mV2Celcius
+   866     074B  3004               	movlw	4
+   867     074C                     u615:
+   868     074C  1003               	clrc
+   869     074D  0CA1               	rrf	??_mV2Celcius+1,f
+   870     074E  0CA0               	rrf	??_mV2Celcius,f
+   871     074F  3EFF               	addlw	-1
+   872     0750  1D03               	skipz
+   873     0751  2F4C               	goto	u615
+   874     0752  300F               	movlw	15
+   875     0753  0520               	andwf	??_mV2Celcius,w
+   876     0754  00AA               	movwf	mV2Celcius@tens
+   877     0755  3000               	movlw	0
+   878     0756  0521               	andwf	??_mV2Celcius+1,w
+   879     0757  00AB               	movwf	mV2Celcius@tens+1
+   880     0758                     l1027:
+   881                           
+   882                           ;JordTermometerStyreBox.c: 141:     int ones = bcdValue & 0xF;
+   883     0758  300F               	movlw	15
+   884     0759  0578               	andwf	mV2Celcius@bcdValue,w
+   885     075A  00AC               	movwf	mV2Celcius@ones
+   886     075B  3000               	movlw	0
+   887     075C  0579               	andwf	mV2Celcius@bcdValue+1,w
+   888     075D  00AD               	movwf	mV2Celcius@ones+1
+   889     075E                     l1029:
+   890                           
+   891                           ;JordTermometerStyreBox.c: 144:     int milivolts = thousand * 1000 + hundreds * 100 + t
+      +                          ens * 10 + ones;
+   892     075E  0827               	movf	mV2Celcius@thousand+1,w
+   893     075F  00F1               	movwf	___wmul@multiplier+1
+   894     0760  0826               	movf	mV2Celcius@thousand,w
+   895     0761  00F0               	movwf	___wmul@multiplier
+   896     0762  30E8               	movlw	232
+   897     0763  00F2               	movwf	___wmul@multiplicand
+   898     0764  3003               	movlw	3
+   899     0765  00F3               	movwf	___wmul@multiplicand+1
+   900     0766  256E               	fcall	___wmul
+   901     0767  0870               	movf	?___wmul,w
+   902     0768  1283               	bcf	3,5	;RP0=0, select bank0
+   903     0769  1303               	bcf	3,6	;RP1=0, select bank0
+   904     076A  00A0               	movwf	??_mV2Celcius
+   905     076B  0871               	movf	?___wmul+1,w
+   906     076C  00A1               	movwf	??_mV2Celcius+1
+   907     076D  0829               	movf	mV2Celcius@hundreds+1,w
+   908     076E  00F1               	movwf	___wmul@multiplier+1
+   909     076F  0828               	movf	mV2Celcius@hundreds,w
+   910     0770  00F0               	movwf	___wmul@multiplier
+   911     0771  3064               	movlw	100
+   912     0772  00F2               	movwf	___wmul@multiplicand
+   913     0773  3000               	movlw	0
+   914     0774  00F3               	movwf	___wmul@multiplicand+1
+   915     0775  256E               	fcall	___wmul
+   916     0776  0870               	movf	?___wmul,w
+   917     0777  1283               	bcf	3,5	;RP0=0, select bank0
+   918     0778  1303               	bcf	3,6	;RP1=0, select bank0
+   919     0779  0720               	addwf	??_mV2Celcius,w
+   920     077A  00A2               	movwf	??_mV2Celcius+2
+   921     077B  0871               	movf	?___wmul+1,w
+   922     077C  1803               	skipnc
+   923     077D  0A71               	incf	?___wmul+1,w
+   924     077E  0721               	addwf	??_mV2Celcius+1,w
+   925     077F  00A3               	movwf	??_mV2Celcius+3
+   926     0780  082B               	movf	mV2Celcius@tens+1,w
+   927     0781  00F1               	movwf	___wmul@multiplier+1
+   928     0782  082A               	movf	mV2Celcius@tens,w
+   929     0783  00F0               	movwf	___wmul@multiplier
+   930     0784  300A               	movlw	10
+   931     0785  00F2               	movwf	___wmul@multiplicand
+   932     0786  3000               	movlw	0
+   933     0787  00F3               	movwf	___wmul@multiplicand+1
+   934     0788  256E               	fcall	___wmul
+   935     0789  0870               	movf	?___wmul,w
+   936     078A  1283               	bcf	3,5	;RP0=0, select bank0
+   937     078B  1303               	bcf	3,6	;RP1=0, select bank0
+   938     078C  0722               	addwf	??_mV2Celcius+2,w
+   939     078D  00A4               	movwf	??_mV2Celcius+4
+   940     078E  0871               	movf	?___wmul+1,w
+   941     078F  1803               	skipnc
+   942     0790  0A71               	incf	?___wmul+1,w
+   943     0791  0723               	addwf	??_mV2Celcius+3,w
+   944     0792  00A5               	movwf	??_mV2Celcius+5
+   945     0793  082C               	movf	mV2Celcius@ones,w
+   946     0794  0724               	addwf	??_mV2Celcius+4,w
+   947     0795  00AE               	movwf	mV2Celcius@milivolts
+   948     0796  082D               	movf	mV2Celcius@ones+1,w
+   949     0797  1803               	skipnc
+   950     0798  0A2D               	incf	mV2Celcius@ones+1,w
+   951     0799  0725               	addwf	??_mV2Celcius+5,w
+   952     079A  00AF               	movwf	mV2Celcius@milivolts+1
+   953     079B                     l1031:
+   954                           
+   955                           ;JordTermometerStyreBox.c: 147:     int totalC = milivolts - 2731;
+   956     079B  082E               	movf	mV2Celcius@milivolts,w
+   957     079C  3E55               	addlw	85
+   958     079D  00B4               	movwf	mV2Celcius@totalC
+   959     079E  082F               	movf	mV2Celcius@milivolts+1,w
+   960     079F  1803               	skipnc
+   961     07A0  3E01               	addlw	1
+   962     07A1  3EF5               	addlw	245
+   963     07A2  00B5               	movwf	mV2Celcius@totalC+1
+   964     07A3                     l1033:
+   965                           
+   966                           ;JordTermometerStyreBox.c: 149:     static char tempStr[6];;JordTermometerStyreBox.c: 15
+      +                          2:     if (totalC < 0) {
+   967     07A3  1FB5               	btfss	mV2Celcius@totalC+1,7
+   968     07A4  2FA6               	goto	u621
+   969     07A5  2FA7               	goto	u620
+   970     07A6                     u621:
+   971     07A6  2FAF               	goto	l50
+   972     07A7                     u620:
+   973     07A7                     l1035:
+   974                           
+   975                           ;JordTermometerStyreBox.c: 153:         totalC = -totalC;
+   976     07A7  09B4               	comf	mV2Celcius@totalC,f
+   977     07A8  09B5               	comf	mV2Celcius@totalC+1,f
+   978     07A9  0AB4               	incf	mV2Celcius@totalC,f
+   979     07AA  1903               	skipnz
+   980     07AB  0AB5               	incf	mV2Celcius@totalC+1,f
+   981     07AC                     l1037:
+   982                           
+   983                           ;JordTermometerStyreBox.c: 154:         tempStr[0] = '-';
+   984     07AC  302D               	movlw	45
+   985     07AD  00B8               	movwf	mV2Celcius@tempStr
+   986                           
+   987                           ;JordTermometerStyreBox.c: 155:     }
+   988     07AE  2FB1               	goto	l1039
+   989     07AF                     l50:	
+   990                           ;JordTermometerStyreBox.c: 156:     else {
+   991                           
+   992                           
+   993                           ;JordTermometerStyreBox.c: 157:         tempStr[0] = ' ';
+   994     07AF  3020               	movlw	32
+   995     07B0  00B8               	movwf	mV2Celcius@tempStr
+   996     07B1                     l1039:
+   997                           
+   998                           ;JordTermometerStyreBox.c: 160:     int intPart = totalC / 10;
+   999     07B1  300A               	movlw	10
+  1000     07B2  00F0               	movwf	___awdiv@divisor
+  1001     07B3  3000               	movlw	0
+  1002     07B4  00F1               	movwf	___awdiv@divisor+1
+  1003     07B5  0835               	movf	mV2Celcius@totalC+1,w
+  1004     07B6  00F3               	movwf	___awdiv@dividend+1
+  1005     07B7  0834               	movf	mV2Celcius@totalC,w
+  1006     07B8  00F2               	movwf	___awdiv@dividend
+  1007     07B9  26C7               	fcall	___awdiv
+  1008     07BA  0871               	movf	?___awdiv+1,w
+  1009     07BB  1283               	bcf	3,5	;RP0=0, select bank0
+  1010     07BC  1303               	bcf	3,6	;RP1=0, select bank0
+  1011     07BD  00B3               	movwf	mV2Celcius@intPart+1
+  1012     07BE  0870               	movf	?___awdiv,w
+  1013     07BF  00B2               	movwf	mV2Celcius@intPart
+  1014                           
+  1015                           ;JordTermometerStyreBox.c: 161:     int decPart = totalC % 10;
+  1016     07C0  300A               	movlw	10
+  1017     07C1  00F0               	movwf	___awmod@divisor
+  1018     07C2  3000               	movlw	0
+  1019     07C3  00F1               	movwf	___awmod@divisor+1
+  1020     07C4  0835               	movf	mV2Celcius@totalC+1,w
+  1021     07C5  00F3               	movwf	___awmod@dividend+1
+  1022     07C6  0834               	movf	mV2Celcius@totalC,w
+  1023     07C7  00F2               	movwf	___awmod@dividend
+  1024     07C8  2617               	fcall	___awmod
+  1025     07C9  0871               	movf	?___awmod+1,w
+  1026     07CA  1283               	bcf	3,5	;RP0=0, select bank0
+  1027     07CB  1303               	bcf	3,6	;RP1=0, select bank0
+  1028     07CC  00B1               	movwf	mV2Celcius@decPart+1
+  1029     07CD  0870               	movf	?___awmod,w
+  1030     07CE  00B0               	movwf	mV2Celcius@decPart
+  1031                           
+  1032                           ;JordTermometerStyreBox.c: 163:     tempStr[1] = (intPart / 10) + '0';
+  1033     07CF  300A               	movlw	10
+  1034     07D0  00F0               	movwf	___awdiv@divisor
+  1035     07D1  3000               	movlw	0
+  1036     07D2  00F1               	movwf	___awdiv@divisor+1
+  1037     07D3  0833               	movf	mV2Celcius@intPart+1,w
+  1038     07D4  00F3               	movwf	___awdiv@dividend+1
+  1039     07D5  0832               	movf	mV2Celcius@intPart,w
+  1040     07D6  00F2               	movwf	___awdiv@dividend
+  1041     07D7  26C7               	fcall	___awdiv
+  1042     07D8  0870               	movf	?___awdiv,w
+  1043     07D9  3E30               	addlw	48
+  1044     07DA  1283               	bcf	3,5	;RP0=0, select bank0
+  1045     07DB  1303               	bcf	3,6	;RP1=0, select bank0
+  1046     07DC  00B9               	movwf	mV2Celcius@tempStr+1
+  1047                           
+  1048                           ;JordTermometerStyreBox.c: 164:     tempStr[2] = (intPart % 10) + '0';
+  1049     07DD  300A               	movlw	10
+  1050     07DE  00F0               	movwf	___awmod@divisor
+  1051     07DF  3000               	movlw	0
+  1052     07E0  00F1               	movwf	___awmod@divisor+1
+  1053     07E1  0833               	movf	mV2Celcius@intPart+1,w
+  1054     07E2  00F3               	movwf	___awmod@dividend+1
+  1055     07E3  0832               	movf	mV2Celcius@intPart,w
+  1056     07E4  00F2               	movwf	___awmod@dividend
+  1057     07E5  2617               	fcall	___awmod
+  1058     07E6  0870               	movf	?___awmod,w
+  1059     07E7  3E30               	addlw	48
+  1060     07E8  1283               	bcf	3,5	;RP0=0, select bank0
+  1061     07E9  1303               	bcf	3,6	;RP1=0, select bank0
+  1062     07EA  00BA               	movwf	mV2Celcius@tempStr+2
+  1063     07EB                     l1041:
+  1064                           
+  1065                           ;JordTermometerStyreBox.c: 165:     tempStr[3] = '.';
+  1066     07EB  302E               	movlw	46
+  1067     07EC  00BB               	movwf	mV2Celcius@tempStr+3
+  1068     07ED                     l1043:
+  1069                           
+  1070                           ;JordTermometerStyreBox.c: 166:     tempStr[4] = decPart + '0';
+  1071     07ED  0830               	movf	mV2Celcius@decPart,w
+  1072     07EE  3E30               	addlw	48
+  1073     07EF  00BC               	movwf	mV2Celcius@tempStr+4
+  1074     07F0                     l1045:
+  1075                           
+  1076                           ;JordTermometerStyreBox.c: 167:     tempStr[5] = '\0';
+  1077     07F0  01BD               	clrf	mV2Celcius@tempStr+5
+  1078     07F1                     l1047:
+  1079                           
+  1080                           ;JordTermometerStyreBox.c: 169:     return tempStr;
+  1081     07F1  3038               	movlw	(low (mV2Celcius@tempStr| 0))& (0+255)
+  1082     07F2                     l52:
+  1083     07F2  0008               	return
+  1084     07F3                     __end_of_mV2Celcius:
+  1085                           
+  1086                           	psect	text3
+  1087     056E                     __ptext3:	
+  1088 ;; *************** function ___wmul *****************
+  1089 ;; Defined at:
+  1090 ;;		line 15 in file "C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\Umul16.c"
+  1091 ;; Parameters:    Size  Location     Type
+  1092 ;;  multiplier      2    0[COMMON] unsigned int 
+  1093 ;;  multiplicand    2    2[COMMON] unsigned int 
+  1094 ;; Auto vars:     Size  Location     Type
+  1095 ;;  product         2    4[COMMON] unsigned int 
+  1096 ;; Return value:  Size  Location     Type
+  1097 ;;                  2    0[COMMON] unsigned int 
+  1098 ;; Registers used:
+  1099 ;;		wreg, status,2, status,0
+  1100 ;; Tracked objects:
+  1101 ;;		On entry : 0/0
+  1102 ;;		On exit  : 0/0
+  1103 ;;		Unchanged: 0/0
+  1104 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1105 ;;      Params:         4       0       0       0
+  1106 ;;      Locals:         2       0       0       0
+  1107 ;;      Temps:          0       0       0       0
+  1108 ;;      Totals:         6       0       0       0
+  1109 ;;Total ram usage:        6 bytes
+  1110 ;; Hardware stack levels used: 1
+  1111 ;; This function calls:
+  1112 ;;		Nothing
+  1113 ;; This function is called by:
+  1114 ;;		_mV2Celcius
+  1115 ;; This function uses a non-reentrant model
+  1116 ;;
+  1117                           
+  1118     056E                     ___wmul:	
+  1119                           ;psect for function ___wmul
+  1120                           
+  1121     056E                     l901:	
+  1122                           ;incstack = 0
+  1123                           ; Regs used in ___wmul: [wreg+status,2+status,0]
+  1124                           
+  1125     056E  01F4               	clrf	___wmul@product
+  1126     056F  01F5               	clrf	___wmul@product+1
+  1127     0570                     l903:
+  1128     0570  1C70               	btfss	___wmul@multiplier,0
+  1129     0571  2D73               	goto	u361
+  1130     0572  2D74               	goto	u360
+  1131     0573                     u361:
+  1132     0573  2D7A               	goto	l155
+  1133     0574                     u360:
+  1134     0574                     l905:
+  1135     0574  0872               	movf	___wmul@multiplicand,w
+  1136     0575  07F4               	addwf	___wmul@product,f
+  1137     0576  1803               	skipnc
+  1138     0577  0AF5               	incf	___wmul@product+1,f
+  1139     0578  0873               	movf	___wmul@multiplicand+1,w
+  1140     0579  07F5               	addwf	___wmul@product+1,f
+  1141     057A                     l155:
+  1142     057A  3001               	movlw	1
+  1143     057B                     u375:
+  1144     057B  1003               	clrc
+  1145     057C  0DF2               	rlf	___wmul@multiplicand,f
+  1146     057D  0DF3               	rlf	___wmul@multiplicand+1,f
+  1147     057E  3EFF               	addlw	-1
+  1148     057F  1D03               	skipz
+  1149     0580  2D7B               	goto	u375
+  1150     0581                     l907:
+  1151     0581  3001               	movlw	1
+  1152     0582                     u385:
+  1153     0582  1003               	clrc
+  1154     0583  0CF1               	rrf	___wmul@multiplier+1,f
+  1155     0584  0CF0               	rrf	___wmul@multiplier,f
+  1156     0585  3EFF               	addlw	-1
+  1157     0586  1D03               	skipz
+  1158     0587  2D82               	goto	u385
+  1159     0588                     l909:
+  1160     0588  0870               	movf	___wmul@multiplier,w
+  1161     0589  0471               	iorwf	___wmul@multiplier+1,w
+  1162     058A  1D03               	btfss	3,2
+  1163     058B  2D8D               	goto	u391
+  1164     058C  2D8E               	goto	u390
+  1165     058D                     u391:
+  1166     058D  2D70               	goto	l903
+  1167     058E                     u390:
+  1168     058E                     l911:
+  1169     058E  0875               	movf	___wmul@product+1,w
+  1170     058F  00F1               	movwf	?___wmul+1
+  1171     0590  0874               	movf	___wmul@product,w
+  1172     0591  00F0               	movwf	?___wmul
+  1173     0592                     l157:
+  1174     0592  0008               	return
+  1175     0593                     __end_of___wmul:
+  1176                           
+  1177                           	psect	text4
+  1178     0617                     __ptext4:	
+  1179 ;; *************** function ___awmod *****************
+  1180 ;; Defined at:
+  1181 ;;		line 5 in file "C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\awmod.c"
+  1182 ;; Parameters:    Size  Location     Type
+  1183 ;;  divisor         2    0[COMMON] int 
+  1184 ;;  dividend        2    2[COMMON] int 
+  1185 ;; Auto vars:     Size  Location     Type
+  1186 ;;  sign            1    5[COMMON] unsigned char 
+  1187 ;;  counter         1    4[COMMON] unsigned char 
+  1188 ;; Return value:  Size  Location     Type
+  1189 ;;                  2    0[COMMON] int 
+  1190 ;; Registers used:
+  1191 ;;		wreg, status,2, status,0
+  1192 ;; Tracked objects:
+  1193 ;;		On entry : 0/0
+  1194 ;;		On exit  : 0/0
+  1195 ;;		Unchanged: 0/0
+  1196 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1197 ;;      Params:         4       0       0       0
+  1198 ;;      Locals:         2       0       0       0
+  1199 ;;      Temps:          0       0       0       0
+  1200 ;;      Totals:         6       0       0       0
+  1201 ;;Total ram usage:        6 bytes
+  1202 ;; Hardware stack levels used: 1
+  1203 ;; This function calls:
+  1204 ;;		Nothing
+  1205 ;; This function is called by:
+  1206 ;;		_mV2Celcius
+  1207 ;; This function uses a non-reentrant model
+  1208 ;;
+  1209                           
+  1210     0617                     ___awmod:	
+  1211                           ;psect for function ___awmod
+  1212                           
+  1213     0617                     l959:	
+  1214                           ;incstack = 0
+  1215                           ; Regs used in ___awmod: [wreg+status,2+status,0]
+  1216                           
+  1217     0617  01F5               	clrf	___awmod@sign
+  1218     0618                     l961:
+  1219     0618  1FF3               	btfss	___awmod@dividend+1,7
+  1220     0619  2E1B               	goto	u501
+  1221     061A  2E1C               	goto	u500
+  1222     061B                     u501:
+  1223     061B  2E23               	goto	l967
+  1224     061C                     u500:
+  1225     061C                     l963:
+  1226     061C  09F2               	comf	___awmod@dividend,f
+  1227     061D  09F3               	comf	___awmod@dividend+1,f
+  1228     061E  0AF2               	incf	___awmod@dividend,f
+  1229     061F  1903               	skipnz
+  1230     0620  0AF3               	incf	___awmod@dividend+1,f
+  1231     0621                     l965:
+  1232     0621  3001               	movlw	1
+  1233     0622  00F5               	movwf	___awmod@sign
+  1234     0623                     l967:
+  1235     0623  1FF1               	btfss	___awmod@divisor+1,7
+  1236     0624  2E26               	goto	u511
+  1237     0625  2E27               	goto	u510
+  1238     0626                     u511:
+  1239     0626  2E2C               	goto	l971
+  1240     0627                     u510:
+  1241     0627                     l969:
+  1242     0627  09F0               	comf	___awmod@divisor,f
+  1243     0628  09F1               	comf	___awmod@divisor+1,f
+  1244     0629  0AF0               	incf	___awmod@divisor,f
+  1245     062A  1903               	skipnz
+  1246     062B  0AF1               	incf	___awmod@divisor+1,f
+  1247     062C                     l971:
+  1248     062C  0870               	movf	___awmod@divisor,w
+  1249     062D  0471               	iorwf	___awmod@divisor+1,w
+  1250     062E  1903               	btfsc	3,2
+  1251     062F  2E31               	goto	u521
+  1252     0630  2E32               	goto	u520
+  1253     0631                     u521:
+  1254     0631  2E5F               	goto	l989
+  1255     0632                     u520:
+  1256     0632                     l973:
+  1257     0632  3001               	movlw	1
+  1258     0633  00F4               	movwf	___awmod@counter
+  1259     0634  2E3E               	goto	l979
+  1260     0635                     l975:
+  1261     0635  3001               	movlw	1
+  1262     0636                     u535:
+  1263     0636  1003               	clrc
+  1264     0637  0DF0               	rlf	___awmod@divisor,f
+  1265     0638  0DF1               	rlf	___awmod@divisor+1,f
+  1266     0639  3EFF               	addlw	-1
+  1267     063A  1D03               	skipz
+  1268     063B  2E36               	goto	u535
+  1269     063C                     l977:
+  1270     063C  3001               	movlw	1
+  1271     063D  07F4               	addwf	___awmod@counter,f
+  1272     063E                     l979:
+  1273     063E  1FF1               	btfss	___awmod@divisor+1,7
+  1274     063F  2E41               	goto	u541
+  1275     0640  2E42               	goto	u540
+  1276     0641                     u541:
+  1277     0641  2E35               	goto	l975
+  1278     0642                     u540:
+  1279     0642                     l981:
+  1280     0642  0871               	movf	___awmod@divisor+1,w
+  1281     0643  0273               	subwf	___awmod@dividend+1,w
+  1282     0644  1D03               	skipz
+  1283     0645  2E48               	goto	u555
+  1284     0646  0870               	movf	___awmod@divisor,w
+  1285     0647  0272               	subwf	___awmod@dividend,w
+  1286     0648                     u555:
+  1287     0648  1C03               	skipc
+  1288     0649  2E4B               	goto	u551
+  1289     064A  2E4C               	goto	u550
+  1290     064B                     u551:
+  1291     064B  2E52               	goto	l985
+  1292     064C                     u550:
+  1293     064C                     l983:
+  1294     064C  0870               	movf	___awmod@divisor,w
+  1295     064D  02F2               	subwf	___awmod@dividend,f
+  1296     064E  0871               	movf	___awmod@divisor+1,w
+  1297     064F  1C03               	skipc
+  1298     0650  03F3               	decf	___awmod@dividend+1,f
+  1299     0651  02F3               	subwf	___awmod@dividend+1,f
+  1300     0652                     l985:
+  1301     0652  3001               	movlw	1
+  1302     0653                     u565:
+  1303     0653  1003               	clrc
+  1304     0654  0CF1               	rrf	___awmod@divisor+1,f
+  1305     0655  0CF0               	rrf	___awmod@divisor,f
+  1306     0656  3EFF               	addlw	-1
+  1307     0657  1D03               	skipz
+  1308     0658  2E53               	goto	u565
+  1309     0659                     l987:
+  1310     0659  3001               	movlw	1
+  1311     065A  02F4               	subwf	___awmod@counter,f
+  1312     065B  1D03               	btfss	3,2
+  1313     065C  2E5E               	goto	u571
+  1314     065D  2E5F               	goto	u570
+  1315     065E                     u571:
+  1316     065E  2E42               	goto	l981
+  1317     065F                     u570:
+  1318     065F                     l989:
+  1319     065F  0875               	movf	___awmod@sign,w
+  1320     0660  1903               	btfsc	3,2
+  1321     0661  2E63               	goto	u581
+  1322     0662  2E64               	goto	u580
+  1323     0663                     u581:
+  1324     0663  2E69               	goto	l993
+  1325     0664                     u580:
+  1326     0664                     l991:
+  1327     0664  09F2               	comf	___awmod@dividend,f
+  1328     0665  09F3               	comf	___awmod@dividend+1,f
+  1329     0666  0AF2               	incf	___awmod@dividend,f
+  1330     0667  1903               	skipnz
+  1331     0668  0AF3               	incf	___awmod@dividend+1,f
+  1332     0669                     l993:
+  1333     0669  0873               	movf	___awmod@dividend+1,w
+  1334     066A  00F1               	movwf	?___awmod+1
+  1335     066B  0872               	movf	___awmod@dividend,w
+  1336     066C  00F0               	movwf	?___awmod
+  1337     066D                     l321:
+  1338     066D  0008               	return
+  1339     066E                     __end_of___awmod:
+  1340                           
+  1341                           	psect	text5
+  1342     06C7                     __ptext5:	
+  1343 ;; *************** function ___awdiv *****************
+  1344 ;; Defined at:
+  1345 ;;		line 5 in file "C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\awdiv.c"
+  1346 ;; Parameters:    Size  Location     Type
+  1347 ;;  divisor         2    0[COMMON] int 
+  1348 ;;  dividend        2    2[COMMON] int 
+  1349 ;; Auto vars:     Size  Location     Type
+  1350 ;;  quotient        2    6[COMMON] int 
+  1351 ;;  sign            1    5[COMMON] unsigned char 
+  1352 ;;  counter         1    4[COMMON] unsigned char 
+  1353 ;; Return value:  Size  Location     Type
+  1354 ;;                  2    0[COMMON] int 
+  1355 ;; Registers used:
+  1356 ;;		wreg, status,2, status,0
+  1357 ;; Tracked objects:
+  1358 ;;		On entry : 0/0
+  1359 ;;		On exit  : 0/0
+  1360 ;;		Unchanged: 0/0
+  1361 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1362 ;;      Params:         4       0       0       0
+  1363 ;;      Locals:         4       0       0       0
+  1364 ;;      Temps:          0       0       0       0
+  1365 ;;      Totals:         8       0       0       0
+  1366 ;;Total ram usage:        8 bytes
+  1367 ;; Hardware stack levels used: 1
+  1368 ;; This function calls:
+  1369 ;;		Nothing
+  1370 ;; This function is called by:
+  1371 ;;		_mV2Celcius
+  1372 ;; This function uses a non-reentrant model
+  1373 ;;
+  1374                           
+  1375     06C7                     ___awdiv:	
+  1376                           ;psect for function ___awdiv
+  1377                           
+  1378     06C7                     l915:	
+  1379                           ;incstack = 0
+  1380                           ; Regs used in ___awdiv: [wreg+status,2+status,0]
+  1381                           
+  1382     06C7  01F5               	clrf	___awdiv@sign
+  1383     06C8                     l917:
+  1384     06C8  1FF1               	btfss	___awdiv@divisor+1,7
+  1385     06C9  2ECB               	goto	u401
+  1386     06CA  2ECC               	goto	u400
+  1387     06CB                     u401:
+  1388     06CB  2ED3               	goto	l923
+  1389     06CC                     u400:
+  1390     06CC                     l919:
+  1391     06CC  09F0               	comf	___awdiv@divisor,f
+  1392     06CD  09F1               	comf	___awdiv@divisor+1,f
+  1393     06CE  0AF0               	incf	___awdiv@divisor,f
+  1394     06CF  1903               	skipnz
+  1395     06D0  0AF1               	incf	___awdiv@divisor+1,f
+  1396     06D1                     l921:
+  1397     06D1  3001               	movlw	1
+  1398     06D2  00F5               	movwf	___awdiv@sign
+  1399     06D3                     l923:
+  1400     06D3  1FF3               	btfss	___awdiv@dividend+1,7
+  1401     06D4  2ED6               	goto	u411
+  1402     06D5  2ED7               	goto	u410
+  1403     06D6                     u411:
+  1404     06D6  2EDE               	goto	l929
+  1405     06D7                     u410:
+  1406     06D7                     l925:
+  1407     06D7  09F2               	comf	___awdiv@dividend,f
+  1408     06D8  09F3               	comf	___awdiv@dividend+1,f
+  1409     06D9  0AF2               	incf	___awdiv@dividend,f
+  1410     06DA  1903               	skipnz
+  1411     06DB  0AF3               	incf	___awdiv@dividend+1,f
+  1412     06DC                     l927:
+  1413     06DC  3001               	movlw	1
+  1414     06DD  06F5               	xorwf	___awdiv@sign,f
+  1415     06DE                     l929:
+  1416     06DE  01F6               	clrf	___awdiv@quotient
+  1417     06DF  01F7               	clrf	___awdiv@quotient+1
+  1418     06E0                     l931:
+  1419     06E0  0870               	movf	___awdiv@divisor,w
+  1420     06E1  0471               	iorwf	___awdiv@divisor+1,w
+  1421     06E2  1903               	btfsc	3,2
+  1422     06E3  2EE5               	goto	u421
+  1423     06E4  2EE6               	goto	u420
+  1424     06E5                     u421:
+  1425     06E5  2F1B               	goto	l951
+  1426     06E6                     u420:
+  1427     06E6                     l933:
+  1428     06E6  3001               	movlw	1
+  1429     06E7  00F4               	movwf	___awdiv@counter
+  1430     06E8  2EF2               	goto	l939
+  1431     06E9                     l935:
+  1432     06E9  3001               	movlw	1
+  1433     06EA                     u435:
+  1434     06EA  1003               	clrc
+  1435     06EB  0DF0               	rlf	___awdiv@divisor,f
+  1436     06EC  0DF1               	rlf	___awdiv@divisor+1,f
+  1437     06ED  3EFF               	addlw	-1
+  1438     06EE  1D03               	skipz
+  1439     06EF  2EEA               	goto	u435
+  1440     06F0                     l937:
+  1441     06F0  3001               	movlw	1
+  1442     06F1  07F4               	addwf	___awdiv@counter,f
+  1443     06F2                     l939:
+  1444     06F2  1FF1               	btfss	___awdiv@divisor+1,7
+  1445     06F3  2EF5               	goto	u441
+  1446     06F4  2EF6               	goto	u440
+  1447     06F5                     u441:
+  1448     06F5  2EE9               	goto	l935
+  1449     06F6                     u440:
+  1450     06F6                     l941:
+  1451     06F6  3001               	movlw	1
+  1452     06F7                     u455:
+  1453     06F7  1003               	clrc
+  1454     06F8  0DF6               	rlf	___awdiv@quotient,f
+  1455     06F9  0DF7               	rlf	___awdiv@quotient+1,f
+  1456     06FA  3EFF               	addlw	-1
+  1457     06FB  1D03               	skipz
+  1458     06FC  2EF7               	goto	u455
+  1459     06FD  0871               	movf	___awdiv@divisor+1,w
+  1460     06FE  0273               	subwf	___awdiv@dividend+1,w
+  1461     06FF  1D03               	skipz
+  1462     0700  2F03               	goto	u465
+  1463     0701  0870               	movf	___awdiv@divisor,w
+  1464     0702  0272               	subwf	___awdiv@dividend,w
+  1465     0703                     u465:
+  1466     0703  1C03               	skipc
+  1467     0704  2F06               	goto	u461
+  1468     0705  2F07               	goto	u460
+  1469     0706                     u461:
+  1470     0706  2F0E               	goto	l947
+  1471     0707                     u460:
+  1472     0707                     l943:
+  1473     0707  0870               	movf	___awdiv@divisor,w
+  1474     0708  02F2               	subwf	___awdiv@dividend,f
+  1475     0709  0871               	movf	___awdiv@divisor+1,w
+  1476     070A  1C03               	skipc
+  1477     070B  03F3               	decf	___awdiv@dividend+1,f
+  1478     070C  02F3               	subwf	___awdiv@dividend+1,f
+  1479     070D                     l945:
+  1480     070D  1476               	bsf	___awdiv@quotient,0
+  1481     070E                     l947:
+  1482     070E  3001               	movlw	1
+  1483     070F                     u475:
+  1484     070F  1003               	clrc
+  1485     0710  0CF1               	rrf	___awdiv@divisor+1,f
+  1486     0711  0CF0               	rrf	___awdiv@divisor,f
+  1487     0712  3EFF               	addlw	-1
+  1488     0713  1D03               	skipz
+  1489     0714  2F0F               	goto	u475
+  1490     0715                     l949:
+  1491     0715  3001               	movlw	1
+  1492     0716  02F4               	subwf	___awdiv@counter,f
+  1493     0717  1D03               	btfss	3,2
+  1494     0718  2F1A               	goto	u481
+  1495     0719  2F1B               	goto	u480
+  1496     071A                     u481:
+  1497     071A  2EF6               	goto	l941
+  1498     071B                     u480:
+  1499     071B                     l951:
+  1500     071B  0875               	movf	___awdiv@sign,w
+  1501     071C  1903               	btfsc	3,2
+  1502     071D  2F1F               	goto	u491
+  1503     071E  2F20               	goto	u490
+  1504     071F                     u491:
+  1505     071F  2F25               	goto	l955
+  1506     0720                     u490:
+  1507     0720                     l953:
+  1508     0720  09F6               	comf	___awdiv@quotient,f
+  1509     0721  09F7               	comf	___awdiv@quotient+1,f
+  1510     0722  0AF6               	incf	___awdiv@quotient,f
+  1511     0723  1903               	skipnz
+  1512     0724  0AF7               	incf	___awdiv@quotient+1,f
+  1513     0725                     l955:
+  1514     0725  0877               	movf	___awdiv@quotient+1,w
+  1515     0726  00F1               	movwf	?___awdiv+1
+  1516     0727  0876               	movf	___awdiv@quotient,w
+  1517     0728  00F0               	movwf	?___awdiv
+  1518     0729                     l308:
+  1519     0729  0008               	return
+  1520     072A                     __end_of___awdiv:
+  1521                           
+  1522                           	psect	text6
+  1523     05B9                     __ptext6:	
+  1524 ;; *************** function _staticInfo *****************
+  1525 ;; Defined at:
+  1526 ;;		line 82 in file "JordTermometerStyreBox.c"
+  1527 ;; Parameters:    Size  Location     Type
+  1528 ;;		None
+  1529 ;; Auto vars:     Size  Location     Type
+  1530 ;;		None
+  1531 ;; Return value:  Size  Location     Type
+  1532 ;;                  1    wreg      void 
+  1533 ;; Registers used:
+  1534 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
+  1535 ;; Tracked objects:
+  1536 ;;		On entry : 0/0
+  1537 ;;		On exit  : 0/0
+  1538 ;;		Unchanged: 0/0
+  1539 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1540 ;;      Params:         0       0       0       0
+  1541 ;;      Locals:         0       0       0       0
+  1542 ;;      Temps:          0       0       0       0
+  1543 ;;      Totals:         0       0       0       0
+  1544 ;;Total ram usage:        0 bytes
+  1545 ;; Hardware stack levels used: 1
+  1546 ;; Hardware stack levels required when called: 2
+  1547 ;; This function calls:
+  1548 ;;		_CommandLCD
+  1549 ;;		_writeChar
+  1550 ;;		_writeString
+  1551 ;; This function is called by:
+  1552 ;;		_main
+  1553 ;; This function uses a non-reentrant model
+  1554 ;;
+  1555                           
+  1556     05B9                     _staticInfo:	
+  1557                           ;psect for function _staticInfo
+  1558                           
+  1559     05B9                     l1051:	
+  1560                           ;incstack = 0
+  1561                           ; Regs used in _staticInfo: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
+  1562                           
+  1563                           
+  1564                           ;JordTermometerStyreBox.c: 83:     writeString("1: ", 3);
+  1565     05B9  300B               	movlw	(low ((STR_1-__stringbase)| (0+32768)))& (0+255)
+  1566     05BA  00F1               	movwf	writeString@string
+  1567     05BB  3080               	movlw	128
+  1568     05BC  00F2               	movwf	writeString@string+1
+  1569     05BD  3003               	movlw	3
+  1570     05BE  00F3               	movwf	writeString@length
+  1571     05BF  2558               	fcall	_writeString
+  1572     05C0                     l1053:
+  1573                           
+  1574                           ;JordTermometerStyreBox.c: 85:     CommandLCD(0b10001000);
+  1575     05C0  3088               	movlw	136
+  1576     05C1  2593               	fcall	_CommandLCD
+  1577     05C2                     l1055:
+  1578                           
+  1579                           ;JordTermometerStyreBox.c: 86:     writeChar(0b11011111);
+  1580     05C2  30DF               	movlw	223
+  1581     05C3  253A               	fcall	_writeChar
+  1582                           
+  1583                           ;JordTermometerStyreBox.c: 88:     writeString("C", 1);
+  1584     05C4  3013               	movlw	(low ((STR_2-__stringbase)| (0+32768)))& (0+255)
+  1585     05C5  00F1               	movwf	writeString@string
+  1586     05C6  3080               	movlw	128
+  1587     05C7  00F2               	movwf	writeString@string+1
+  1588     05C8  01F3               	clrf	writeString@length
+  1589     05C9  0AF3               	incf	writeString@length,f
+  1590     05CA  2558               	fcall	_writeString
+  1591     05CB                     l1057:
+  1592                           
+  1593                           ;JordTermometerStyreBox.c: 90:     CommandLCD(0b11000000);
+  1594     05CB  30C0               	movlw	192
+  1595     05CC  2593               	fcall	_CommandLCD
+  1596     05CD                     l1059:
+  1597                           
+  1598                           ;JordTermometerStyreBox.c: 92:     writeString("2: ", 3);
+  1599     05CD  300F               	movlw	(low ((STR_3-__stringbase)| (0+32768)))& (0+255)
+  1600     05CE  00F1               	movwf	writeString@string
+  1601     05CF  3080               	movlw	128
+  1602     05D0  00F2               	movwf	writeString@string+1
+  1603     05D1  3003               	movlw	3
+  1604     05D2  00F3               	movwf	writeString@length
+  1605     05D3  2558               	fcall	_writeString
+  1606                           
+  1607                           ;JordTermometerStyreBox.c: 94:     CommandLCD(0b11001000);
+  1608     05D4  30C8               	movlw	200
+  1609     05D5  2593               	fcall	_CommandLCD
+  1610                           
+  1611                           ;JordTermometerStyreBox.c: 95:     writeChar(0b11011111);
+  1612     05D6  30DF               	movlw	223
+  1613     05D7  253A               	fcall	_writeChar
+  1614     05D8                     l1061:
+  1615                           
+  1616                           ;JordTermometerStyreBox.c: 96:     writeString("C", 1);
+  1617     05D8  3013               	movlw	(low ((STR_2-__stringbase)| (0+32768)))& (0+255)
+  1618     05D9  00F1               	movwf	writeString@string
+  1619     05DA  3080               	movlw	128
+  1620     05DB  00F2               	movwf	writeString@string+1
+  1621     05DC  01F3               	clrf	writeString@length
+  1622     05DD  0AF3               	incf	writeString@length,f
+  1623     05DE  2558               	fcall	_writeString
+  1624     05DF                     l35:
+  1625     05DF  0008               	return
+  1626     05E0                     __end_of_staticInfo:
+  1627                           
+  1628                           	psect	text7
+  1629     0558                     __ptext7:	
+  1630 ;; *************** function _writeString *****************
+  1631 ;; Defined at:
+  1632 ;;		line 76 in file "JordTermometerStyreBox.c"
+  1633 ;; Parameters:    Size  Location     Type
+  1634 ;;  string          2    1[COMMON] PTR unsigned char 
+  1635 ;;		 -> STR_8(5), STR_7(5), STR_6(5), STR_5(5), 
+  1636 ;;		 -> mV2Celcius@tempStr(6), STR_4(2), STR_3(4), STR_2(2), 
+  1637 ;;		 -> STR_1(4), 
+  1638 ;;  length          1    3[COMMON] unsigned char 
+  1639 ;; Auto vars:     Size  Location     Type
+  1640 ;;  i               1    4[COMMON] unsigned char 
+  1641 ;; Return value:  Size  Location     Type
+  1642 ;;                  1    wreg      void 
+  1643 ;; Registers used:
+  1644 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
+  1645 ;; Tracked objects:
+  1646 ;;		On entry : 0/0
+  1647 ;;		On exit  : 0/0
+  1648 ;;		Unchanged: 0/0
+  1649 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1650 ;;      Params:         3       0       0       0
+  1651 ;;      Locals:         1       0       0       0
+  1652 ;;      Temps:          0       0       0       0
+  1653 ;;      Totals:         4       0       0       0
+  1654 ;;Total ram usage:        4 bytes
+  1655 ;; Hardware stack levels used: 1
+  1656 ;; Hardware stack levels required when called: 1
+  1657 ;; This function calls:
+  1658 ;;		_writeChar
+  1659 ;; This function is called by:
+  1660 ;;		_staticInfo
+  1661 ;;		_updateLCD
+  1662 ;; This function uses a non-reentrant model
+  1663 ;;
+  1664                           
+  1665     0558                     _writeString:	
+  1666                           ;psect for function _writeString
+  1667                           
+  1668     0558                     l1017:	
+  1669                           ;incstack = 0
+  1670                           ; Regs used in _writeString: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
+  1671                           
+  1672                           
+  1673                           ;JordTermometerStyreBox.c: 77:     for (unsigned char i = 0; i < length; i++) {
+  1674     0558  01F4               	clrf	writeString@i
+  1675     0559  2D67               	goto	l1023
+  1676     055A                     l1019:
+  1677                           
+  1678                           ;JordTermometerStyreBox.c: 78:         writeChar(string[i]);
+  1679     055A  0874               	movf	writeString@i,w
+  1680     055B  0771               	addwf	writeString@string,w
+  1681     055C  0084               	movwf	4
+  1682     055D  0872               	movf	writeString@string+1,w
+  1683     055E  1803               	skipnc
+  1684     055F  0A72               	incf	writeString@string+1,w
+  1685     0560  1283               	bcf	3,5	;RP0=0, select bank0
+  1686     0561  1303               	bcf	3,6	;RP1=0, select bank0
+  1687     0562  00FF               	movwf	btemp+1
+  1688     0563  2001               	fcall	stringtab
+  1689     0564  253A               	fcall	_writeChar
+  1690     0565                     l1021:
+  1691                           
+  1692                           ;JordTermometerStyreBox.c: 79:     }
+  1693     0565  3001               	movlw	1
+  1694     0566  07F4               	addwf	writeString@i,f
+  1695     0567                     l1023:
+  1696     0567  0873               	movf	writeString@length,w
+  1697     0568  0274               	subwf	writeString@i,w
+  1698     0569  1C03               	skipc
+  1699     056A  2D6C               	goto	u601
+  1700     056B  2D6D               	goto	u600
+  1701     056C                     u601:
+  1702     056C  2D5A               	goto	l1019
+  1703     056D                     u600:
+  1704     056D                     l32:
+  1705     056D  0008               	return
+  1706     056E                     __end_of_writeString:
+  1707                           
+  1708                           	psect	text8
+  1709     053A                     __ptext8:	
+  1710 ;; *************** function _writeChar *****************
+  1711 ;; Defined at:
+  1712 ;;		line 62 in file "JordTermometerStyreBox.c"
+  1713 ;; Parameters:    Size  Location     Type
+  1714 ;;  character       1    wreg     unsigned char 
+  1715 ;; Auto vars:     Size  Location     Type
+  1716 ;;  character       1    0[COMMON] unsigned char 
+  1717 ;; Return value:  Size  Location     Type
+  1718 ;;                  1    wreg      void 
+  1719 ;; Registers used:
+  1720 ;;		wreg
+  1721 ;; Tracked objects:
+  1722 ;;		On entry : 0/0
+  1723 ;;		On exit  : 0/0
+  1724 ;;		Unchanged: 0/0
+  1725 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1726 ;;      Params:         0       0       0       0
+  1727 ;;      Locals:         1       0       0       0
+  1728 ;;      Temps:          0       0       0       0
+  1729 ;;      Totals:         1       0       0       0
+  1730 ;;Total ram usage:        1 bytes
+  1731 ;; Hardware stack levels used: 1
+  1732 ;; This function calls:
+  1733 ;;		Nothing
+  1734 ;; This function is called by:
+  1735 ;;		_writeString
+  1736 ;;		_staticInfo
+  1737 ;; This function uses a non-reentrant model
+  1738 ;;
+  1739                           
+  1740     053A                     _writeChar:	
+  1741                           ;psect for function _writeChar
+  1742                           
+  1743                           
+  1744                           ;incstack = 0
+  1745                           ; Regs used in _writeChar: [wreg]
+  1746                           ;writeChar@character stored from wreg
+  1747     053A  00F0               	movwf	writeChar@character
+  1748     053B                     l891:
+  1749                           
+  1750                           ;JordTermometerStyreBox.c: 63:     PORTA = 0b00000001;
+  1751     053B  3001               	movlw	1
+  1752     053C  1283               	bcf	3,5	;RP0=0, select bank0
+  1753     053D  1303               	bcf	3,6	;RP1=0, select bank0
+  1754     053E  0085               	movwf	5	;volatile
+  1755     053F                     l893:
+  1756                           
+  1757                           ;JordTermometerStyreBox.c: 64:     PORTB = character;
+  1758     053F  0870               	movf	writeChar@character,w
+  1759     0540  0086               	movwf	6	;volatile
+  1760     0541                     l895:
+  1761                           
+  1762                           ;JordTermometerStyreBox.c: 68:     PORTA = 0b00000101;
+  1763     0541  3005               	movlw	5
+  1764     0542  0085               	movwf	5	;volatile
+  1765     0543                     l897:
+  1766                           
+  1767                           ;JordTermometerStyreBox.c: 72:     PORTA = 0b00000001;
+  1768     0543  3001               	movlw	1
+  1769     0544  0085               	movwf	5	;volatile
+  1770     0545                     l26:
+  1771     0545  0008               	return
+  1772     0546                     __end_of_writeChar:
+  1773                           
+  1774                           	psect	text9
+  1775     0593                     __ptext9:	
+  1776 ;; *************** function _CommandLCD *****************
+  1777 ;; Defined at:
+  1778 ;;		line 41 in file "JordTermometerStyreBox.c"
+  1779 ;; Parameters:    Size  Location     Type
+  1780 ;;  command         1    wreg     unsigned char 
+  1781 ;; Auto vars:     Size  Location     Type
+  1782 ;;  command         1    4[COMMON] unsigned char 
+  1783 ;; Return value:  Size  Location     Type
+  1784 ;;                  1    wreg      void 
+  1785 ;; Registers used:
+  1786 ;;		wreg, status,2, status,0, pclath, cstack
+  1787 ;; Tracked objects:
+  1788 ;;		On entry : 0/0
+  1789 ;;		On exit  : 0/0
+  1790 ;;		Unchanged: 0/0
+  1791 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1792 ;;      Params:         0       0       0       0
+  1793 ;;      Locals:         1       0       0       0
+  1794 ;;      Temps:          0       0       0       0
+  1795 ;;      Totals:         1       0       0       0
+  1796 ;;Total ram usage:        1 bytes
+  1797 ;; Hardware stack levels used: 1
+  1798 ;; Hardware stack levels required when called: 1
+  1799 ;; This function calls:
+  1800 ;;		_wait
+  1801 ;; This function is called by:
+  1802 ;;		_staticInfo
+  1803 ;;		_updateLCD
+  1804 ;;		_main
+  1805 ;; This function uses a non-reentrant model
+  1806 ;;
+  1807                           
+  1808     0593                     _CommandLCD:	
+  1809                           ;psect for function _CommandLCD
+  1810                           
+  1811                           
+  1812                           ;incstack = 0
+  1813                           ; Regs used in _CommandLCD: [wreg+status,2+status,0+pclath+cstack]
+  1814                           ;CommandLCD@command stored from wreg
+  1815     0593  00F4               	movwf	CommandLCD@command
+  1816     0594                     l997:
+  1817                           
+  1818                           ;JordTermometerStyreBox.c: 42:     PORTB = command & 0xFF;
+  1819     0594  0874               	movf	CommandLCD@command,w
+  1820     0595  1283               	bcf	3,5	;RP0=0, select bank0
+  1821     0596  1303               	bcf	3,6	;RP1=0, select bank0
+  1822     0597  0086               	movwf	6	;volatile
+  1823     0598                     l999:
+  1824                           
+  1825                           ;JordTermometerStyreBox.c: 44:     if (PORTA != 0x00) {
+  1826     0598  0805               	movf	5,w	;volatile
+  1827     0599  1903               	btfsc	3,2
+  1828     059A  2D9C               	goto	u591
+  1829     059B  2D9D               	goto	u590
+  1830     059C                     u591:
+  1831     059C  2DA3               	goto	l1005
+  1832     059D                     u590:
+  1833     059D                     l1001:
+  1834                           
+  1835                           ;JordTermometerStyreBox.c: 45:         PORTA = 0x00;
+  1836     059D  0185               	clrf	5	;volatile
+  1837     059E                     l1003:
+  1838                           
+  1839                           ;JordTermometerStyreBox.c: 46:         wait(50);
+  1840     059E  3032               	movlw	50
+  1841     059F  00F0               	movwf	wait@time
+  1842     05A0  3000               	movlw	0
+  1843     05A1  00F1               	movwf	wait@time+1
+  1844     05A2  2546               	fcall	_wait
+  1845     05A3                     l1005:
+  1846                           
+  1847                           ;JordTermometerStyreBox.c: 49:     wait(10);
+  1848     05A3  300A               	movlw	10
+  1849     05A4  00F0               	movwf	wait@time
+  1850     05A5  3000               	movlw	0
+  1851     05A6  00F1               	movwf	wait@time+1
+  1852     05A7  2546               	fcall	_wait
+  1853     05A8                     l1007:
+  1854                           
+  1855                           ;JordTermometerStyreBox.c: 51:     PORTAbits.RA2 = 1;
+  1856     05A8  1283               	bcf	3,5	;RP0=0, select bank0
+  1857     05A9  1303               	bcf	3,6	;RP1=0, select bank0
+  1858     05AA  1505               	bsf	5,2	;volatile
+  1859     05AB                     l1009:
+  1860                           
+  1861                           ;JordTermometerStyreBox.c: 53:     wait(50);
+  1862     05AB  3032               	movlw	50
+  1863     05AC  00F0               	movwf	wait@time
+  1864     05AD  3000               	movlw	0
+  1865     05AE  00F1               	movwf	wait@time+1
+  1866     05AF  2546               	fcall	_wait
+  1867     05B0                     l1011:
+  1868                           
+  1869                           ;JordTermometerStyreBox.c: 55:     PORTAbits.RA2 = 0;
+  1870     05B0  1283               	bcf	3,5	;RP0=0, select bank0
+  1871     05B1  1303               	bcf	3,6	;RP1=0, select bank0
+  1872     05B2  1105               	bcf	5,2	;volatile
+  1873     05B3                     l1013:
+  1874                           
+  1875                           ;JordTermometerStyreBox.c: 57:     wait(100);
+  1876     05B3  3064               	movlw	100
+  1877     05B4  00F0               	movwf	wait@time
+  1878     05B5  3000               	movlw	0
+  1879     05B6  00F1               	movwf	wait@time+1
+  1880     05B7  2546               	fcall	_wait
+  1881     05B8                     l23:
+  1882     05B8  0008               	return
+  1883     05B9                     __end_of_CommandLCD:
+  1884                           
+  1885                           	psect	text10
+  1886     0546                     __ptext10:	
+  1887 ;; *************** function _wait *****************
+  1888 ;; Defined at:
+  1889 ;;		line 33 in file "JordTermometerStyreBox.c"
+  1890 ;; Parameters:    Size  Location     Type
+  1891 ;;  time            2    0[COMMON] unsigned int 
+  1892 ;; Auto vars:     Size  Location     Type
+  1893 ;;  t               2    2[COMMON] unsigned int 
+  1894 ;; Return value:  Size  Location     Type
+  1895 ;;                  1    wreg      void 
+  1896 ;; Registers used:
+  1897 ;;		wreg, status,2, status,0
+  1898 ;; Tracked objects:
+  1899 ;;		On entry : 0/0
+  1900 ;;		On exit  : 0/0
+  1901 ;;		Unchanged: 0/0
+  1902 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1903 ;;      Params:         2       0       0       0
+  1904 ;;      Locals:         2       0       0       0
+  1905 ;;      Temps:          0       0       0       0
+  1906 ;;      Totals:         4       0       0       0
+  1907 ;;Total ram usage:        4 bytes
+  1908 ;; Hardware stack levels used: 1
+  1909 ;; This function calls:
+  1910 ;;		Nothing
+  1911 ;; This function is called by:
+  1912 ;;		_CommandLCD
+  1913 ;;		_main
+  1914 ;; This function uses a non-reentrant model
+  1915 ;;
+  1916                           
+  1917     0546                     _wait:	
+  1918                           ;psect for function _wait
+  1919                           
+  1920     0546                     l885:	
+  1921                           ;incstack = 0
+  1922                           ; Regs used in _wait: [wreg+status,2+status,0]
+  1923                           
+  1924                           
+  1925                           ;JordTermometerStyreBox.c: 34:     unsigned int t = time;
+  1926     0546  0871               	movf	wait@time+1,w
+  1927     0547  00F3               	movwf	wait@t+1
+  1928     0548  0870               	movf	wait@time,w
+  1929     0549  00F2               	movwf	wait@t
+  1930                           
+  1931                           ;JordTermometerStyreBox.c: 35:     while (t > 0) {
+  1932     054A  2D51               	goto	l889
+  1933     054B                     l887:
+  1934                           
+  1935                           ;JordTermometerStyreBox.c: 36:         t--;
+  1936     054B  3001               	movlw	1
+  1937     054C  02F2               	subwf	wait@t,f
+  1938     054D  3000               	movlw	0
+  1939     054E  1C03               	skipc
+  1940     054F  03F3               	decf	wait@t+1,f
+  1941     0550  02F3               	subwf	wait@t+1,f
+  1942     0551                     l889:
+  1943                           
+  1944                           ;JordTermometerStyreBox.c: 35:     while (t > 0) {
+  1945     0551  0872               	movf	wait@t,w
+  1946     0552  0473               	iorwf	wait@t+1,w
+  1947     0553  1D03               	btfss	3,2
+  1948     0554  2D56               	goto	u351
+  1949     0555  2D57               	goto	u350
+  1950     0556                     u351:
+  1951     0556  2D4B               	goto	l887
+  1952     0557                     u350:
+  1953     0557                     l19:
+  1954     0557  0008               	return
+  1955     0558                     __end_of_wait:
+  1956                           
+  1957                           	psect	text11
+  1958     0531                     __ptext11:	
+  1959 ;; *************** function _IOInit *****************
+  1960 ;; Defined at:
+  1961 ;;		line 26 in file "JordTermometerStyreBox.c"
+  1962 ;; Parameters:    Size  Location     Type
+  1963 ;;		None
+  1964 ;; Auto vars:     Size  Location     Type
+  1965 ;;		None
+  1966 ;; Return value:  Size  Location     Type
+  1967 ;;                  1    wreg      void 
+  1968 ;; Registers used:
+  1969 ;;		status,2
+  1970 ;; Tracked objects:
+  1971 ;;		On entry : 0/0
+  1972 ;;		On exit  : 0/0
+  1973 ;;		Unchanged: 0/0
+  1974 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1975 ;;      Params:         0       0       0       0
+  1976 ;;      Locals:         0       0       0       0
+  1977 ;;      Temps:          0       0       0       0
+  1978 ;;      Totals:         0       0       0       0
+  1979 ;;Total ram usage:        0 bytes
+  1980 ;; Hardware stack levels used: 1
+  1981 ;; This function calls:
+  1982 ;;		Nothing
+  1983 ;; This function is called by:
+  1984 ;;		_main
+  1985 ;; This function uses a non-reentrant model
+  1986 ;;
+  1987                           
+  1988     0531                     _IOInit:	
+  1989                           ;psect for function _IOInit
+  1990                           
+  1991     0531                     l779:	
+  1992                           ;incstack = 0
+  1993                           ; Regs used in _IOInit: [status,2]
+  1994                           
+  1995                           
+  1996                           ;JordTermometerStyreBox.c: 27:     PORTA = 0;
+  1997     0531  1283               	bcf	3,5	;RP0=0, select bank0
+  1998     0532  1303               	bcf	3,6	;RP1=0, select bank0
+  1999     0533  0185               	clrf	5	;volatile
+  2000                           
+  2001                           ;JordTermometerStyreBox.c: 28:     PORTB = 0;
+  2002     0534  0186               	clrf	6	;volatile
+  2003                           
+  2004                           ;JordTermometerStyreBox.c: 29:     TRISB = 0;
+  2005     0535  1683               	bsf	3,5	;RP0=1, select bank1
+  2006     0536  1303               	bcf	3,6	;RP1=0, select bank1
+  2007     0537  0186               	clrf	6	;volatile
+  2008                           
+  2009                           ;JordTermometerStyreBox.c: 30:     TRISA = 0;
+  2010     0538  0185               	clrf	5	;volatile
+  2011     0539                     l13:
+  2012     0539  0008               	return
+  2013     053A                     __end_of_IOInit:
+  2014     0000                     ___latbits      equ	0
+  2015     007E                     btemp           set	126	;btemp
+  2016     007E                     wtemp0          set	126
+  2017                           
+  2018                           	psect	config
+  2019                           
+  2020                           ;Config register CONFIG @ 0x2007
+  2021                           ;	Oscillator Selection bits
+  2022                           ;	FOSC = INTOSCIO, INTRC oscillator; port I/O function on both RA6/OSC2/CLKO pin and RA7
+      +                          /OSC1/CLKI pin
+  2023                           ;	Watchdog Timer Enable bit
+  2024                           ;	WDTE = OFF, WDT disabled
+  2025                           ;	Power-up Timer Enable bit
+  2026                           ;	PWRTE = ON, PWRT enabled
+  2027                           ;	RA5/MCLR/VPP Pin Function Select bit
+  2028                           ;	MCLRE = OFF, RA5/MCLR/VPP pin function is digital I/O, MCLR internally tied to VDD
+  2029                           ;	Brown-out Reset Enable bit
+  2030                           ;	BOREN = OFF, BOR disabled
+  2031                           ;	Low-Voltage Programming Enable bit
+  2032                           ;	LVP = OFF, RB3/PGM pin has digital I/O function, HV on MCLR must be used for programmi
+      +                          ng
+  2033                           ;	Data EE Memory Code Protection bit
+  2034                           ;	CPD = OFF, Code protection off
+  2035                           ;	Flash Program Memory Write Enable bits
+  2036                           ;	WRT = OFF, Write protection off
+  2037                           ;	In-Circuit Debugger Mode bit
+  2038                           ;	DEBUG = 0x1, unprogrammed default
+  2039                           ;	CCP1 Pin Selection bit
+  2040                           ;	CCPMX = RB2, CCP1 function on RB2
+  2041                           ;	Flash Program Memory Code Protection bit
+  2042                           ;	CP = OFF, Code protection off
+  2043     2007                     	org	8199
+  2044     2007  3F10               	dw	16144
+
+Data Sizes:
+    Strings     20
+    Constant    0
+    Data        0
+    BSS         9
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14     14      14
+    BANK0            80     24      33
+    BANK1            80      0       0
+    BANK2            80      0       0
+
+Pointer List with Targets:
+
+    sp__doubbelDabbel	PTR unsigned char  size(1) Largest target is 3
+		 -> doubbelDabbel@digits(BANK0[3]), 
+
+    sp__mV2Celcius	PTR unsigned char  size(1) Largest target is 6
+		 -> mV2Celcius@tempStr(BANK0[6]), 
+
+    updateLCD@tempStr	PTR unsigned char  size(1) Largest target is 6
+		 -> mV2Celcius@tempStr(BANK0[6]), 
+
+    updateLCD@tempStr_105	PTR unsigned char  size(1) Largest target is 6
+		 -> mV2Celcius@tempStr(BANK0[6]), 
+
+    writeString@string	PTR unsigned char  size(2) Largest target is 6
+		 -> mV2Celcius@tempStr(BANK0[6]), STR_1(CODE[4]), STR_2(CODE[2]), STR_3(CODE[4]), 
+		 -> STR_4(CODE[2]), STR_5(CODE[5]), STR_6(CODE[5]), STR_7(CODE[5]), 
+		 -> STR_8(CODE[5]), 
+
+
+Critical Paths under _main in COMMON
+
+    _main->_updateLCD
+    _updateLCD->_mV2Celcius
+    _mV2Celcius->___awdiv
+    _staticInfo->_CommandLCD
+    _staticInfo->_writeString
+    _writeString->_writeChar
+    _CommandLCD->_wait
+
+Critical Paths under _main in BANK0
+
+    _main->_updateLCD
+    _updateLCD->_mV2Celcius
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 0     0      0    1835
+                         _CommandLCD
+                             _IOInit
+                         _staticInfo
+                          _updateLCD
+                               _wait
+ ---------------------------------------------------------------------------------
+ (1) _updateLCD                                            6     2      4    1453
+                                             10 COMMON     4     0      4
+                                             22 BANK0      2     2      0
+                         _CommandLCD
+                         _mV2Celcius
+                        _writeString
+ ---------------------------------------------------------------------------------
+ (2) _mV2Celcius                                          24    22      2    1065
+                                              8 COMMON     2     0      2
+                                              0 BANK0     22    22      0
+                            ___awdiv
+                            ___awmod
+                             ___wmul
+ ---------------------------------------------------------------------------------
+ (3) ___wmul                                               6     2      4      98
+                                              0 COMMON     6     2      4
+ ---------------------------------------------------------------------------------
+ (3) ___awmod                                              6     2      4     300
+                                              0 COMMON     6     2      4
+ ---------------------------------------------------------------------------------
+ (3) ___awdiv                                              8     4      4     304
+                                              0 COMMON     8     4      4
+ ---------------------------------------------------------------------------------
+ (1) _staticInfo                                           0     0      0     249
+                         _CommandLCD
+                          _writeChar
+                        _writeString
+ ---------------------------------------------------------------------------------
+ (2) _writeString                                          4     1      3     139
+                                              1 COMMON     4     1      3
+                          _writeChar
+ ---------------------------------------------------------------------------------
+ (3) _writeChar                                            1     1      0      29
+                                              0 COMMON     1     1      0
+ ---------------------------------------------------------------------------------
+ (2) _CommandLCD                                           1     1      0      81
+                                              4 COMMON     1     1      0
+                               _wait
+ ---------------------------------------------------------------------------------
+ (1) _wait                                                 4     2      2      52
+                                              0 COMMON     4     2      2
+ ---------------------------------------------------------------------------------
+ (1) _IOInit                                               0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 3
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _CommandLCD
+     _wait
+   _IOInit
+   _staticInfo
+     _CommandLCD
+     _writeChar
+     _writeString
+       _writeChar
+   _updateLCD
+     _CommandLCD
+     _mV2Celcius
+       ___awdiv
+       ___awmod
+       ___wmul
+     _writeString
+   _wait
+
+Address spaces:
+Name               Size   Autos  Total    Usage
+BITCOMMON           14      0       0      0.0%
+BITBANK0            80      0       0      0.0%
+BITBANK1            80      0       0      0.0%
+BITBANK2            80      0       0      0.0%
+COMMON              14     14      14    100.0%
+BANK0               80     24      33     41.2%
+BANK1               80      0       0      0.0%
+BANK2               80      0       0      0.0%
+STACK                0      0       0      0.0%
+DATA                 0      0      47      0.0%
+
+
+Microchip Technology PIC Macro Assembler V3.00 build 20241204225717 
+Symbol Table                                                                                   Mon Apr 07 14:44:14 2025
+
+                      pc 0002                       l13 0539                       l23 05B8  
+                     l32 056D                       l26 0545                       l50 07AF  
+                     l19 0557                       l35 05DF                       l52 07F2  
+                     l61 06C6             ___awdiv@sign 0075                       fsr 0004  
+    ___wmul@multiplicand 0072                      l321 066D                      l155 057A  
+                    l308 0729                      l157 0592                      l901 056E  
+                    l911 058E                      l903 0570                      l921 06D1  
+                    l905 0574                      l931 06E0                      l923 06D3  
+                    l915 06C7                      l907 0581                      l941 06F6  
+                    l933 06E6                      l925 06D7                      l917 06C8  
+                    l909 0588                      l943 0707                      l935 06E9  
+                    l951 071B                      l927 06DC                      l919 06CC  
+                    l953 0720                      l945 070D                      l937 06F0  
+                    l929 06DE                      l961 0618                      l779 0531  
+                    l891 053B                      l955 0725                      l947 070E  
+                    l939 06F2                      l971 062C                      l963 061C  
+                    l885 0546                      l893 053F                      l949 0715  
+                    l981 0642                      l973 0632                      l965 0621  
+                    l887 054B                      l895 0541                      l991 0664  
+                    l983 064C                      l975 0635                      l967 0623  
+                    l959 0617                      l889 0551                      l897 0543  
+                    l993 0669                      l985 0652                      l977 063C  
+                    l969 0627                      l987 0659                      l979 063E  
+                    l997 0594                      l989 065F                      l999 0598  
+                    u400 06CC                      u401 06CB                      u410 06D7  
+                    u411 06D6                      u420 06E6                      u500 061C  
+                    u421 06E5                      u501 061B                      u350 0557  
+                    u510 0627                      u351 0556                      u511 0626  
+                    u600 056D                      u440 06F6                      u520 0632  
+                    u360 0574                      u601 056C                      u441 06F5  
+                    u521 0631                      u361 0573                      u435 06EA  
+                    u460 0707                      u540 0642                      u620 07A7  
+                    u461 0706                      u541 0641                      u621 07A6  
+                    u550 064C                      u390 058E                      u630 0673  
+                    u455 06F7                      u551 064B                      u535 0636  
+                    u391 058D                      u375 057B                      u615 074C  
+                    u631 0672                      u480 071B                      u640 0689  
+                    u481 071A                      u465 0703                      u385 0582  
+                    u641 0688                      u490 0720                      u570 065F  
+                    u650 06B3                      u491 071F                      u475 070F  
+                    u571 065E                      u555 0648                      u651 06B2  
+                    u580 0664                      u581 0663                      u565 0653  
+                    u590 059D                      u591 059C       mV2Celcius@bcdValue 0078  
+                    fsr0 0004                      indf 0000             ___awmod@sign 0075  
+                   l1001 059D                     l1011 05B0                     l1003 059E  
+                   l1013 05B3                     l1005 05A3                     l1021 0565  
+                   l1007 05A8                     l1023 0567                     l1031 079B  
+                   l1009 05AB                     l1017 0558                     l1041 07EB  
+                   l1033 07A3                     l1025 072A                     l1019 055A  
+                   l1051 05B9                     l1043 07ED                     l1035 07A7  
+                   l1027 0758                     l1131 05E0                     l1061 05D8  
+                   l1053 05C0                     l1045 07F0                     l1037 07AC  
+                   l1029 075E                     l1141 05EC                     l1133 05E1  
+                   l1055 05C2                     l1047 07F1                     l1039 07B1  
+                   l1071 0689                     l1063 066E                     l1151 0605  
+                   l1143 05EE                     l1135 05E6                     l1057 05CB  
+                   l1081 06A7                     l1073 068B                     l1065 0673  
+                   l1153 060D                     l1145 05F3                     l1137 05E8  
+                   l1059 05CD                     l1091 06BF                     l1083 06AE  
+                   l1075 0693                     l1067 067D                     l1147 05F4  
+                   l1139 05EA                     l1085 06B3                     l1077 0695  
+                   l1069 0684                     l1149 05FC                     l1087 06B5  
+                   l1079 069D                     l1089 06BD                     STR_1 001B  
+                   STR_2 0023                     STR_3 001F                     STR_4 0023  
+                   STR_5 0016                     STR_6 0011                     STR_7 0016  
+                   STR_8 0011                     _main 05E0                     _wait 0546  
+                   btemp 007E                     start 0000       mV2Celcius@hundreds 0028  
+     mV2Celcius@thousand 0026                    ?_main 0070          __end_of___awdiv 072A  
+        __end_of___awmod 066E                    ?_wait 0070          ___awdiv@divisor 0070  
+        ___awdiv@counter 0074                    _PORTA 0005                    _PORTB 0006  
+                  _TRISA 0085                    _TRISB 0086               _CommandLCD 0593  
+            _writeString 0558                    pclath 000A                    wait@t 0072  
+                  status 0003                    wtemp0 007E          __initialization 07F3  
+    mV2Celcius@milivolts 002E             __end_of_main 0617             __end_of_wait 0558  
+                 ??_main 007E                   ??_wait 0072         ___awdiv@dividend 0072  
+          updateLCD@line 007C               _mV2Celcius 072A                   _IOInit 0531  
+                 ___wmul 056E                ??___awdiv 0074                ??___awmod 0074  
+       ___awdiv@quotient 0076          ___awmod@divisor 0070          ___awmod@counter 0074  
+            ?_CommandLCD 0070  __end_of__initialization 07FE           __pcstackCOMMON 0070  
+       mV2Celcius@totalC 0034               __pbssBANK0 0038              ?_mV2Celcius 0078  
+         mV2Celcius@ones 002C                  ?_IOInit 0070           mV2Celcius@tens 002A  
+             __pmaintext 05E0                  ?___wmul 0070           updateLCD@value 007A  
+     writeChar@character 0070             ?_writeString 0071               __stringtab 0001  
+                ___awdiv 06C7                  ___awmod 0617                  __ptext1 066E  
+                __ptext2 072A                  __ptext3 056E                  __ptext4 0617  
+                __ptext5 06C7                  __ptext6 05B9                  __ptext7 0558  
+                __ptext8 053A                  __ptext9 0593         updateLCD@tempStr 0036  
+       ___awmod@dividend 0072     end_of_initialization 07FE        CommandLCD@command 0074  
+      __end_of_updateLCD 06C7                _PORTAbits 0005        __end_of_writeChar 0546  
+           ??_CommandLCD 0074               _staticInfo 05B9        mV2Celcius@decPart 0030  
+           writeString@i 0074           __end_of_IOInit 053A        mV2Celcius@intPart 0032  
+     __end_of_CommandLCD 05B9        mV2Celcius@tempStr 0038        writeString@length 0073  
+         __end_of___wmul 0593        writeString@string 0071      start_initialization 07F3  
+           ??_mV2Celcius 0020                 ??_IOInit 0070                 ??___wmul 0074  
+     updateLCD@batStatus 007D       __end_of_mV2Celcius 07F3                ___latbits 0000  
+          __pcstackBANK0 0020              ?_staticInfo 0070      doubbelDabbel@digits 003E  
+               ?___awdiv 0070                 ?___awmod 0070                __pstrings 0001  
+         ___wmul@product 0074                _updateLCD 066E              __stringbase 0010  
+      ___wmul@multiplier 0070                _writeChar 053A     updateLCD@tempStr_105 0037  
+             ?_updateLCD 007A       __end_of__stringtab 0011               ?_writeChar 0070  
+               __ptext10 0546                 __ptext11 0531            ??_writeString 0074  
+           ??_staticInfo 0075                 wait@time 0070                stringcode 000B  
+            ??_updateLCD 007E       __end_of_staticInfo 05E0                 stringdir 000B  
+               stringtab 0001              ??_writeChar 0070      __end_of_writeString 056E  

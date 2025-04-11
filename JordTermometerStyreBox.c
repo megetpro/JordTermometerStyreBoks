@@ -22,7 +22,6 @@
 
 
 #include <xc.h>
-#include <pic16f819.h>
 
 void IOInit() {
     ADCON1 = 0x06; // Set all pins in portA to be digital
@@ -71,11 +70,11 @@ void writeChar(char character) {
     PORTA = 0b00000001;
     PORTB = character;
     
-    wait(50);
+    //wait(50);
     
     PORTA = 0b00000101;
             
-    wait(50);
+    //wait(50);
     
     PORTA = 0b00000001;
     return;
@@ -214,12 +213,135 @@ char checkSignal() {
     return 1;
 }
 
+void staticInfo (){
+    writeString("1: ", 3);
+    
+    CommandLCD(0b10001000); //Set courser to the 8 position in 1 row
+    writeChar(0b11011111); //Degree symbol
+    
+    writeString("C", 1);
+
+    CommandLCD(0b11000000); //Next line
+    
+    writeString("2: ", 3);
+    
+    CommandLCD(0b11001000); //Set courser to the 8 position in 2 row
+    writeChar(0b11011111); //Degree symbol
+    writeString("C", 1);
+}
+
+char* doubbelDabbel(int rawData) {
+    int raw = rawData;
+    
+    for (int i = 0; i < 12; i ++) {
+        raw = raw << 1;
+        
+        if ((raw & 0xF000) >= 0x5000){
+            raw += 0x3000;
+        }
+        
+        if ((raw & 0xF0000) >= 0x50000){
+            raw += 0x30000;
+        }
+        
+        if ((raw & 0xF00000) >= 0x500000){
+            raw += 0x300000;
+        }
+    
+    }
+    
+    raw = raw >> 12;
+    
+    static char digits[3];
+    
+    digits[0] = raw & 0x0F + '0';
+    raw = raw >> 4;
+    
+    digits[1] = raw & 0x0F + '0';
+    raw = raw >> 4;
+    
+    digits[2] = raw & 0x0F + '0';
+    raw = raw >> 4;
+    
+    return digits;
+}
+
+char* mV2Celcius(unsigned int bcdValue){
+    
+    //Convert BCD
+    int thousand = (bcdValue >> 12) & 0xF;
+    int hundreds = (bcdValue >> 8) & 0xF;
+    int tens = (bcdValue >> 4) & 0xF;
+    int ones = bcdValue & 0xF;
+    
+    //Total mV value
+    int milivolts = thousand * 1000 + hundreds * 100 + tens * 10 + ones;
+    
+    //Convert to temerature in C from kelvin
+    int totalC = milivolts - 2731;
+    
+    static char tempStr[6]; // Format: " XX.X" + '\0'
+    
+    //Handle negative temps
+    if (totalC < 0) {
+        totalC = -totalC;
+        tempStr[0] = '-';
+    }
+    else {
+        tempStr[0] = ' ';
+    }
+    
+    int intPart = totalC / 10;
+    int decPart = totalC % 10;
+    
+    tempStr[1] = (intPart / 10) + '0';
+    tempStr[2] = (intPart % 10) + '0';
+    tempStr[3] = '.';
+    tempStr[4] = decPart + '0';
+    tempStr[5] = '\0';
+    
+    return tempStr;
+}
+
+void updateLCD(unsigned int value, char line, char batStatus) {
+    
+    if(line){
+        CommandLCD(0b11000011);
+        char* tempStr = mV2Celcius(value);
+        writeString(tempStr, 5);
+        
+        if (batStatus) {
+            CommandLCD(0b11001100);
+            writeString("Okay", 4);
+        } else {
+            CommandLCD(0b11001100);
+            writeString(" Low", 4);
+        }
+    } else {
+        CommandLCD(0b10000011);
+        char* tempStr = mV2Celcius(value);
+        writeString(tempStr, 5);
+        
+        if (batStatus) {
+            CommandLCD(0b10001100);
+            writeString("Okay", 4);
+        } else {
+            CommandLCD(0b10001100);
+            writeString(" Low", 4);
+        }
+    }
+    
+    
+}
+
 void main(void) {
+    //PIC setup
     IOInit();
     TimerInit();
     
     wait(100);
     
+    // LCD setup
     CommandLCD(0b00111000);
     CommandLCD(0b00001110);    
     CommandLCD(0b00000001);
@@ -227,26 +349,17 @@ void main(void) {
     
     wait(200);
     
-    writeString("1: -13.9", 8);
-    writeChar(0b11011111);
-    writeString("C    9%", 7);
-
-    wait(200);
-
-    CommandLCD(0b11000000);     
-    
-    writeString("2:  19.9", 8);
-    writeChar(0b11011111);
-    writeString("C  100%", 7);
-    
-    wait(200);
-    
-    while (1) {
-        if (PORTAbits.RA3) {
-            if (checkSignal()) {
-                readMessage();
-            }
-        }
+    staticInfo();
+            
+    while(1) {
+        updateLCD(0x2931, 0, 1);
+        
+        updateLCD(0x2900, 1, 1);
+        
+        
+        updateLCD(0x2800, 0, 1);
+        
+        updateLCD(0x2931, 1, 0);
     }
     
     return;

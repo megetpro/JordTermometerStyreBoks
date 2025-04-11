@@ -1,4 +1,4 @@
-# 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\sources\\c99\\pic\\__eeprom.c"
+# 1 "JordTermometerStyreBox.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 285 "<built-in>" 3
@@ -6,7 +6,30 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\sources\\c99\\pic\\__eeprom.c" 2
+# 1 "JordTermometerStyreBox.c" 2
+
+
+
+
+
+
+
+
+#pragma config FOSC = INTOSCIO
+#pragma config WDTE = OFF
+#pragma config PWRTE = ON
+#pragma config MCLRE = OFF
+#pragma config BOREN = OFF
+#pragma config LVP = OFF
+#pragma config CPD = OFF
+#pragma config WRT = OFF
+#pragma config CCPMX = RB2
+#pragma config CP = OFF
+
+
+
+
+
 # 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/xc.h" 1 3
 # 18 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -1348,175 +1371,133 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/xc.h" 2 3
-# 2 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\sources\\c99\\pic\\__eeprom.c" 2
+# 25 "JordTermometerStyreBox.c" 2
 
-
-
-void
-__eecpymem(volatile unsigned char *to, __eeprom unsigned char * from, unsigned char size)
-{
- volatile unsigned char *cp = to;
-
- while (EECON1bits.WR) continue;
- EEADR = (unsigned char)from;
- while(size--) {
-  while (EECON1bits.WR) continue;
-
-  EECON1 &= 0x7F;
-
-  EECON1bits.RD = 1;
-  *cp++ = EEDATA;
-  ++EEADR;
- }
-# 36 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\sources\\c99\\pic\\__eeprom.c"
+void IOInit() {
+    PORTA = 0;
+    PORTB = 0;
+    TRISB = 0;
+    TRISA = 0;
 }
 
-void
-__memcpyee(__eeprom unsigned char * to, const unsigned char *from, unsigned char size)
-{
- const unsigned char *ptr =from;
-
- while (EECON1bits.WR) continue;
- EEADR = (unsigned char)to - 1U;
-
- EECON1 &= 0x7F;
-
- while(size--) {
-  while (EECON1bits.WR) {
-   continue;
-  }
-  EEDATA = *ptr++;
-  ++EEADR;
-  STATUSbits.CARRY = 0;
-  if (INTCONbits.GIE) {
-   STATUSbits.CARRY = 1;
-  }
-  INTCONbits.GIE = 0;
-  EECON1bits.WREN = 1;
-  EECON2 = 0x55;
-  EECON2 = 0xAA;
-  EECON1bits.WR = 1;
-  EECON1bits.WREN = 0;
-  if (STATUSbits.CARRY) {
-   INTCONbits.GIE = 1;
-  }
- }
-# 101 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\sources\\c99\\pic\\__eeprom.c"
+void wait(unsigned int time) {
+    unsigned int t = time;
+    while (t > 0) {
+        t--;
+    }
+    return;
 }
 
-unsigned char
-__eetoc(__eeprom void *addr)
-{
- unsigned char data;
- __eecpymem((unsigned char *) &data,addr,1);
- return data;
+void CommandLCD(unsigned char command) {
+    PORTB = command & 0xFF;
+
+    if (PORTA != 0x00) {
+        PORTA = 0x00;
+        wait(50);
+    }
+
+    wait(10);
+
+    PORTAbits.RA2 = 1;
+
+    wait(50);
+
+    PORTAbits.RA2 = 0;
+
+    wait(100);
+
+    return;
 }
 
-unsigned int
-__eetoi(__eeprom void *addr)
-{
- unsigned int data;
- __eecpymem((unsigned char *) &data,addr,2);
- return data;
+void writeChar(char character) {
+    PORTA = 0b00000001;
+    PORTB = character;
+
+    wait(50);
+
+    PORTA = 0b00000101;
+
+    wait(50);
+
+    PORTA = 0b00000001;
+    return;
 }
 
-#pragma warning push
-#pragma warning disable 2040
-__uint24
-__eetom(__eeprom void *addr)
-{
- __uint24 data;
- __eecpymem((unsigned char *) &data,addr,3);
- return data;
-}
-#pragma warning pop
-
-unsigned long
-__eetol(__eeprom void *addr)
-{
- unsigned long data;
- __eecpymem((unsigned char *) &data,addr,4);
- return data;
+void writeString(char* string, char length) {
+    for (unsigned char i = 0; i < length; i++) {
+        writeChar(string[i]);
+    }
 }
 
-#pragma warning push
-#pragma warning disable 1516
-unsigned long long
-__eetoo(__eeprom void *addr)
-{
- unsigned long long data;
- __eecpymem((unsigned char *) &data,addr,8);
- return data;
-}
-#pragma warning pop
+char* doubbelDabbel(int rawData) {
+    int raw = rawData;
 
-unsigned char
-__ctoee(__eeprom void *addr, unsigned char data)
-{
- __memcpyee(addr,(unsigned char *) &data,1);
- return data;
-}
+    for (int i = 0; i < 12; i ++) {
+        raw = raw << 1;
 
-unsigned int
-__itoee(__eeprom void *addr, unsigned int data)
-{
- __memcpyee(addr,(unsigned char *) &data,2);
- return data;
-}
+        if ((raw & 0xF000) >= 0x5000){
+            raw += 0x3000;
+        }
 
-#pragma warning push
-#pragma warning disable 2040
-__uint24
-__mtoee(__eeprom void *addr, __uint24 data)
-{
- __memcpyee(addr,(unsigned char *) &data,3);
- return data;
-}
-#pragma warning pop
+        if (raw & 0xF0000 >= 0x50000){
+            raw += 0x30000;
+        }
 
-unsigned long
-__ltoee(__eeprom void *addr, unsigned long data)
-{
- __memcpyee(addr,(unsigned char *) &data,4);
- return data;
+        if (raw & 0xF00000 >= 0x500000){
+            raw += 0x300000;
+        }
+
+    }
+
+    raw = raw >> 12;
+
+    char* digits[3];
+
+    digits[0] = raw & 0x0F;
+    raw = raw >> 4;
+
+    digits[1] = raw & 0x0F;
+    raw = raw >> 4;
+
+    digits[2] = raw & 0x0F;
+    raw = raw >> 4;
+
+    return digits;
 }
 
-#pragma warning push
-#pragma warning disable 1516
-unsigned long long
-__otoee(__eeprom void *addr, unsigned long long data)
-{
- __memcpyee(addr,(unsigned char *) &data,8);
- return data;
-}
-#pragma warning pop
 
-float
-__eetoft(__eeprom void *addr)
-{
- float data;
- __eecpymem((unsigned char *) &data,addr,3);
- return data;
-}
 
-double
-__eetofl(__eeprom void *addr)
-{
- double data;
- __eecpymem((unsigned char *) &data,addr,4);
- return data;
-}
+void main(void) {
 
-float
-__fttoee(__eeprom void *addr, float data)
-{
- __memcpyee(addr,(unsigned char *) &data,3);
- return data;
-}
+    IOInit();
 
-double
-__fltoee(__eeprom void *addr, double data)
-{
- __memcpyee(addr,(unsigned char *) &data,4);
- return data;
+    wait(100);
+
+
+    CommandLCD(0b00111000);
+    CommandLCD(0b00001110);
+    CommandLCD(0b00000001);
+    CommandLCD(0b00000110);
+
+    wait(200);
+
+    writeString("1: -13.9", 8);
+    writeChar(0b11011111);
+    writeString("C    9%", 7);
+
+
+    wait(200);
+
+    CommandLCD(0b11000000);
+
+    writeString("2:  19.9", 8);
+    writeChar(0b11011111);
+    writeString("C  100%", 7);
+
+
+    while (1) {
+
+    }
+
+    return;
 }
